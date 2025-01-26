@@ -1,0 +1,815 @@
+﻿Best Programming Practice 
+1. All values as variables including Fixed, User Inputs, and Results 
+2. Avoid Hard Coding of variables wherever possible
+3. Proper naming conventions for all variables 
+4. Proper Program Name and Class Name
+5. Follow proper indentation
+6. Give comments for every step or logical block like a variable declaration or conditional and loop blocks
+7. For every user input validate the user input, if invalid, state the error either exit the program or ask user to enter again
+8. Use the Array Length property while using for loops.
+1. Sample Program 1 - Create a program to find the sum of all the digits of a number given by a user using an array and display the sum.
+Hint => 
+1. Take the input for a number and validate, if failed state and exit the program
+2. Find the count of digits in the number
+3. Find the digits in the number and save them in an array
+4. Find the sum of the digits of the number and display the sum
+
+
+// Create SumOfDigit Class to compute the sum of all digits of a number using 
+// an array
+using System;
+class SumOfDigits
+{
+    static void Main(string[] args)
+    {
+        // Take input for a number
+        Console.Write("Enter a number: ");
+        string input = Console.ReadLine();
+        if (!int.TryParse(input, out int number) || number < 0)
+        {
+            Console.WriteLine("Invalid Number.");
+            return;
+        }
+        // Find the count of digits
+        int count = input.Length;
+
+
+        // Extract digits and store in an array
+        int[] digits = new int[count];
+        for (int i = 0; i < count; i++)
+        {
+            digits[i] = number % 10;
+            number /= 10;
+        }
+        // Compute the sum of the digits
+        int sum = 0;
+        foreach (int digit in digits)
+        {
+            sum += digit;
+        }
+        // Display the sum
+        Console.WriteLine($"Sum of Digits: {sum}");
+    }
+}
+
+2. Sample Program 2 - Working with Multi-Dimensional Arrays. Write a C# program to create a 2 Dimensional (2D) array (matrix) of integers, initialize it with values, and print the sum of all elements in the matrix
+Hint => 
+1. Take the input for a number of rows and columns
+2. Create a 2D array (matrix) of integers
+3. Take the input for the elements of the matrix 
+4. Calculate the sum of all elements in the matrix and display the sum
+5. Also, Display the matrix 
+
+
+// Program to create a 2D array, display the elements and calculate the sum of 
+// the elements of the array
+using System;
+class TwoDArray
+{
+    static void Main(string[] args)
+    {
+        // Take input for the number of rows and columns
+        Console.Write("Enter the number of rows: ");
+        int rows = int.Parse(Console.ReadLine());
+        Console.Write("Enter the number of columns: ");
+        int cols = int.Parse(Console.ReadLine());
+        // Create the 2D array
+        int[,] matrix = new int[rows, cols];
+
+
+        // Input the elements of the matrix
+        Console.WriteLine("Enter the elements of the matrix:");
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < cols; j++)
+            {
+                Console.Write($"Element [{i},{j}]: ");
+                matrix[i, j] = int.Parse(Console.ReadLine());
+            }
+        }
+        // Display the matrix and calculate the sum
+        int sum = 0;
+        Console.WriteLine("The elements of the matrix are:");
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < cols; j++)
+            {
+                Console.Write(matrix[i, j] + " ");
+                sum += matrix[i, j];
+            }
+            Console.WriteLine();
+        }
+        // Display the sum of the elements
+        Console.WriteLine($"The sum of all elements is: {sum}");
+    }
+}
+
+________________
+Level 2 Practice Programs
+1. Create a program to find the bonus of 10 employees based on their years of service and the total bonus amount the company Zara has to pay, along with the old and new salary.
+Hint => 
+1. Zara decides to give a bonus of 5% to employees whose year of service is more than 5 years or 2% if less than 5 years
+2. Define a double array to save salary and years of service for each of the 10 employees
+3. Also define a double array to save the new salary and the bonus amount as well as variables to save the total bonus, total old salary, and new salary
+4. Define a loop to take input from the user. If salary or year of service is an invalid number then ask the user to enter again. Note in this case you will have to decrement the index counter
+5. Define another loop to calculate the bonus of 10 employees based on their years of service. Save the bonus in the array, compute the new salary, and save in the array. Also, the total bonus and total old and new salary can be calculated in the loop
+6. Print the total bonus payout as well as the total old and new salary of all the employees
+using System;
+
+class Bonus
+{
+   public static void Main()
+   {
+       double[,] EmpData = new double[10, 2];  // 2D array to store salary and years of service
+       double[,] EmpBonusData = new double[10, 3];  // 2D array to store data after bonus
+       double totalBonus = 0, totalOldSalary = 0, totalNewSalary = 0;
+       bool validInput = false;
+       // Input loop
+       for (int i = 0; i < 10; i++) 
+       {
+           validInput = false; // Reset validInput
+
+           // Loop for validation
+           while (!validInput)
+           {
+               Console.Write($"Enter salary of Employee {i + 1}: ");
+               string salaryInput = Console.ReadLine(); 
+
+               if (double.TryParse(salaryInput, out EmpData[i, 0])) 
+               {
+                   validInput = true;  // Valid input, exit the loop
+               }
+               else
+               {
+                   Console.WriteLine("Invalid input! Please enter a valid input");
+               }
+           }
+
+           validInput = false;  // Reset validInput
+
+           // Loop for validation
+           while (!validInput)
+           {
+               Console.Write($"Enter years of service for Employee {i + 1}: ");
+               string serviceInput = Console.ReadLine(); 
+
+               if (double.TryParse(serviceInput, out EmpData[i, 1]))  //
+               {
+                   validInput = true;  // Valid input, exit the loop
+               }
+               else
+               {
+                   Console.WriteLine("Invalid input! Please enter a valid number of years.");
+               }
+           }
+       }
+
+       // Calculate bonus and new salary
+       for (int i = 0; i < 10; i++) 
+       {
+           double salary = EmpData[i, 0];
+           double yearsOfService = EmpData[i, 1];
+           double bonus = 0;
+
+           // Calculate bonus 
+           if (yearsOfService > 5)
+           {
+               bonus = salary * 0.05; 
+           }
+           else
+           {
+               bonus = salary * 0.02; 
+           }
+
+           // Calculate new salary 
+           double newSalary = salary + bonus;
+
+           // Save bonus and new salary to the array
+           EmpBonusData[i, 0] = bonus;
+           EmpBonusData[i, 1] = newSalary;
+
+           // Update total bonus, total old salary, and total new salary
+           totalBonus += bonus;
+           totalOldSalary += salary;
+           totalNewSalary += newSalary;
+       }
+
+       // Print the results
+       Console.WriteLine("\nEmployee Data (Salary, Bonus, New Salary):");
+       for (int i = 0; i < 10; i++)
+       {
+           Console.WriteLine($"Employee {i + 1}: Salary = {EmpData[i, 0]}, Bonus = {EmpBonusData[i, 0]}, New Salary = {EmpBonusData[i, 1]}");
+       }
+
+       // Print the total bonus payout and total salaries
+       Console.WriteLine($"\nTotal Bonus: {totalBonus}");
+       Console.WriteLine($"Total Old Salary of all Employees: {totalOldSalary}");
+       Console.WriteLine($"Total New Salary of all Employees: {totalNewSalary}");
+   }
+}
+	
+
+
+
+2. Create a program to find the youngest friends among 3 Amar, Akbar, and Anthony based on their ages and the tallest among the friends based on their heights
+Hint => 
+1. Take user input for age and height for the 3 friends and store it in two arrays each to store the values for age and height of the 3 friends
+2. Loop through the array and find the youngest of the 3 friends and the tallest of the 3 friends
+3. Finally display the youngest and tallest of the 3 friends
+using System;
+
+class FriendComparison
+{
+   public static void Main()
+   {
+       string[] friends = { "Amar", "Akbar", "Anthony" };  // Names of the friends
+       int[] ages = new int[3];  // Array to store ages
+       double[] heights = new double[3];  // Array to store heights
+
+       // Input loop 
+       for (int i = 0; i < 3; i++)
+       {
+           Console.Write($"Enter age of {friends[i]}: ");
+           ages[i] = Convert.ToInt32(Console.ReadLine());
+
+           Console.Write($"Enter height (in cm) of {friends[i]}: ");
+           heights[i] = Convert.ToDouble(Console.ReadLine());
+       }
+
+       // Find the youngest friend
+       int youngestIndex = 0;  
+       for (int i = 1; i < 3; i++)  // Loop to find the youngest
+       {
+           if (ages[i] < ages[youngestIndex])
+           {
+               youngestIndex = i;  // Update youngest friend index
+           }
+       }
+
+       // Find the tallest friend
+       int tallestIndex = 0;  // Assume the first friend is the tallest initially
+       for (int i = 1; i < 3; i++)  // Loop through the array to find the tallest
+       {
+           if (heights[i] > heights[tallestIndex])
+           {
+               tallestIndex = i;  // Update tallest friend index
+           }
+       }
+
+       // Output 
+       Console.WriteLine($"\nThe youngest friend is {friends[youngestIndex]}");
+       Console.WriteLine($"The tallest friend is {friends[tallestIndex]}");
+   }
+}
+	
+
+
+
+
+
+3. Create a program to store the digits of the number in an array and find the largest and second largest element of the array.
+Hint => 
+1. Create a number variable and take user input. 
+2. Define an array to store the digits. Set the size of the array to maxDigit variable initially set to 10
+3. Create an integer variable index with the value 0 to reflect the array index.
+4. Use a loop to iterate until the number is not equal to 0.
+5. Remove the last digit from the number in each iteration and add it to the array.
+6. Increment the index by 1 in each iteration and if the index count equals maxDigit then break out of the loop and the remaining digits are not added to the array
+7. Define variable to store largest and second largest digit and initialize it to zero
+8. Loop through the array and use conditional statements to find the largest and second largest number in the array
+9. Finally display the largest  and second-largest number
+using System;
+class Digits
+{
+public static void Main()
+{
+        Console.Write("Enter a number");
+        int number=Convert.ToInt32(Console.ReadLine());
+        int maxDigit=10;
+        int[] array=new int[maxDigit];
+        int index=0;
+        int largestDigit=0;
+        int secondLargestDigit=0;
+        while(number!=0)
+        {
+                int lastDigit=number%10;
+                array[index]=lastDigit;
+                index++;
+                if(index==maxDigit)
+                {
+                        break;
+                }
+            number=number/10;
+        }
+     for(int i=0;i<10;i++)
+        {
+        if(array[i]>largestDigit)
+                {
+                secondLargestDigit=largestDigit;
+           largestDigit=array[i];
+                }
+            else if (array[i] > secondLargestDigit && array[i] != largestDigit)
+            { 
+                 secondLargestDigit = array[i]; 
+            }
+        }
+Console.WriteLine($"The largest number is {largestDigit}");
+Console.WriteLine($"The second largest number is {secondLargestDigit}");
+}
+}                
+	
+
+4. Rework the program 2, especially the Hint: if index equals maxDigit, we break from the loop. Here we want to modify to increase the size of the array i,e maxDigit by 10 if the index is equal to maxDigit. This is done to consider all digits to find the largest and second-largest number 
+Hint => 
+1. In Hint f inside the loop if the index is equal to maxDigit, increase maxDigit and make digits array to store more elements.
+2. To do this, we need to create a new temp array of size maxDigit, copy from the current digits array the digits into the temp array, and assign the current digits array to the temp array.
+3. Now the digits array will be able to store all digits of the number in the array and then find the largest and second largest number
+using System;
+
+class DigitsArray
+{
+   public static void Main()
+   {
+      
+       Console.Write("Enter a number: ");
+       int number = Convert.ToInt32(Console.ReadLine());
+       int maxDigits = 10; 
+       int[] digits = new int[maxDigits]; 
+       int index = 0;
+       int largest = -1; 
+       int secondLargest = -1;  
+       while (number != 0)
+       {
+           if (index == maxDigits)
+           {
+               maxDigits += 10; 
+               int[] temp = new int[maxDigits]; 
+               Array.Copy(digits, temp, digits.Length);
+
+               digits = temp; 
+           }
+
+           int lastDigit = number % 10; 
+           digits[index] = lastDigit; 
+           index++; 
+           number = number / 10; 
+       }
+
+      
+       for (int i = 0; i < index; i++)
+       {
+           if (digits[i] > largest)
+           {
+               secondLargest = largest; 
+               largest = digits[i]; 
+           }
+           else if (digits[i] > secondLargest && digits[i] != largest)
+           {
+               secondLargest = digits[i]; 
+           }
+       }
+
+      
+       Console.WriteLine($"The largest digit is: {largest}");
+       Console.WriteLine($"The second largest digit is: {secondLargest}");
+   }
+}
+
+	
+
+5. Create a program to take a number as input and reverse the number. To do this, store the digits of the number in an array and display the array in reverse order
+Hint => 
+1. Take user input for a number. 
+2. Find the count of digits in the number. 
+3. Find the digits in the number and save them in an array
+4. Create an array to store the elements of the digits array in reverse order
+5. Finally, display the elements of the array in reverse order 
+using System;
+
+class ReverseNumber
+{
+   public static void Main()
+   {
+       Console.Write("Enter a number: ");
+       int number = Convert.ToInt32(Console.ReadLine());
+
+      
+       int temp = number;
+       int count = 0;
+       while (temp != 0)
+       {
+           temp = temp / 10; 
+           count++;   
+        }
+
+       int[] digits = new int[count];
+       temp = number; 
+       for (int i = 0; i < count; i++)
+       {
+           digits[i] = temp % 10; 
+           temp = temp / 10;  
+       }
+
+      
+       int[] reversedDigits = new int[count];
+
+      
+       for (int i = 0; i < count; i++)
+       {
+           reversedDigits[i] = digits[count - 1 - i]; 
+       }
+
+      
+       Console.Write("Reversed number: ");
+       for (int i = 0; i < count; i++)
+       {
+           Console.Write(reversedDigits[i]);
+       }
+       Console.WriteLine();
+   }
+}
+	
+
+ 
+6. An organization took up an exercise to find the Body Mass Index (BMI) of all the persons in the team. For this create a program to find the BMI and display the height, weight, BMI and status of each individual
+Hint => 
+1. Take input for a number of persons
+2. Create arrays to store the weight, height, BMI, and weight status of the persons
+3. Take input for the weight and height of the persons
+4. Calculate the BMI of all the persons and store them in an array and also find the weight status of the persons
+5. Display the height, weight, BMI, and weight status of each person
+6. Use the table to determine the weight status of the person
+  
+ 
+using System;
+
+
+class BMIProgram
+{
+   public static void Main()
+   {
+      
+       Console.Write("Enter the number of persons: ");
+       int numPersons = Convert.ToInt32(Console.ReadLine());
+       double[] heights = new double[numPersons];
+       double[] weights = new double[numPersons];
+       double[] bmis = new double[numPersons];
+       string[] statuses = new string[numPersons];
+       for (int i = 0; i < numPersons; i++)
+       {
+           Console.WriteLine($"Enter details for person {i + 1}:");
+
+          
+           Console.Write("Enter weight in kilograms: ");
+           weights[i] = Convert.ToDouble(Console.ReadLine());
+
+           Console.Write("Enter height in meters: ");
+           heights[i] = Convert.ToDouble(Console.ReadLine());
+
+          
+           bmis[i] = weights[i] / (heights[i] * heights[i]);
+
+          
+           if (bmis[i] < 18.5)
+           {
+               statuses[i] = "Underweight";
+           }
+           else if (bmis[i] >= 18.5 && bmis[i] < 24.9)
+           {
+               statuses[i] = "Normal weight";
+           }
+           else if (bmis[i] >= 25 && bmis[i] < 29.9)
+           {
+               statuses[i] = "Overweight";
+           }
+           else
+           {
+               statuses[i] = "Obesity";
+           }
+       }
+
+       // Display the details for each person
+       Console.WriteLine("\nBMI Report:");
+       Console.WriteLine("----------------------------------------------------------");
+       Console.WriteLine("Person | Height (m) | Weight (kg) | BMI     | Status");
+       Console.WriteLine("----------------------------------------------------------");
+
+       for (int i = 0; i < numPersons; i++)
+       {
+           Console.WriteLine($"{i + 1,6} | {heights[i],10:F2} | {weights[i],11:F2} | {bmis[i],7:F2} | {statuses[i],12}");
+       }
+   }
+}
+	
+
+
+
+7. Rewrite the above program using multi-dimensional array to store height, weight, and BMI in 2D array for all the persons
+Hint => 
+1. Take input for a number of persons
+2. Create a multi-dimensional array to store weight, height and BMI. Also create an to store the weight status of the persons
+       double[][] personData = new double[number][3];
+       String[] weightStatus = new String[number];
+3. Take input for weight and height of the persons and for negative values, ask the user to enter positive values
+4. Calculate BMI of all the persons and store them in the personData array and also find the weight status and put them in the weightStatus array
+5. Display the height, weight, BMI and status of each person
+using System;
+
+class BMIProgram
+{
+   public static void Main()
+   {
+       Console.Write("Enter the number of persons: ");
+       int numPersons = Convert.ToInt32(Console.ReadLine());
+       double[,] personData = new double[numPersons, 3];
+       string[] weightStatus = new string[numPersons]; 
+       for (int i = 0; i < numPersons; i++)
+       {
+           Console.WriteLine($"Enter details for person {i + 1}:");
+
+           // Get weight and height with validation for positive values
+           do
+           {
+               Console.Write("Enter weight in kilograms: ");
+               personData[i, 0] = Convert.ToDouble(Console.ReadLine());
+               if (personData[i, 0] <= 0)
+               {
+                   Console.WriteLine("Weight must be a positive value. Please enter again.");
+               }
+           } while (personData[i, 0] <= 0);
+
+           do
+           {
+               Console.Write("Enter height in meters: ");
+               personData[i, 1] = Convert.ToDouble(Console.ReadLine());
+               if (personData[i, 1] <= 0)
+               {
+                   Console.WriteLine("Height must be a positive value. Please enter again.");
+               }
+           } while (personData[i, 1] <= 0);
+
+           // Calculate BMI
+           personData[i, 2] = personData[i, 0] / (personData[i, 1] * personData[i, 1]);
+
+           // Determine weight status
+           if (personData[i, 2] < 18.5)
+           {
+               weightStatus[i] = "Underweight";
+           }
+           else if (personData[i, 2] >= 18.5 && personData[i, 2] < 24.9)
+           {
+               weightStatus[i] = "Normal weight";
+           }
+           else if (personData[i, 2] >= 25 && personData[i, 2] < 29.9)
+           {
+               weightStatus[i] = "Overweight";
+           }
+           else
+           {
+               weightStatus[i] = "Obesity";
+           }
+       }
+
+       // Display the details for each person
+       Console.WriteLine("\nBMI Report:");
+       Console.WriteLine("----------------------------------------------------------");
+       Console.WriteLine("Person | Height (m) | Weight (kg) | BMI     | Status");
+       Console.WriteLine("----------------------------------------------------------");
+
+       for (int i = 0; i < numPersons; i++)
+       {
+           Console.WriteLine($"{i + 1,6} | {personData[i, 1],10:F2} | {personData[i, 0],11:F2} | {personData[i, 2],7:F2} | {weightStatus[i],12}");
+       }
+   }
+}
+	
+
+
+
+8. Create a program to take input marks of students in 3 subjects physics, chemistry, and maths. Compute the percentage and then calculate the grade  as per the following guidelines 
+  
+
+Hint => 
+1. Take input for the number of students
+2. Create arrays to store marks, percentages, and grades of the students
+3. Take input for marks of students in physics, chemistry, and maths. If the marks are negative, ask the user to enter positive values and decrement the index
+4. Calculate the percentage and grade of the students based on the percentage
+5. Display the marks, percentages, and grades of each student
+using System;
+
+class StudentGradeProgram
+{
+   public static void Main()
+   {
+       // Take the number of students as input
+       Console.Write("Enter the number of students: ");
+       int numStudents = Convert.ToInt32(Console.ReadLine());
+
+       // Arrays to store marks, percentages, and grades
+       int[,] marks = new int[numStudents, 3]; // 0 - Physics, 1 - Chemistry, 2 - Maths
+       double[] percentages = new double[numStudents];
+       string[] grades = new string[numStudents];
+
+       // Input marks for each student
+       for (int i = 0; i < numStudents; i++)
+       {
+           Console.WriteLine($"Enter marks for student {i + 1}:");
+
+           // Input marks for Physics, Chemistry, and Maths with validation
+           for (int j = 0; j < 3; j++)
+           {
+               string subject = j == 0 ? "Physics" : j == 1 ? "Chemistry" : "Maths";
+               
+               // Ask for marks until valid (positive marks)
+               do
+               {
+                   Console.Write($"Enter marks for {subject}: ");
+                   marks[i, j] = Convert.ToInt32(Console.ReadLine());
+                   if (marks[i, j] < 0)
+                   {
+                       Console.WriteLine("Marks must be a positive value. Please enter again.");
+                   }
+               } while (marks[i, j] < 0);
+           }
+
+           // Calculate the percentage
+           double totalMarks = marks[i, 0] + marks[i, 1] + marks[i, 2];
+           percentages[i] = (totalMarks / 300) * 100;
+
+           // Assign grade based on the percentage
+           if (percentages[i] >= 80)
+           {
+               grades[i] = "Level 4, above agency-normalized standards";
+           }
+           else if (percentages[i] >= 70)
+           {
+               grades[i] = "Level 3, at agency-normalized standards";
+           }
+           else if (percentages[i] >= 60)
+           {
+               grades[i] = "Level 2,below but approaching agency-normalized standards";
+           }
+           else if(percentages[i]>=50)
+           {
+               grades[i] = "Level 1, well below agency-normalized standards";
+           }
+        else if(percentages[i]>=40)
+           {
+               grades[i] = "Level 1-, too below agency-normalized standards";
+           }
+      else 
+           {
+               grades[i] = "Remedial standards";
+           }
+
+
+       }
+
+       // Display the results for each student
+       Console.WriteLine("\nStudent Results:");
+       Console.WriteLine("------------------------------------------------------------");
+       Console.WriteLine("Student | Physics | Chemistry | Maths | Percentage | Grade");
+       Console.WriteLine("------------------------------------------------------------");
+
+       for (int i = 0; i < numStudents; i++)
+       {
+           Console.WriteLine($"{i + 1,7} | {marks[i, 0],7} | {marks[i, 1],9} | {marks[i, 2],5} | {percentages[i],10:F2} | {grades[i],6}");
+       }
+   }
+}
+	
+
+
+
+9. Rewrite the above program to store the marks of the students in physics, chemistry, and maths in a 2D array and then compute the percentage and grade
+Hint => 
+1. All the steps are the same as the problem 8 except the marks are stored in a 2D array
+2. Use the 2D array to calculate the percentages, and grades of the students
+using System;
+
+class StudentGradeProgram
+{
+   public static void Main()
+   {
+       // Take the number of students as input
+       Console.Write("Enter the number of students: ");
+       int numStudents = Convert.ToInt32(Console.ReadLine());
+
+       // 2D array to store marks for Physics, Chemistry, and Maths for each student
+       int[,] marks = new int[numStudents, 3]; // 0 - Physics, 1 - Chemistry, 2 - Maths
+       double[] percentages = new double[numStudents];
+       string[] grades = new string[numStudents];
+
+       // Input marks for each student
+       for (int i = 0; i < numStudents; i++)
+       {
+           Console.WriteLine($"Enter marks for student {i + 1}:");
+
+           // Input marks for Physics, Chemistry, and Maths with validation
+           for (int j = 0; j < 3; j++)
+           {
+               string subject = j == 0 ? "Physics" : j == 1 ? "Chemistry" : "Maths";
+               
+               // Ask for marks until valid (positive marks)
+               do
+               {
+                   Console.Write($"Enter marks for {subject}: ");
+                   marks[i, j] = Convert.ToInt32(Console.ReadLine());
+                   if (marks[i, j] < 0)
+                   {
+                       Console.WriteLine("Marks must be a positive value. Please enter again.");
+                   }
+               } while (marks[i, j] < 0);
+           }
+
+           // Calculate the percentage
+           double totalMarks = marks[i, 0] + marks[i, 1] + marks[i, 2];
+           percentages[i] = (totalMarks / 300) * 100;
+
+           // Assign grade based on the percentage
+           if (percentages[i] >= 80)
+           {
+               grades[i] = "Level 4, above agency-normalized standards";
+           }
+           else if (percentages[i] >= 70)
+           {
+               grades[i] = "Level 3, at agency-normalized standards";
+           }
+           else if (percentages[i] >= 60)
+           {
+               grades[i] = "Level 2, below but approaching agency-normalized standards";
+           }
+           else if (percentages[i] >= 50)
+           {
+               grades[i] = "Level 1, well below agency-normalized standards";
+           }
+           else if (percentages[i] >= 40)
+           {
+               grades[i] = "Level 1-, too below agency-normalized standards";
+           }
+           else
+           {
+               grades[i] = "Remedial standards";
+           }
+       }
+
+       // Display the results for each student
+       Console.WriteLine("\nStudent Results:");
+       Console.WriteLine("------------------------------------------------------------");
+       Console.WriteLine("Student | Physics | Chemistry | Maths | Percentage | Grade");
+       Console.WriteLine("------------------------------------------------------------");
+
+       for (int i = 0; i < numStudents; i++)
+       {
+           Console.WriteLine($"{i + 1,7} | {marks[i, 0],7} | {marks[i, 1],9} | {marks[i, 2],5} | {percentages[i],10:F2} | {grades[i],6}");
+       }
+   }
+}
+	
+
+
+
+10. Create a program to take a number as input find the frequency of each digit in the number using an array and display the frequency of each digit
+Hint => 
+1. Take the input for a number
+2. Find the count of digits in the number
+3. Find the digits in the number and save them in an array
+4. Find the frequency of each digit in the number. For this define a frequency array of size 10, Loop through the digits array, and increase the frequency of each digit
+5. Display the frequency of each digit in the number
+using System;
+
+class DigitFrequency
+{
+   public static void Main()
+   {
+       // Take input for the number
+       Console.Write("Enter a number: ");
+       int number = Convert.ToInt32(Console.ReadLine());
+
+       // Array to store the frequency of each digit (0-9)
+       int[] frequency = new int[10];
+
+       // Process the digits in the number
+       while (number != 0)
+       {
+           // Get the last digit of the number
+           int digit = number % 10;
+
+           // Increase the frequency of the digit
+           frequency[digit]++;
+
+           // Remove the last digit from the number
+           number /= 10;
+       }
+
+       // Display the frequency of each digit
+       Console.WriteLine("\nFrequency of each digit:");
+       for (int i = 0; i < 10; i++)
+       {
+           if (frequency[i] > 0)
+           {
+               Console.WriteLine($"Digit {i}: {frequency[i]} times");
+           }
+       }
+   }
+}

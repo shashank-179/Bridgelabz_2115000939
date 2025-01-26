@@ -1,0 +1,653 @@
+﻿Best Programming Practice 
+1. All values as variables including Fixed, User Inputs, and Results 
+2. Avoid Hard Coding of variables wherever possible
+3. Proper naming conventions for all variables 
+4. Proper Program Name and Class Name
+5. Follow proper indentation
+6. Give comments for every step or logical block like a variable declaration or conditional and loop blocks
+7. Validate user inputs and handle errors gracefully using Console.Error and Environment.Exit.
+8. Use Array length property while using for loop
+1. Sample Program 1 - Create a program to find the sum of all the digits of a number given by a user using an array and display the sum.
+Hint => 
+1. Take the input for a number and validate, if failed state and exit the program
+2. Find the count of digits in the number
+3. Find the digits in the number and save them in an array
+4. Find the sum of the digits of the number and display the sum
+
+
+// Create SumOfDigit Class to compute the sum of all digits of a number using 
+// an array
+using System;
+class SumOfDigits
+{
+    static void Main(string[] args)
+    {
+        // Take input for a number
+        Console.Write("Enter a number: ");
+        int number = int.Parse(Console.ReadLine());
+
+
+        // Validate the input
+        if (number < 0)
+        {
+            Console.Error.WriteLine("Invalid Number.");
+            Environment.Exit(0);
+        }
+        // Find the count of digits
+        int temp = number, count = 0;
+        while (temp > 0)
+        {
+            count++;
+            temp /= 10;
+        }
+
+
+        // Find the digits and store them in an array
+        int[] digits = new int[count];
+        for (int i = 0; i < count; i++)
+        {
+            digits[i] = number % 10;
+            number /= 10;
+        }
+
+
+        // Calculate the sum of the digits
+        int sum = 0;
+        foreach (int digit in digits)
+        {
+            sum += digit;
+        }
+
+
+        // Display the sum
+        Console.WriteLine($"Sum of Digits: {sum}");
+    }
+}
+
+2. Sample Program 2 - Working with Multi-Dimensional Arrays. Write a C# program to create a 2 Dimensional (2D) array (matrix) of integers, initialize it with values, and print the sum of all elements in the matrix
+Hint => 
+1. Take the input for a number of rows and columns
+2. Create a 2D array (matrix) of integers
+3. Take the input for the elements of the matrix 
+4. Calculate the sum of all elements in the matrix and display the sum
+5. Also, Display the matrix 
+
+
+
+
+
+
+
+
+
+
+using System;
+class TwoDArray
+{
+    static void Main(string[] args)
+    {
+        // Declare and initialize the 2D Array
+        int[,] matrix = new int[3, 3];
+        // Input the elements of the 2D Array
+        Console.WriteLine("Enter the elements of the 2D Array:");
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                matrix[i, j] = int.Parse(Console.ReadLine());
+            }
+        }
+        // Display the elements and calculate the sum
+        int sum = 0;
+        Console.WriteLine("The elements of the 2D Array are:");
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                Console.Write(matrix[i, j] + " ");
+                sum += matrix[i, j];
+            }
+            Console.WriteLine();
+        }
+        // Display the sum
+        Console.WriteLine($"The sum of the elements of the 2D Array is: {sum}");
+    }
+}
+
+________________
+Level 1 Practice Programs
+1. Write a program to take user input for the age of all 10 students in a class and check whether the student can vote depending on his/her age is greater or equal to 18.
+Hint => 
+1. Define an array of 10 integer elements and take user input for the student's age. 
+2. Loop through the array using the length property and for the element of the array check If the age is a negative number print an invalid age and if 18 or above, print The student with the age ___ can vote. Otherwise, print The student with the age ___ cannot vote.
+using System;
+
+class VotingEligibility
+{
+   public static void Main()
+   {
+       // Define an array to store the age of 10 students
+       int[] ages = new int[10];
+
+       // Input the age of each student
+       for (int i = 0; i < ages.Length; i++)
+       {
+           bool validAge = false;
+           while (!validAge)
+           {
+               Console.Write($"Enter the age of student {i + 1}: ");
+               ages[i] = Convert.ToInt32(Console.ReadLine());
+
+               // Check if the age is valid
+               if (ages[i] < 0)
+               {
+                   Console.WriteLine("Invalid age! Please enter a positive age.");
+               }
+               else
+               {
+                   validAge = true;
+               }
+           }
+       }
+
+       // Check voting eligibility for each student
+       for (int i = 0; i < ages.Length; i++)
+       {
+           if (ages[i] >= 18)
+           {
+               Console.WriteLine($"The student with the age {ages[i]} can vote.");
+           }
+           else
+           {
+               Console.WriteLine($"The student with the age {ages[i]} cannot vote.");
+           }
+       }
+   }
+}
+	
+
+ 
+2. Write a program to take user input for 5 numbers and check whether a number is positive,  negative, or zero. Further for positive numbers check if the number is even or odd. Finally compare the first and last elements of the array and display if they equal, greater or less
+Hint => 
+1. Define an integer array of 5 elements and get user input to store in the array.
+2. Loop through the array using the length If the number is positive, check for even or odd numbers and print accordingly
+3. If the number is negative, print negative. Else if the number is zero, print zero. 
+4. Finally compare the first and last element of the array and display if they equal, greater or less
+using System;
+
+class NumberAnalysis
+{
+   public static void Main()
+   {
+       // Define an integer array of 5 elements
+       int[] numbers = new int[5];
+
+       // Get user input for the 5 numbers
+       for (int i = 0; i < numbers.Length; i++)
+       {
+           Console.Write($"Enter number {i + 1}: ");
+           numbers[i] = Convert.ToInt32(Console.ReadLine());
+       }
+
+       // Loop through the array and check whether each number is positive, negative, or zero
+       for (int i = 0; i < numbers.Length; i++)
+       {
+           if (numbers[i] > 0)
+           {
+               // Check if the positive number is even or odd
+               if (numbers[i] % 2 == 0)
+               {
+                   Console.WriteLine($"Number {numbers[i]} is positive and even.");
+               }
+               else
+               {
+                   Console.WriteLine($"Number {numbers[i]} is positive and odd.");
+               }
+           }
+           else if (numbers[i] < 0)
+           {
+               // Negative number
+               Console.WriteLine($"Number {numbers[i]} is negative.");
+           }
+           else
+           {
+               // Zero
+               Console.WriteLine("Number is zero.");
+           }
+       }
+
+       // Compare the first and last elements of the array
+       if (numbers[0] == numbers[4])
+       {
+           Console.WriteLine("The first and last elements are equal.");
+       }
+       else if (numbers[0] > numbers[4])
+       {
+           Console.WriteLine("The first element is greater than the last element.");
+       }
+       else
+       {
+           Console.WriteLine("The first element is less than the last element.");
+       }
+   }
+}
+	
+
+
+
+3. Create a program to print a multiplication table of a number.
+Hint => 
+1. Get an integer input and store it in the number variable. Also, define a integer array to store the results of multiplication from 1 to 10
+2. Run a loop from 1 to 10 and store the results in the multiplication table array
+3. Finally, display the result from the array in the format number * i = ___
+using System;
+
+class MultiplicationTable
+{
+   public static void Main()
+   {
+       // Get an integer input for the number
+       Console.Write("Enter a number to display its multiplication table: ");
+       int number = Convert.ToInt32(Console.ReadLine());
+
+       // Define an array to store the results of the multiplication
+       int[] multiplicationTable = new int[10];
+
+       // Loop from 1 to 10 to calculate the multiplication table
+       for (int i = 1; i <= 10; i++)
+       {
+           multiplicationTable[i - 1] = number * i; // Store results in the array
+       }
+
+       // Display the multiplication table
+       Console.WriteLine($"\nMultiplication Table of {number}:");
+       for (int i = 0; i < 10; i++)
+       {
+           Console.WriteLine($"{number} * {i + 1} = {multiplicationTable[i]}");
+       }
+   }
+}
+	
+
+
+
+4. Write a program to store multiple values in an array up to a maximum of 10 or until the user enters a 0 or a negative number. Show all the numbers as well as the sum of all numbers 
+Hint => 
+1. Create a variable to store an array of 10 elements of type double as well as a variable to store the total of type double initializes to 0.0. Also, the index variable is initialized to 0 for the array
+2. Use infinite while loop as in while (true)
+3. Take the user entry and check if the user entered 0 or a negative number to break the loop 
+4. Also, break from the loop if the index has a value of 10 as the array size is limited to 10.
+5. If the user entered a number other than 0 or a negative number inside the while loop then assign the number to the array element and increment the index value
+6. Take another for loop to get the values of each element and add it to the total 
+7. Finally display the total value
+using System;
+
+class StoreValues
+{
+   public static void Main()
+   {
+       // Define an array to store up to 10 double values
+       double[] numbers = new double[10];
+       
+       // Variable to store the total sum of numbers
+       double total = 0.0;
+       
+       // Index variable for the array
+       int index = 0;
+
+       // Infinite loop to take user input until condition is met
+       while (true)
+       {
+           // Ask the user for input
+           Console.Write("Enter a number (Enter 0 or a negative number to stop): ");
+           double input = Convert.ToDouble(Console.ReadLine());
+
+           // Check if the input is 0 or negative, or if the array is full
+           if (input <= 0 || index == 10)
+           {
+               break; // Break the loop if input is 0 or negative or if the array is full
+           }
+
+           // Store the input in the array
+           numbers[index] = input;
+           
+           // Increment the index
+           index++;
+       }
+
+       // Display the numbers entered
+       Console.WriteLine("\nNumbers entered:");
+       for (int i = 0; i < index; i++)
+       {
+           Console.WriteLine(numbers[i]);
+           total += numbers[i]; // Add each number to the total
+       }
+
+       // Display the total sum
+       Console.WriteLine($"\nTotal sum of all numbers: {total}");
+   }
+}
+
+	
+
+5. Create a program to find the multiplication table of a number entered by the user from 6 to 9 and display the result
+Hint => 
+1. Take integer input and store it in the variable number as well as define an integer array to store the multiplication result in the variable multiplicationResult
+2. Using a for loop, find the multiplication table of numbers from 6 to 9 and save the result in the array
+3. Finally, display the result from the array in the format number * i = ___
+using System;
+
+class MultiplicationTable
+{
+   public static void Main()
+   {
+       // Take input from the user for the number
+       Console.Write("Enter a number (between 6 and 9): ");
+       int number = Convert.ToInt32(Console.ReadLine());
+
+       // Check if the entered number is between 6 and 9
+       if (number >= 6 && number <= 9)
+       {
+           // Define an array to store the multiplication results
+           int[] multiplicationResult = new int[10];
+
+           // Calculate the multiplication table for the entered number
+           for (int i = 1; i <= 10; i++)
+           {
+               multiplicationResult[i - 1] = number * i; // Store result in the array
+           }
+
+           // Display the multiplication table
+           Console.WriteLine($"\nMultiplication table for {number}:");
+           for (int i = 0; i < 10; i++)
+           {
+               Console.WriteLine($"{number} * {i + 1} = {multiplicationResult[i]}");
+           }
+       }
+       else
+       {
+           Console.WriteLine("Please enter a number between 6 and 9.");
+       }
+   }
+}
+	
+
+
+
+6. Create a program to find the mean height of players present in a football team.
+Hint => 
+1. The formula to calculate the mean is: mean = sum of all elements / number of elements
+2. Create a double array named heights of size 11 and get input values from the user.
+3. Find the sum of all the elements present in the array.
+4. Divide the sum by 11 to find the mean height and print the mean height of the football team
+using System;
+
+class FootballTeamMeanHeight
+{
+   public static void Main()
+   {
+       // Define an array to store the heights of 11 players
+       double[] heights = new double[11];
+       double sum = 0.0;
+
+       // Take input for the heights of the players
+       Console.WriteLine("Enter the heights of 11 players:");
+
+       for (int i = 0; i < 11; i++)
+       {
+           Console.Write($"Enter height of player {i + 1}: ");
+           heights[i] = Convert.ToDouble(Console.ReadLine());
+           sum += heights[i];  // Add the height to the sum
+       }
+
+       // Calculate the mean height
+       double meanHeight = sum / 11;
+
+       // Display the mean height
+       Console.WriteLine($"\nThe mean height of the football team is: {meanHeight:F2} meters");
+   }
+}
+	
+
+
+
+7. Create a program to save odd and even numbers into odd and even arrays between 1 to the number entered by the user. Finally, print the odd and even numbers array
+Hint => 
+1. Get an integer input from the user, assign it to a variable number, and check for Natural Number. If not a natural number then print an error and exit the program
+2. Create an integer array for even and odd numbers with size = number / 2 + 1
+3. Create index variables for odd and even numbers and initialize them to zero
+4. Using a for loop, iterate from 1 to the number, and in each iteration of the loop, save the odd or even number into the corresponding array
+5. Finally, print the odd and even numbers array using the odd and even index
+using System;
+
+class OddEvenArray
+{
+   public static void Main()
+   {
+       // Get input from user
+       Console.Write("Enter a number: ");
+       int number = Convert.ToInt32(Console.ReadLine());
+
+       // Check if the number is a positive integer (natural number)
+       if (number <= 0)
+       {
+           Console.WriteLine("Error: Please enter a natural number greater than 0.");
+           return;
+       }
+
+       // Create arrays for odd and even numbers
+       int[] oddNumbers = new int[number / 2 + 1];
+       int[] evenNumbers = new int[number / 2 + 1];
+
+       // Initialize index variables for odd and even arrays
+       int oddIndex = 0;
+       int evenIndex = 0;
+
+       // Iterate from 1 to the given number
+       for (int i = 1; i <= number; i++)
+       {
+           if (i % 2 == 0)
+           {
+               evenNumbers[evenIndex] = i;
+               evenIndex++; // Increment even index
+           }
+           else
+           {
+               oddNumbers[oddIndex] = i;
+               oddIndex++; // Increment odd index
+           }
+       }
+
+       // Display the odd numbers
+       Console.Write("\nOdd numbers: ");
+       for (int i = 0; i < oddIndex; i++)
+       {
+           Console.Write(oddNumbers[i] + " ");
+       }
+
+       // Display the even numbers
+       Console.Write("\nEven numbers: ");
+       for (int i = 0; i < evenIndex; i++)
+       {
+           Console.Write(evenNumbers[i] + " ");
+       }
+   }
+}
+	
+
+
+
+8. Create a program to find the factors of a number taken as user input, store the factors in an array, and display the factors
+Hint => 
+1. Take the input for a number
+2. Find the factors of the number and save them in an array. For this create integer variable maxFactor and initialize to 10, factors array of size maxFactor and index variable to reflect the index of the array. 
+3. To find factors loop through the numbers from 1 to the number, find the factors, and add them to the array element by incrementing the index. If the index is equal to maxIndex, then need factors array to store more elements
+4. To store more elements, reset the maxIndex to twice its size, use the temp array to store the elements from the factors array, and eventually assign the factors array to the temp array
+5. Finally, Display the factors of the number
+using System;
+
+class FactorFinder
+{
+   public static void Main()
+   {
+       // Take input for the number
+       Console.Write("Enter a number: ");
+       int number = Convert.ToInt32(Console.ReadLine());
+
+       // Initialize the maximum size of the array for factors
+       int maxFactor = 10;
+       int[] factors = new int[maxFactor]; // Array to store the factors
+       int index = 0; // Index variable to store factors in the array
+
+       // Loop to find the factors of the number
+       for (int i = 1; i <= number; i++)
+       {
+           if (number % i == 0) // Check if i is a factor
+           {
+               // Check if the array size is exceeded
+               if (index == maxFactor) 
+               {
+                   maxFactor *= 2; // Double the size of the array
+                   int[] temp = new int[maxFactor]; // Create a temporary array with the new size
+
+                   // Copy existing factors into the new array
+                   for (int j = 0; j < factors.Length; j++)
+                   {
+                       temp[j] = factors[j];
+                   }
+
+                   factors = temp; // Assign the new array back to the factors array
+               }
+
+               factors[index] = i; // Store the factor in the array
+               index++; // Increment the index
+           }
+       }
+
+       // Display the factors of the number
+       Console.WriteLine($"Factors of {number}: ");
+       for (int i = 0; i < index; i++)
+       {
+           Console.Write(factors[i] + " ");
+       }
+   }
+}
+	
+
+
+
+9. Working with Multi-Dimensional Arrays. Write a C# program to create a 2D Array and Copy the 2D Array into a single dimension array
+Hint => 
+1. Take user input for rows and columns, create a 2D array (Matrix), and take the user input 
+2. Copy the elements of the matrix to a 1D array. For this create a 1D array of size rows*columns as in int[] array = new int[rows * columns];
+3. Define the index variable and Loop through the 2D array. Copy every element of the 2D array into the 1D array and increment the index
+4. Note: For looping through the 2D array, you will need Nested for loop, Outer for loop for rows, and the inner for loops to access each element
+using System;
+
+class Program
+{
+   public static void Main()
+   {
+       // Take user input for rows and columns
+       Console.Write("Enter the number of rows: ");
+       int rows = Convert.ToInt32(Console.ReadLine());
+
+       Console.Write("Enter the number of columns: ");
+       int columns = Convert.ToInt32(Console.ReadLine());
+
+       // Create a 2D array (matrix) with the given rows and columns
+       int[,] matrix = new int[rows, columns];
+
+       // Take user input to fill the 2D array (matrix)
+       Console.WriteLine("Enter the elements of the matrix:");
+       for (int i = 0; i < rows; i++)
+       {
+           for (int j = 0; j < columns; j++)
+           {
+               Console.Write($"Enter element at ({i + 1},{j + 1}): ");
+               matrix[i, j] = Convert.ToInt32(Console.ReadLine());
+           }
+       }
+
+       // Create a 1D array to store the matrix elements
+       int[] array = new int[rows * columns];
+       
+       // Variable to keep track of the index in the 1D array
+       int index = 0;
+
+       // Copy elements from the 2D array (matrix) to the 1D array
+       for (int i = 0; i < rows; i++)
+       {
+           for (int j = 0; j < columns; j++)
+           {
+               array[index] = matrix[i, j];
+               index++; // Increment the index for the 1D array
+           }
+       }
+
+       // Display the 1D array
+       Console.WriteLine("\nThe 1D array after copying elements from the 2D array:");
+       for (int i = 0; i < array.Length; i++)
+       {
+           Console.Write(array[i] + " ");
+       }
+   }
+}
+	
+
+
+
+10. Write a program FizzBuzz, take a number as user input and if it is a positive integer loop from 0 to the number and save the number, but for multiples of 3 save "Fizz" instead of the number, for multiples of 5 save "Buzz", and for multiples of both save "FizzBuzz". Finally, print the array results for each index position in the format Position 1 = 1, …, Position 3 = Fizz,...
+Hint => 
+1. Create a String Array to save the results and 
+2. Finally, loop again to show the results of the array based on the index position
+using System;
+
+class Program
+{
+   public static void Main()
+   {
+       // Take user input for the number
+       Console.Write("Enter a positive integer: ");
+       int num = Convert.ToInt32(Console.ReadLine());
+
+       // Check if the number is positive
+       if (num > 0)
+       {
+           // Create a string array to save the results
+           string[] results = new string[num + 1]; // Array size is num+1 to include 0 to num
+
+           // Loop from 0 to num and save the FizzBuzz result
+           for (int i = 0; i <= num; i++)
+           {
+               if (i % 3 == 0 && i % 5 == 0)
+               {
+                   results[i] = "FizzBuzz";
+               }
+               else if (i % 3 == 0)
+               {
+                   results[i] = "Fizz";
+               }
+               else if (i % 5 == 0)
+               {
+                   results[i] = "Buzz";
+               }
+               else
+               {
+                   results[i] = i.ToString();
+               }
+           }
+
+           // Display the results for each index position
+           Console.WriteLine("\nFizzBuzz results:");
+           for (int i = 0; i <= num; i++)
+           {
+               Console.WriteLine($"Position {i + 1} = {results[i]}");
+           }
+       }
+       else
+       {
+           Console.WriteLine("Please enter a positive integer.");
+       }
+   }
+}
