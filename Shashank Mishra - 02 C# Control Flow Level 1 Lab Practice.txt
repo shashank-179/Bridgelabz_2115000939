@@ -1,0 +1,587 @@
+﻿Best Programming Practices
+1. All values as variables including Fixed, User Inputs, and Results 
+2. Proper naming conventions for all variables 
+String name = "Eric"; 
+double height = input.nextDouble();
+double totalDistance = distanceFromToVia + distanceViaToFinalCity;
+3. Proper Program Name and Class Name
+4. Follow proper indentation
+5. Give comments for every step or logical block like a variable declaration or conditional and loop blocks
+
+
+Sample Program 1 - Create a program to check if 3 values are internal angles of a triangle.
+IMP => Follow Good Programming Practice demonstrated below in all Practice Programs
+Hint:
+1. Get integer inputs for 3 variables named x, y, and z.
+2. Calculate the sum of x, y, and z.
+3. If the sum equals 180, print "The given angles are internal angles of a triangle."
+4. Otherwise, print "They are not internal angles of a triangle."
+________________
+
+
+
+
+using System;
+class TriangleChecker
+{
+    static void Main(string[] args)
+    {
+        // Prompt the user for input
+        Console.WriteLine("Enter three angles of a triangle:");
+
+
+        // Get 3 input values for angles
+        int x = int.Parse(Console.ReadLine());
+        int y = int.Parse(Console.ReadLine());
+        int z = int.Parse(Console.ReadLine());
+
+
+        // Calculate the sum of all angles
+        int sumOfAngles = x + y + z;
+
+
+        // Display the sum of angles
+        Console.WriteLine($"The given angles {x}, {y}, {z} add to {sumOfAngles}");
+
+
+        // Check if the sum equals 180 and display the result
+        if (sumOfAngles == 180)
+        {
+            Console.WriteLine("The given angles are internal angles of a Triangle.");
+        }
+        else
+        {
+            Console.WriteLine("The given angles are not internal angles of a Triangle.");
+        }
+    }
+}
+
+
+
+________________
+
+
+Sample Program 2 - Create a program to find the sum of all the digits of a number given by a user.
+Hint => 
+1. Get an integer input for the number variable.
+1. Create an integer variable sum with an initial value of 0.
+1. Create a while loop to access each digit of the number.
+1. Inside the loop, add each digit of the number to the sum.
+1. Finally, print the sum outside the loop
+
+
+
+
+using System;
+
+
+class SumOfDigits
+{
+    static void Main(string[] args)
+    {
+        // Prompt the user for input
+        Console.WriteLine("Enter a number:");
+
+
+        // Get input value for the number
+        int origNumber = int.Parse(Console.ReadLine());
+
+
+        // Define variables
+        int number = origNumber;
+        int sum = 0;
+
+
+        // Loop to extract and sum each digit
+        while (number != 0)
+        {
+            // Extract the last digit
+            int digit = number % 10;
+
+
+            // Add the digit to the sum
+            sum += digit;
+
+
+            // Remove the last digit from the number
+            number /= 10;
+        }
+
+
+        // Display the sum of the digits
+        Console.WriteLine($"The sum of the digits of {origNumber} is {sum}");
+    }
+}
+
+
+
+Level 1 Practice Programs
+1. Write a program to check if a number is divisible by 5
+I/P => number
+O/P => Is the number ___ divisible by 5? ___
+using System;
+class Program 
+{ 
+static void Main() 
+{
+Console.Write("Enter a number: "); string input = Console.ReadLine();
+if (int.TryParse(input, out int number)) { 
+string result = number % 5 == 0 ? "Yes" : "No"; 
+Console.WriteLine($"Is the number {number} divisible by 5? {result}");
+} 
+else { 
+Console.WriteLine("Invalid input. Please enter a valid integer.");
+}
+}
+}
+	2. Write a program to check if the first is the smallest of the 3 numbers.
+I/P => number1, number2, number3
+O/P => Is the first number the smallest? ____
+using System;
+
+class Program
+{
+   static void Main()
+   {
+       int num1 = int.Parse(Console.ReadLine());
+       int num2 = int.Parse(Console.ReadLine());
+       int num3 = int.Parse(Console.ReadLine());
+
+       Console.WriteLine($"Is the first number the smallest? {(num1 < num2 && num1 < num3 ? "Yes" : "No")}");
+   }
+}
+	
+
+
+
+
+
+
+
+
+
+3. Write a program to check if the first, second, or third number is the largest of the three.
+I/P => number1, number2, number3
+O/P => 
+Is the first number the largest? ____
+Is the second number the largest? ___
+Is the third number the largest? ___
+
+
+using System;
+
+class Program
+{
+   static void Main()
+   {
+       int num1 = int.Parse(Console.ReadLine());
+       int num2 = int.Parse(Console.ReadLine());
+       int num3 = int.Parse(Console.ReadLine());
+
+       Console.WriteLine($"Is the first number the largest? {(num1 > num2 && num1 > num3 ? "Yes" : "No")}");
+       Console.WriteLine($"Is the second number the largest? {(num2 > num1 && num2 > num3 ? "Yes" : "No")}");
+       Console.WriteLine($"Is the third number the largest? {(num3 > num1 && num3 > num2 ? "Yes" : "No")}");
+   }
+}
+	
+
+
+
+4. Write a program to check for the natural number and write the sum of n natural numbers 
+Hint => 
+1. A Natural Number is a positive integer (1,2,3, etc) sometimes with the inclusion of 0
+2. A sum of n natural numbers is n * (n+1) / 2 
+I/P => number
+O/P => If the number is a positive integer then the output is
+The sum of ___ natural numbers is ___
+Otherwise 
+The number ___ is not a natural number
+using System;
+
+class Program
+{
+   static void Main()
+   {
+       int n = int.Parse(Console.ReadLine());
+
+       if (n > 0)
+       {
+           int sum = n * (n + 1) / 2;
+           Console.WriteLine($"The sum of {n} natural numbers is {sum}");
+       }
+       else
+       {
+           Console.WriteLine($"{n} is not a natural number");
+       }
+   }
+}
+	
+
+
+
+5. Write a program to check whether a person can vote, depending on whether his/her age is greater than or equal to 18.
+Hint => 
+1. Get integer input from the user and store it in the age variable.
+2. If the person is 18 or older, print "The person can vote." Otherwise, print "The person cannot vote." 
+I/P => age
+
+
+
+
+O/P => If the person's age is greater or equal to 18 then the output is 
+The person's age is ___ and can vote.
+Otherwise 
+The person's age is ___ and cannot vote.
+using System;
+class Program
+{
+   static void Main()
+   {
+       Console.Write("Enter your age: ");
+       int age = int.Parse(Console.ReadLine());
+
+       if (age >= 18)
+           Console.WriteLine("The person can vote.");
+       else
+           Console.WriteLine("The person cannot vote.");
+   }
+}
+	
+
+6. Write a program to check whether a number is positive, negative, or zero.
+Hint => 
+1. Get integer input from the user and store it in the number variable.
+2. If the number is positive, print positive.
+3. If the number is negative, print negative.
+4. If the number is zero, print zero. 
+
+
+using System;
+
+class Program
+{
+   static void Main()
+   {
+       Console.Write("Enter a number: ");
+       int number = int.Parse(Console.ReadLine());
+
+       if (number > 0)
+           Console.WriteLine("Positive");
+       else if (number < 0)
+           Console.WriteLine("Negative");
+       else
+           Console.WriteLine("Zero");
+   }
+}
+	
+
+
+
+7. Write a program SpringSeason that takes two int values month and day from the command line and prints “Its a Spring Season” otherwise prints “Not a Spring Season”. 
+Hint => 
+1. Spring Season is from March 20 to June 20
+2. Write a program to count down the number from the user input value to 1 using a while loop for a rocket launch
+Hint => 
+1. Create a variable counter to take user inputted value for the countdown.
+2. Use the while loop to check if the counter is 1
+3. Inside a while loop, print the value of the counter and decrement the counter.
+using System;
+
+class Program
+{
+   static void Main()
+   {
+       Console.Write("Enter month: ");
+       int month = int.Parse(Console.ReadLine());
+       Console.Write("Enter day: ");
+       int day = int.Parse(Console.ReadLine());
+
+       if ((month == 3 && day >= 20) || (month > 3 && month < 6) || (month == 6 && day <= 20))
+           Console.WriteLine("It's a Spring Season");
+       else
+           Console.WriteLine("Not a Spring Season");
+
+       Console.Write("Enter countdown start value: ");
+       int counter = int.Parse(Console.ReadLine());
+
+       while (counter >= 1)
+       {
+           Console.WriteLine(counter);
+           counter--;
+       }
+   }
+}
+	
+
+
+
+8. Rewrite program 8 to do the countdown using the for-loop
+using System;
+
+class Program
+{
+   static void Main()
+   {
+       Console.Write("Enter month: ");
+       int month = int.Parse(Console.ReadLine());
+       Console.Write("Enter day: ");
+       int day = int.Parse(Console.ReadLine());
+
+       if ((month == 3 && day >= 20) || (month > 3 && month < 6) || (month == 6 && day <= 20))
+           Console.WriteLine("It's a Spring Season");
+       else
+           Console.WriteLine("Not a Spring Season");
+
+       Console.Write("Enter countdown start value: ");
+       int counter = int.Parse(Console.ReadLine());
+
+       for (int i = counter; i >= 1; i--)
+       {
+           Console.WriteLine(i);
+       }
+   }
+}
+	
+
+
+
+9. Rewrite the program 10 to find the sum until the user enters 0 or a negative number using while loop and break statement
+Hint => 
+1. Use infinite while loop as in while (true)
+2. Take the user entry and check if the user entered 0 or a negative number to break the loop using  break;  
+using System;
+
+class Program
+{
+   static void Main()
+   {
+       double total = 0, number;
+
+       while (true)
+       {
+           number = double.Parse(Console.ReadLine());
+
+           if (number <= 0)
+               break;
+
+           total += number;
+       }
+
+       Console.WriteLine(total);
+   }
+}
+	
+
+
+
+10. Write a program to find the sum of n natural numbers using while loop compare the result with the formulae n*(n+1)/2 and show the result from both computations was correct. 
+Hint => 
+1. Take the user input number and check whether it's a Natural number
+2. If it's a natural number Compute using formulae as well as compute using while loop
+3. Compare the two results and print the result
+using System;
+
+class Program
+{
+   static void Main()
+   {
+       Console.Write("Enter a natural number: ");
+       int n = int.Parse(Console.ReadLine());
+
+       if (n > 0)
+       {
+           int sumWhileLoop = 0, i = 1;
+           while (i <= n)
+           {
+               sumWhileLoop += i;
+               i++;
+           }
+
+           int sumFormula = n * (n + 1) / 2;
+
+           Console.WriteLine($"Sum using while loop: {sumWhileLoop}");
+           Console.WriteLine($"Sum using formula: {sumFormula}");
+
+           if (sumWhileLoop == sumFormula)
+               Console.WriteLine("Both results are correct.");
+           else
+               Console.WriteLine("Results do not match.");
+       }
+       else
+       {
+           Console.WriteLine("Not a natural number.");
+       }
+   }
+}
+	
+
+
+
+11. Rewrite the program number 12 with the for loop instead of a while loop to find the sum of n Natural Numbers. 
+Hint => 
+1. Take the user input number and check whether it's a Natural number
+2. If it's a natural number Compute using formulae as well as compute using for loop
+3. Compare the two results and print the result
+using System;
+
+class Program
+{
+   static void Main()
+   {
+       int n = int.Parse(Console.ReadLine());
+
+       if (n > 0)
+       {
+           int sumForLoop = 0;
+           for (int i = 1; i <= n; i++) sumForLoop += i;
+
+           int sumFormula = n * (n + 1) / 2;
+
+           Console.WriteLine(sumForLoop == sumFormula ? "Both results are correct." : "Results do not match.");
+       }
+       else
+       {
+           Console.WriteLine("Not a natural number.");
+       }
+   }
+}
+	
+
+
+
+12. Write a Program to find the factorial of an integer entered by the user.
+Hint => 
+1. For example, the factorial of 4 is 1 * 2 * 3 * 4 which is 24.
+2. Take an integer input from the user and assign it to the variable. Check the user has entered a positive integer.
+3. Using a while loop, compute the factorial.
+4. Print the factorial at the end.
+using System;
+
+class Program
+{
+   static void Main()
+   {
+       int number = int.Parse(Console.ReadLine());
+
+       if (number > 0)
+       {
+           int factorial = 1;
+           int i = 1;
+           while (i <= number)
+           {
+               factorial *= i;
+               i++;
+           }
+
+           Console.WriteLine(factorial);
+       }
+       else
+       {
+           Console.WriteLine("Please enter a positive integer.");
+       }
+   }
+}
+	
+
+
+
+13. Rewrite program 14 using for loop
+Hint => 
+1. Take the integer input, check for natural number and determine the factorial using for loop and finally print the result. 
+using System;
+
+class Program
+{
+   static void Main()
+   {
+       int n = int.Parse(Console.ReadLine());
+
+       if (n > 0)
+       {
+           int factorial = 1;
+           for (int i = 1; i <= n; i++) factorial *= i;
+
+           Console.WriteLine(factorial);
+       }
+       else
+       {
+           Console.WriteLine("Please enter a positive integer.");
+       }
+   }
+}
+	
+
+
+
+14. Create a program to print odd and even numbers between 1 to the number entered by the user.
+Hint => 
+1. Get an integer input from the user, assign to a variable number and check for Natural Number
+2. Using a for loop, iterate from 1 to the number
+3. In each iteration of the loop, print the number is odd or even number
+using System;
+
+class Program
+{
+   static void Main()
+   {
+       int n = int.Parse(Console.ReadLine());
+
+       if (n > 0)
+       {
+           for (int i = 1; i <= n; i++)
+           {
+               if (i % 2 == 0)
+                   Console.WriteLine($"{i} is even");
+               else
+                   Console.WriteLine($"{i} is odd");
+           }
+       }
+       else
+       {
+           Console.WriteLine("Please enter a positive integer.");
+       }
+   }
+}
+	
+
+
+
+15. Create a program to find the bonus of employees based on their years of service.
+Hint => 
+1. Zara decided to give a bonus of 5% to employees whose year of service is more than 5 years.
+2. Take salary and year of service in the year as input.
+3. Print the bonus amount.
+using System;
+
+class Program
+{
+   static void Main()
+   {
+       double salary = double.Parse(Console.ReadLine());
+       int yearsOfService = int.Parse(Console.ReadLine());
+
+       if (yearsOfService > 5)
+           Console.WriteLine($"Bonus: {salary * 0.05}");
+       else
+           Console.WriteLine("No bonus");
+   }
+}
+
+	
+
+16. Create a program to find the multiplication table of a number entered by the user from 6 to 9.
+Hint => 
+1. Take integer input and store it in the variable number
+2. Using a for loop, find the multiplication table of number from 6 to 9 and print it in the format number * i = ___ 
+using System;
+
+class Program
+{
+   static void Main()
+   {
+       int number = int.Parse(Console.ReadLine());
+
+       for (int i = 6; i <= 9; i++)
+           Console.WriteLine($"{number} * {i} = {number * i}");
+   }
+}
