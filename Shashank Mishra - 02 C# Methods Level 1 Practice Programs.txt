@@ -1,0 +1,633 @@
+﻿Best Programming Practices in C#
+* All values as variables including Fixed, User Inputs, and Results 
+* Proper naming conventions for all variables 
+* Proper Program Name and Class Name
+* Proper Method Name which indicates action taking inputs and providing result
+Sample Program 1: Create a program to find the sum of all the digits of a number given by a user using an array and display the sum.
+1. Use Math.random() and get a 4-digit random integer number
+2. Write a method to count digits in the number 
+3. Write a method to return an array of digits from a given number. 
+4. Write a method to Find the sum of the digits of the number in the array
+5. Finally, display the sum of the digits of the number
+
+
+using System;
+
+
+class SumOfDigits
+{
+    // Generate a 4-digit random number
+    public int Get4DigitRandomNumber()
+    {
+        Random random = new Random();
+        return random.Next(1000, 10000); // Generates a random number between 1000 and 9999
+    }
+
+
+    // Count the number of digits in a given number
+    public int CountDigits(int number)
+    {
+        int count = 0;
+        while (number > 0)
+        {
+            count++;
+            number /= 10;
+        }
+        return count;
+    }
+
+
+    // Extract digits from the number and store them in an array
+    public int[] GetDigits(int number, int count)
+    {
+        int[] digits = new int[count];
+        for (int i = count - 1; i >= 0; i--)
+        {
+            digits[i] = number % 10;
+            number /= 10;
+        }
+        return digits;
+    }
+
+
+    // Calculate the sum of the digits in the array
+    public int SumArray(int[] array)
+    {
+        int sum = 0;
+        foreach (int digit in array)
+        {
+            sum += digit;
+        }
+        return sum;
+    }
+
+
+    static void Main(string[] args)
+    {
+        // Instantiate the SumOfDigits class
+        SumOfDigits sumOfDigits = new SumOfDigits();
+
+
+        // Generate a 4-digit random number
+        int number = sumOfDigits.Get4DigitRandomNumber();
+        Console.WriteLine("The Random Number is: " + number);
+
+
+        // Count the number of digits
+        int count = sumOfDigits.CountDigits(number);
+        Console.WriteLine("The Count of Digits is: " + count);
+
+
+        // Extract digits into an array
+        int[] digits = sumOfDigits.GetDigits(number, count);
+
+
+        // Calculate the sum of the digits
+        int sum = sumOfDigits.SumArray(digits);
+
+
+        // Display the sum of the digits
+        Console.WriteLine("Sum of Digits: " + sum);
+    }
+}
+
+
+
+
+
+
+
+
+
+Level 1 Practice Programs
+1. Write a program to input the Principal, Rate, and Time values and calculate Simple Interest.
+Hint => 
+1. Simple Interest = Principal * Rate * Time / 100
+2. Take user input for principal, rate, time
+3. Write a method to calculate the simple interest given principle, rate and time as parameters
+4. Output “The Simple Interest is ___ for Principal ___, Rate of Interest ___ and Time ___”
+using System;
+
+class SimpleInterest
+{
+   static void Main()
+   {
+       // Input Principal, Rate, and Time from the user
+       Console.Write("Enter the Principal amount: ");
+       double principal = Convert.ToDouble(Console.ReadLine());
+
+       Console.Write("Enter the Rate of Interest (%): ");
+       double rate = Convert.ToDouble(Console.ReadLine());
+
+       Console.Write("Enter the Time (in years): ");
+       double time = Convert.ToDouble(Console.ReadLine());
+
+       // Calculate Simple Interest
+       double simpleInterest = CalculateSimpleInterest(principal, rate, time);
+
+       // Output the result
+       Console.WriteLine($"The Simple Interest is {simpleInterest:F2} for Principal {principal:F2}, Rate of Interest {rate:F2}%, and Time {time:F2} years.");
+   }
+
+   static double CalculateSimpleInterest(double principal, double rate, double time)
+   {
+       return (principal * rate * time) / 100;
+   }
+}
+	
+
+
+
+2. Create a program to find the maximum number of handshakes among N number of students.
+Hint => 
+1. Get integer input for number of students
+2. Use the combination = (n * (n - 1)) / 2 formula to calculate the maximum number of possible handshakes.
+3. Write a method to use the combination formulae to calculate the number of handshakes
+using System;
+
+class Handshake
+{
+   public static void Main()
+   {
+       // Prompt the user to enter the number of people
+       Console.Write("Enter number of people: ");
+       
+       // Read user input and convert it to an integer
+       int n = Convert.ToInt32(Console.ReadLine());
+       
+       // Call the method to calculate the number of handshakes and store the result in a variable
+       int handshakes = calculateHandshakes(n);
+       
+       // Display the number of possible handshakes
+       Console.WriteLine($"The number of possible handshakes are {handshakes}");
+   }
+
+   // Method to calculate the number of handshakes
+   // It takes an integer `n` (number of people) as input and returns the total number of handshakes
+   public static int calculateHandshakes(int n)
+   {
+       // Formula: (n * (n - 1)) / 2
+       // This calculates the number of unique pairs of people
+       return (n * (n - 1)) / 2;
+   }
+}
+	
+
+
+
+
+
+3. Create a program to find the maximum number of handshakes among N number of students.
+Hint => 
+1. Get integer input for numberOfStudents variable.
+2. Use the combination = (n * (n - 1)) / 2 formula to calculate the maximum number of possible handshakes.
+3. Display the number of possible handshakes.
+using System;
+
+class Handshake
+{
+   public static void Main()
+   {
+       // Prompt the user to enter the number of people
+       Console.Write("Enter number of people: ");
+       
+       // Read user input and convert it to an integer
+       int n = Convert.ToInt32(Console.ReadLine());
+       
+       // Calculate the number of handshakes and store the result in a variable
+       int handshakes = (n * (n - 1)) / 2;
+       
+       // Display the number of possible handshakes
+       Console.WriteLine($"The number of possible handshakes are {handshakes}");
+   }
+}
+
+	
+
+4. An athlete runs in a triangular park with sides provided as input by the user in meters. If the athlete wants to complete a 5 km run, then how many rounds must the athlete complete
+Hint => 
+1. Take user input for 3 sides of a triangle 
+2. The perimeter of a triangle is the addition of all sides and rounds is distance/perimeter
+3. Write a Method to compute the number of rounds user needs to do to complete 5km run
+using System;
+
+class Rounds
+{
+   public static void Main()
+   {
+       // Prompt the user to input the three sides of the triangular park (in meters)
+       Console.Write("Enter the sides of the triangular park (in meters): ");
+       
+       // Input the lengths of the three sides and convert them to doubles
+       double side1 = Convert.ToDouble(Console.ReadLine());  // First side length
+       double side2 = Convert.ToDouble(Console.ReadLine());  // Second side length
+       double side3 = Convert.ToDouble(Console.ReadLine());  // Third side length
+       
+       // Calculate the perimeter of the triangular park by adding the three sides
+       double perimeter = side1 + side2 + side3;
+       
+       // Call the method to calculate the number of rounds required to cover 5 km
+       double rounds = calculateRounds(perimeter);
+       
+       // Display the number of rounds required, formatted to 2 decimal places
+       Console.WriteLine($"The number of rounds the athlete has to run: {rounds:F2}");
+   }
+
+   // Method to calculate the number of rounds required to complete a 5 km run
+   // It takes the perimeter of the triangular park as input and returns the number of rounds
+   public static double calculateRounds(double perimeter)
+   {
+       // Total distance to run is 5000 meters (5 km)
+       // The number of rounds is the total distance divided by the perimeter of the park
+       return 5000 / perimeter;
+   }
+}
+	
+
+
+
+5. Write a program to check whether a number is positive, negative, or zero.
+Hint => Get integer input from the user. Write a Method to return -1 for negative number, 1 for positive number and 0 if number is zero
+
+
+
+
+using System;
+
+class checkNumber
+{
+   public static void Main(String[] args)
+   {
+       // Prompt the user to enter a number
+       Console.Write("Enter a number:");
+       
+       // Read the input, convert it to an integer
+       int number = Convert.ToInt32(Console.ReadLine());
+       
+       // Call the check method to determine if the number is positive, negative, or zero
+       int answer = check(number);
+
+       // Output the result based on the value returned by the check method
+       if (answer == 1)
+           Console.WriteLine("The number is a positive number");
+       else if (answer == -1)
+           Console.WriteLine("The number is a negative number");
+       else
+           Console.WriteLine("The number is zero");
+   }
+
+   // Method to check whether a number is positive, negative, or zero
+   public static int check(int number)
+   {
+       if (number > 0)
+       {
+           return 1; // Return 1 if the number is positive
+       }
+       else if (number < 0)
+       {
+           return -1; // Return -1 if the number is negative
+       }
+       else
+       {
+           return 0; // Return 0 if the number is zero
+       }
+   }
+}
+	
+
+
+
+
+
+6. Write a program SpringSeason that takes two int values month and day from the command line and prints “Its a Spring Season” otherwise prints “Not a Spring Season”. 
+Hint => Spring Season is from March 20 to June 20. Write a Method to check for Spring season and return a boolean true or false 
+using System;
+
+class SpringSeason
+{
+   public static void Main(string[] args)
+   {
+       // Read month and day from the command line
+       Console.Write("Enter the month (1-12): ");
+       int month = Convert.ToInt32(Console.ReadLine());
+       
+       Console.Write("Enter the day (1-31): ");
+       int day = Convert.ToInt32(Console.ReadLine());
+
+       // Check if it's Spring season
+       bool isSpring = IsSpringSeason(month, day);
+
+       // Print the result
+       if (isSpring)
+           Console.WriteLine("It's a Spring Season");
+       else
+           Console.WriteLine("Not a Spring Season");
+   }
+
+   // Method to check if the given date is in Spring season
+   public static bool IsSpringSeason(int month, int day)
+   {
+       // March 20 to June 20 is Spring Season
+       if ((month == 3 && day >= 20) || 
+           (month > 3 && month < 6) || 
+           (month == 6 && day <= 20))
+       {
+           return true;
+       }
+       return false;
+   }
+}
+	
+
+
+
+7. Write a program to find the sum of n natural numbers using loop
+Hint => Get integer input from the user. Write a Method to find the sum of n natural numbers using loop 
+
+
+using System;
+
+class SumOfNumbers
+{
+   public static void Main(string[] args)
+   {
+       // Get user input for n
+       Console.Write("Enter a positive integer n: ");
+       int n = Convert.ToInt32(Console.ReadLine());
+
+       // Check if the input is valid
+       if (n <= 0)
+       {
+           Console.WriteLine("Please enter a positive integer.");
+       }
+       else
+       {
+           // Call the method to calculate the sum
+           int sum = CalculateSum(n);
+
+           // Display the result
+           Console.WriteLine($"The sum of the first {n} natural numbers is: {sum}");
+       }
+   }
+
+   // Method to calculate the sum of the first n natural numbers using a loop
+   public static int CalculateSum(int n)
+   {
+       int sum = 0;
+       
+       // Loop through the numbers from 1 to n and calculate the sum
+       for (int i = 1; i <= n; i++)
+       {
+           sum += i; // Add each number to sum
+       }
+
+       return sum;
+   }
+}
+
+	
+
+
+
+8.Write a program to find the smallest and the largest of the 3 numbers.
+Hint => 
+* Take user input for 3 numbers
+* Write a single method to find the smallest and largest of the three numbers
+public static int[] FindSmallestAndLargest(int number1, int number2, int number3)
+
+
+using System;
+
+class SmallestLargest
+{
+   public static void Main(string[] args)
+   {
+       // Get user input for the three numbers
+       Console.Write("Enter the first number: ");
+       int number1 = Convert.ToInt32(Console.ReadLine());
+
+       Console.Write("Enter the second number: ");
+       int number2 = Convert.ToInt32(Console.ReadLine());
+
+       Console.Write("Enter the third number: ");
+       int number3 = Convert.ToInt32(Console.ReadLine());
+
+       // Call the method to find the smallest and largest numbers
+       int[] result = FindSmallestAndLargest(number1, number2, number3);
+
+       // Display the smallest and largest numbers
+       Console.WriteLine($"The smallest number is: {result[0]}");
+       Console.WriteLine($"The largest number is: {result[1]}");
+   }
+
+   // Method to find the smallest and largest of three numbers
+   public static int[] FindSmallestAndLargest(int number1, int number2, int number3)
+   {
+       int smallest, largest;
+
+       // Determine the smallest number
+       if (number1 <= number2 && number1 <= number3)
+       {
+           smallest = number1;
+       }
+       else if (number2 <= number1 && number2 <= number3)
+       {
+           smallest = number2;
+       }
+       else
+       {
+           smallest = number3;
+       }
+
+       // Determine the largest number
+       if (number1 >= number2 && number1 >= number3)
+       {
+           largest = number1;
+       }
+       else if (number2 >= number1 && number2 >= number3)
+       {
+           largest = number2;
+       }
+       else
+       {
+           largest = number3;
+       }
+
+       // Return an array containing the smallest and largest numbers
+       return new int[] { smallest, largest };
+   }
+}
+	
+
+
+
+9.Write a program to take 2 numbers and print their quotient and reminder
+Hint => 
+* Take user input as integer
+* Use division operator (/) for quotient and moduli operator (%) for reminder
+* Write Method to find the reminder and the quotient of a number 
+public static int[] FindRemainderAndQuotient(int number, int divisor) 
+
+
+using System;
+
+class QuotientRemainder{
+   public static void Main(string[] args)
+   {
+       // Get user input for the two numbers
+       Console.Write("Enter the dividend (number): ");
+       int number = Convert.ToInt32(Console.ReadLine());
+
+       Console.Write("Enter the divisor: ");
+       int divisor = Convert.ToInt32(Console.ReadLine());
+
+       // Call the method to find the quotient and remainder
+       int[] result = FindRemainderAndQuotient(number, divisor);
+
+       // Display the quotient and remainder
+       Console.WriteLine($"The quotient is: {result[0]}");
+       Console.WriteLine($"The remainder is: {result[1]}");
+   }
+
+   // Method to find the quotient and remainder of a number
+   public static int[] FindRemainderAndQuotient(int number, int divisor)
+   {
+       // Calculate the quotient and remainder
+       int quotient = number / divisor;
+       int remainder = number % divisor;
+
+       // Return an array containing the quotient and remainder
+       return new int[] { quotient, remainder };
+   }
+}
+
+	
+
+
+
+10.Create a program to divide N number of chocolates among M children. Print the number of chocolates each child will get and also the remaining chocolates
+Hint => 
+* Get an integer value from the user for the numberOfchocolates and numberOfChildren.
+* Write the method to find the number of chocolates each child gets and number of remaining chocolates
+public static int[] FindRemainderAndQuotient(int number, int divisor) 
+
+
+using System;
+
+class Chocolates
+{
+   public static void Main(string[] args)
+   {
+       // Get user input for the number of chocolates and number of children
+       Console.Write("Enter the number of chocolates: ");
+       int numberOfChocolates = Convert.ToInt32(Console.ReadLine());
+
+       Console.Write("Enter the number of children: ");
+       int numberOfChildren = Convert.ToInt32(Console.ReadLine());
+
+       // Call the method to find the chocolates each child gets and the remaining chocolates
+       int[] result = FindChocolatesAndRemainder(numberOfChocolates, numberOfChildren);
+
+       // Display the number of chocolates each child gets and the remaining chocolates
+       Console.WriteLine($"Each child will get: {result[0]} chocolates");
+       Console.WriteLine($"Remaining chocolates: {result[1]}");
+   }
+
+   // Method to find the chocolates each child gets and the remaining chocolates
+   public static int[] FindChocolatesAndRemainder(int numberOfChocolates, int numberOfChildren)
+   {
+       // Calculate the number of chocolates each child gets (quotient)
+       int chocolatesPerChild = numberOfChocolates / numberOfChildren;
+
+       // Calculate the remaining chocolates (remainder)
+       int remainingChocolates = numberOfChocolates % numberOfChildren;
+
+       // Return an array containing the number of chocolates each child gets and the remaining chocolates
+       return new int[] { chocolatesPerChild, remainingChocolates };
+   }
+}
+
+	
+
+
+
+11.Write a program calculate the wind chill temperature given the temperature and wind speed
+Hint => 
+1. Write a method to calculate the wind chill temperature using the formula 
+windChill = 35.74 + 0.6215 *temp + (0.4275*temp - 35.75) * windSpeed0.16 
+public double CalculateWindChill(double temperature, double windSpeed)
+using System;
+
+class windChill
+{
+   public static void Main(string[] args)
+   {
+       // Get user input for temperature and wind speed
+       Console.Write("Enter the temperature in Fahrenheit: ");
+       double temperature = Convert.ToDouble(Console.ReadLine());
+
+       Console.Write("Enter the wind speed in miles per hour: ");
+       double windSpeed = Convert.ToDouble(Console.ReadLine());
+
+       // Call the method to calculate wind chill
+       double windChill = CalculateWindChill(temperature, windSpeed);
+
+       // Display the calculated wind chill temperature
+       Console.WriteLine($"The wind chill temperature is: {windChill:F2}°F");
+   }
+
+   // Method to calculate the wind chill temperature
+   public static double CalculateWindChill(double temperature, double windSpeed)
+   {
+       // Formula for wind chill temperature
+       double windChill = 35.74 + 0.6215 * temperature 
+                          + (0.4275 * temperature - 35.75) * Math.Pow(windSpeed, 0.16);
+       return windChill;
+   }
+}
+	
+
+
+
+
+
+12.Write a program to calculate various trigonometric functions using Math class given an angle in degrees
+Hint => 
+1. Method to calculate various trigonometric functions, Firstly convert to radians and then use Math function to find sine, cosine and tangent.
+public double[] calculateTrigonometricFunctions(double angle)
+
+
+using System;
+
+class Trigonometry
+{
+   public static void Main(string[] args)
+   {
+       // Get user input for the angle in degrees
+       Console.Write("Enter the angle in degrees: ");
+       double angle = Convert.ToDouble(Console.ReadLine());
+
+       // Call the method to calculate trigonometric functions
+       double[] trigValues = CalculateTrigonometricFunctions(angle);
+
+       // Display the results
+       Console.WriteLine($"Sine of {angle}°: {trigValues[0]:F4}");
+       Console.WriteLine($"Cosine of {angle}°: {trigValues[1]:F4}");
+       Console.WriteLine($"Tangent of {angle}°: {trigValues[2]:F4}");
+   }
+
+   // Method to calculate trigonometric functions
+   public static double[] CalculateTrigonometricFunctions(double angle)
+   {
+       // Convert angle to radians
+       double radians = Math.PI * angle / 180.0;
+
+       // Calculate sine, cosine, and tangent
+       double sine = Math.Sin(radians);
+       double cosine = Math.Cos(radians);
+       double tangent = Math.Tan(radians);
+
+       // Return the results as an array
+       return new double[] { sine, cosine, tangent };
+   }
+}

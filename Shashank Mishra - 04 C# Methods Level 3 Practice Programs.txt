@@ -1,0 +1,1558 @@
+﻿Best Programming Practices in C#
+1. Use meaningful variable and method names.
+2. Follow PascalCase for class names and method names.
+3. Follow camelCase for variable names.
+4. Properly structure code with clear comments and modular methods. 
+C# Code: Compute the Sum of Digits for a Random 4-Digit Number
+Sample Program 1: Create a program to find the sum of all the digits of a number given by a user using an array and display the sum.
+1. Use Math.random() and get a 4-digit random integer number
+2. Write a method to count digits in the number 
+3. Write a method to return an array of digits from a given number. 
+4. Write a method to Find the sum of the digits of the number in the array
+5. Finally, display the sum of the digits of the number
+
+
+using System; 
+class SumOfDigits
+{
+        // Generate a 4-digit random number
+        public int Get4DigitRandomNumber()
+        {
+            Random random = new Random();
+            return random.Next(1000, 10000); // Generates a random number between 1000 and 9999
+        }
+ 
+        // Count the number of digits in a given number
+        public int CountDigits(int number)
+        {
+            int count = 0;
+            while (number > 0)
+            {
+                count++;
+                number /= 10;
+            }
+            return count;
+        }
+ 
+        // Extract digits from the number and store them in an array
+        public int[] GetDigits(int number, int count)
+        {
+            int[] digits = new int[count];
+            for (int i = count - 1; i >= 0; i--)
+            {
+                digits[i] = number % 10;
+                number /= 10;
+            }
+            return digits;
+        }
+ 
+        // Calculate the sum of the digits in the array
+        public int SumArray(int[] array)
+        {
+            int sum = 0;
+            foreach (int digit in array)
+            {
+                sum += digit;
+            }
+            return sum;
+        }
+ 
+        static void Main(string[] args)
+        {
+            // Instantiate the SumOfDigits class
+            SumOfDigits sumOfDigits = new SumOfDigits();
+ 
+            // Generate a 4-digit random number
+            int number = sumOfDigits.Get4DigitRandomNumber();
+            Console.WriteLine("The Random Number is: " + number);
+ 
+            // Count the number of digits
+            int count = sumOfDigits.CountDigits(number);
+            Console.WriteLine("The Count of Digits is: " + count);
+ 
+            // Extract digits into an array
+            int[] digits = sumOfDigits.GetDigits(number, count);
+ 
+            // Calculate the sum of the digits
+            int sum = sumOfDigits.SumArray(digits);
+ 
+            // Display the sum of the digits
+            Console.WriteLine("Sum of Digits: " + sum);
+        }
+}
+
+ 
+ 
+Level 3 Practice Programs
+1. Create a program to find the shortest, tallest, and mean height of players present in a football team.
+Hint => 
+a.               The formula to calculate the mean is: mean = sum of all elements/number of elements
+b.               Create an int array named heights of size 11 and get 3 digits random height in cms for each player in the range 150 cms to 250 cms
+c.                Write the method to Find the sum of all the elements present in the array.
+d.               Write the method to find the mean height of the players on the football team
+e.               Write the method to find the shortest height of the players on the football team 
+f.                 Write the method to find the tallest height of the players on the football team
+g.               Finally display the results
+using System;
+
+class FootballTeamHeightAnalysis
+{
+   static void Main(string[] args)
+   {
+       int size = 11;
+       int[] heights = GenerateRandomHeights(size);
+
+       Console.WriteLine("Player Heights (in cms):");
+       foreach (int height in heights)
+       {
+           Console.WriteLine(height);
+       }
+
+       int sum = CalculateSum(heights);
+       double mean = CalculateMean(heights);
+       int shortest = FindShortest(heights);
+       int tallest = FindTallest(heights);
+
+       Console.WriteLine($"\nMean Height: {mean:F2} cm");
+       Console.WriteLine($"Shortest Height: {shortest} cm");
+       Console.WriteLine($"Tallest Height: {tallest} cm");
+   }
+
+   // Method to generate an array of random heights in the range 150-250 cm
+   public static int[] GenerateRandomHeights(int size)
+   {
+       Random random = new Random();
+       int[] heights = new int[size];
+
+       for (int i = 0; i < size; i++)
+       {
+           heights[i] = random.Next(150, 251); // Generate random height between 150 and 250 cm
+       }
+
+       return heights;
+   }
+
+   // Method to calculate the sum of all elements in the array
+   public static int CalculateSum(int[] numbers)
+   {
+       int sum = 0;
+       foreach (int num in numbers)
+       {
+           sum += num;
+       }
+       return sum;
+   }
+
+   // Method to calculate the mean height
+   public static double CalculateMean(int[] numbers)
+   {
+       int sum = CalculateSum(numbers);
+       return (double)sum / numbers.Length;
+   }
+
+   // Method to find the shortest height
+   public static int FindShortest(int[] numbers)
+   {
+       int shortest = numbers[0];
+       foreach (int num in numbers)
+       {
+           if (num < shortest)
+           {
+               shortest = num;
+           }
+       }
+       return shortest;
+   }
+
+   // Method to find the tallest height
+   public static int FindTallest(int[] numbers)
+   {
+       int tallest = numbers[0];
+       foreach (int num in numbers)
+       {
+           if (num > tallest)
+           {
+               tallest = num;
+           }
+       }
+       return tallest;
+   }
+}
+	
+
+
+
+ 
+2.               Extend or Create a NumberChecker utility class and perform the following task. Call from the main() method the different methods and display results. Make sure all are static methods
+Hint => 
+a.               Method to Find the count of digits in the number
+b.               Method to Store the digits of the number in a digits array
+c.                Method to Check if a number is a duck number using the digits array. A duck number is a number that has a non-zero digit present in it
+d.               Method to check if the number is an armstrong number using the digits array. ​​Armstrong number is a number that is equal to the sum of its own digits raised to the power of the number of digits. Eg: 153 = 1^3 + 5^3 + 3^3
+e.               Method to find the largest and second largest elements in the digits array. Use Int32.MinValue to initialize the variable.
+f.                 Method to find the smallest and second smallest elements in the digits array. Use Int32.MaxValue to initialize the variable.
+using System;
+
+class NumberChecker
+{
+   static void Main(string[] args)
+   {
+       Console.Write("Enter a number: ");
+       int number = int.Parse(Console.ReadLine());
+
+       Console.WriteLine($"Count of digits: {CountDigits(number)}");
+
+       int[] digits = GetDigits(number);
+       Console.WriteLine("Digits array: " + string.Join(", ", digits));
+
+       Console.WriteLine($"Is Duck Number: {IsDuckNumber(number)}");
+       Console.WriteLine($"Is Armstrong Number: {IsArmstrongNumber(number)}");
+
+       int largest, secondLargest;
+       FindLargestAndSecondLargest(digits, out largest, out secondLargest);
+       Console.WriteLine($"Largest digit: {largest}, Second largest digit: {secondLargest}");
+
+       int smallest, secondSmallest;
+       FindSmallestAndSecondSmallest(digits, out smallest, out secondSmallest);
+       Console.WriteLine($"Smallest digit: {smallest}, Second smallest digit: {secondSmallest}");
+   }
+
+   // Method to find the count of digits in a number
+   public static int CountDigits(int number)
+   {
+       return number.ToString().Length;
+   }
+
+   // Method to get the digits of a number in an array
+   public static int[] GetDigits(int number)
+   {
+       string numStr = number.ToString();
+       int[] digits = new int[numStr.Length];
+       for (int i = 0; i < numStr.Length; i++)
+       {
+           digits[i] = int.Parse(numStr[i].ToString());
+       }
+       return digits;
+   }
+
+   // Method to check if a number is a Duck Number
+   public static bool IsDuckNumber(int number)
+   {
+       string numStr = number.ToString();
+       return numStr.Length > 1 && numStr.Contains('0') && numStr[0] != '0';
+   }
+
+   // Method to check if a number is an Armstrong Number
+   public static bool IsArmstrongNumber(int number)
+   {
+       int[] digits = GetDigits(number);
+       int power = digits.Length;
+       int sum = 0;
+
+       foreach (int digit in digits)
+       {
+           sum += (int)Math.Pow(digit, power);
+       }
+
+       return sum == number;
+   }
+
+   // Method to find the largest and second largest elements in the digits array
+   public static void FindLargestAndSecondLargest(int[] digits, out int largest, out int secondLargest)
+   {
+       largest = int.MinValue;
+       secondLargest = int.MinValue;
+
+       foreach (int digit in digits)
+       {
+           if (digit > largest)
+           {
+               secondLargest = largest;
+               largest = digit;
+           }
+           else if (digit > secondLargest && digit < largest)
+           {
+               secondLargest = digit;
+           }
+       }
+
+       if (secondLargest == int.MinValue)
+       {
+           secondLargest = -1; // Indicate that a second largest digit does not exist
+       }
+   }
+
+   // Method to find the smallest and second smallest elements in the digits array
+   public static void FindSmallestAndSecondSmallest(int[] digits, out int smallest, out int secondSmallest)
+   {
+       smallest = int.MaxValue;
+       secondSmallest = int.MaxValue;
+
+       foreach (int digit in digits)
+       {
+           if (digit < smallest)
+           {
+               secondSmallest = smallest;
+               smallest = digit;
+           }
+           else if (digit < secondSmallest && digit > smallest)
+           {
+               secondSmallest = digit;
+           }
+       }
+
+       if (secondSmallest == int.MaxValue)
+       {
+           secondSmallest = -1; // Indicate that a second smallest digit does not exist
+       }
+   }
+}
+	
+
+
+
+3.               Extend or Create a NumberChecker utility class and perform the following task. Call from the main() method the different methods and display results. Make sure all are static methods
+Hint => 
+a.               Method to find the count of digits in the number and a Method to Store the digits of the number in a digits array
+b.               Method to find the sum of the digits of a number using the digits array
+c.                Method to find the sum of the squares of the digits of a number using the digits array. Use Math.Pow() method
+d.               Method to Check if a number is a Harshad number using a digits array. A number is called a Harshad number if it is divisible by the sum of its digits. For e.g. 21
+e.               Method to find the frequency of each digit in the number. Create a 2D array to store the frequency with digit in the first column and frequency in the second column.
+using System;
+
+class NumberChecker
+{
+   static void Main(string[] args)
+   {
+       Console.Write("Enter a number: ");
+       int number = int.Parse(Console.ReadLine());
+
+       // Count digits and store digits in an array
+       Console.WriteLine($"Count of digits: {CountDigits(number)}");
+       int[] digits = GetDigits(number);
+       Console.WriteLine("Digits array: " + string.Join(", ", digits));
+
+       // Find the sum of the digits
+       Console.WriteLine($"Sum of digits: {SumOfDigits(digits)}");
+
+       //  Find the sum of the squares of the digits
+       Console.WriteLine($"Sum of squares of digits: {SumOfSquaresOfDigits(digits)}");
+
+       //  Check if the number is a Harshad number
+       Console.WriteLine($"Is Harshad Number: {IsHarshadNumber(number, digits)}");
+
+       //  Find the frequency of each digit
+       int[,] frequencyArray = FindDigitFrequency(digits);
+       Console.WriteLine("Digit Frequencies:");
+       for (int i = 0; i < frequencyArray.GetLength(0); i++)
+       {
+           Console.WriteLine($"Digit: {frequencyArray[i, 0]}, Frequency: {frequencyArray[i, 1]}");
+       }
+   }
+
+   //  Method to find the count of digits in the number
+   public static int CountDigits(int number)
+   {
+       return number.ToString().Length;
+   }
+
+   //  Method to store the digits of the number in a digits array
+   public static int[] GetDigits(int number)
+   {
+       string numStr = number.ToString();
+       int[] digits = new int[numStr.Length];
+       for (int i = 0; i < numStr.Length; i++)
+       {
+           digits[i] = int.Parse(numStr[i].ToString());
+       }
+       return digits;
+   }
+
+   //  Method to find the sum of the digits
+   public static int SumOfDigits(int[] digits)
+   {
+       int sum = 0;
+       foreach (int digit in digits)
+       {
+           sum += digit;
+       }
+       return sum;
+   }
+
+   //  Method to find the sum of the squares of the digits
+   public static int SumOfSquaresOfDigits(int[] digits)
+   {
+       int sum = 0;
+       foreach (int digit in digits)
+       {
+           sum += (int)Math.Pow(digit, 2);
+       }
+       return sum;
+   }
+
+   //  Method to check if a number is a Harshad number
+   public static bool IsHarshadNumber(int number, int[] digits)
+   {
+       int sumOfDigits = SumOfDigits(digits);
+       return number % sumOfDigits == 0;
+   }
+
+   //  Method to find the frequency of each digit in the number
+   public static int[,] FindDigitFrequency(int[] digits)
+   {
+       int[,] frequency = new int[10, 2];
+       for (int i = 0; i < 10; i++)
+       {
+           frequency[i, 0] = i; // Digit
+           frequency[i, 1] = 0; // Initialize frequency to 0
+       }
+
+       foreach (int digit in digits)
+       {
+           frequency[digit, 1]++;
+       }
+
+       // Remove unused rows (digits not present in the number)
+       int uniqueDigitCount = 0;
+       for (int i = 0; i < 10; i++)
+       {
+           if (frequency[i, 1] > 0)
+           {
+               uniqueDigitCount++;
+           }
+       }
+
+       int[,] result = new int[uniqueDigitCount, 2];
+       int index = 0;
+       for (int i = 0; i < 10; i++)
+       {
+           if (frequency[i, 1] > 0)
+           {
+               result[index, 0] = frequency[i, 0];
+               result[index, 1] = frequency[i, 1];
+               index++;
+           }
+       }
+
+       return result;
+   }
+}
+	
+
+
+
+ 
+4.               Extend or Create a NumberChecker utility class and perform the following task. Call from the main() method the different methods and display results. Make sure all are static methods
+Hint => 
+a.               Method to find the count of digits in the number and a Method to Store the digits of the number in a digits array
+b.               Method to reverse the digits array 
+c.                Method to compare two arrays and check if they are equal
+d.               Method to check if a number is a palindrome using the Digits. A palindrome number is a number that remains the same when its digits are reversed. 
+e.               Method to Check if a number is a duck number using the digits array. A duck number is a number that has a non-zero digit present in it
+ 
+using System;
+
+class NumberChecker
+{
+   static void Main(string[] args)
+   {
+       Console.Write("Enter a number: ");
+       int number = int.Parse(Console.ReadLine());
+
+       //  Count digits and store digits in an array
+       Console.WriteLine($"Count of digits: {CountDigits(number)}");
+       int[] digits = GetDigits(number);
+       Console.WriteLine("Digits array: " + string.Join(", ", digits));
+
+       //  Reverse the digits array
+       int[] reversedDigits = ReverseArray(digits);
+       Console.WriteLine("Reversed digits array: " + string.Join(", ", reversedDigits));
+
+       // Compare two arrays
+       bool areArraysEqual = CompareArrays(digits, reversedDigits);
+       Console.WriteLine($"Are the original and reversed arrays equal? {areArraysEqual}");
+
+       //  Check if the number is a palindrome
+       Console.WriteLine($"Is Palindrome Number: {IsPalindrome(digits)}");
+
+       //  Check if the number is a duck number
+       Console.WriteLine($"Is Duck Number: {IsDuckNumber(digits)}");
+   }
+
+   //  Method to find the count of digits in the number
+   public static int CountDigits(int number)
+   {
+       return number.ToString().Length;
+   }
+
+   //  Method to store the digits of the number in a digits array
+   public static int[] GetDigits(int number)
+   {
+       string numStr = number.ToString();
+       int[] digits = new int[numStr.Length];
+       for (int i = 0; i < numStr.Length; i++)
+       {
+           digits[i] = int.Parse(numStr[i].ToString());
+       }
+       return digits;
+   }
+
+   //  Method to reverse the digits array
+   public static int[] ReverseArray(int[] array)
+   {
+       int[] reversed = new int[array.Length];
+       for (int i = 0, j = array.Length - 1; i < array.Length; i++, j--)
+       {
+           reversed[j] = array[i];
+       }
+       return reversed;
+   }
+
+   //  Method to compare two arrays and check if they are equal
+   public static bool CompareArrays(int[] array1, int[] array2)
+   {
+       if (array1.Length != array2.Length)
+       {
+           return false;
+       }
+
+       for (int i = 0; i < array1.Length; i++)
+       {
+           if (array1[i] != array2[i])
+           {
+               return false;
+           }
+       }
+
+       return true;
+   }
+
+   //  Method to check if a number is a palindrome
+   public static bool IsPalindrome(int[] digits)
+   {
+       int[] reversedDigits = ReverseArray(digits);
+       return CompareArrays(digits, reversedDigits);
+   }
+
+   //  Method to check if a number is a duck number
+   public static bool IsDuckNumber(int[] digits)
+   {
+       // A duck number must contain a non-zero digit, but no leading zeros
+       if (digits[0] == 0) return false;
+
+       foreach (int digit in digits)
+       {
+           if (digit == 0)
+           {
+               return true;
+           }
+       }
+
+       return false;
+   }
+}
+
+	
+
+5.               Extend or Create a NumberChecker utility class and perform the following task. Call from the main() method the different methods and display results. Make sure all are static methods
+Hint => 
+a.               Method to Check if a number is a prime number. A prime number is a number greater than 1 that has no positive divisors other than 1 and itself. 
+b.               Method to Check if a number is a neon number. A neon number is a number where the sum of digits of the square of the number is equal to the number itself 
+c.                Method to Check if a number is a spy number. A number is called a spy number if the sum of its digits is equal to the product of its digits
+d.               Method to Check if a number is an automorphic number. An automorphic number is a number whose square ends with the number itself. E.g. 5 is an automorphic number
+e.               Method to Check if a number is a buzz number. A buzz number is a number that is either divisible by 7 or ends with 7
+ using System;
+
+class NumberChecker
+{
+   static void Main(string[] args)
+   {
+       Console.Write("Enter a number: ");
+       int number = int.Parse(Console.ReadLine());
+
+       // a. Check if the number is a prime number
+       Console.WriteLine($"Is Prime Number: {IsPrime(number)}");
+
+       // b. Check if the number is a neon number
+       Console.WriteLine($"Is Neon Number: {IsNeon(number)}");
+
+       // c. Check if the number is a spy number
+       Console.WriteLine($"Is Spy Number: {IsSpy(number)}");
+
+       // d. Check if the number is an automorphic number
+       Console.WriteLine($"Is Automorphic Number: {IsAutomorphic(number)}");
+
+       // e. Check if the number is a buzz number
+       Console.WriteLine($"Is Buzz Number: {IsBuzz(number)}");
+   }
+
+   // a. Method to check if a number is a prime number
+   public static bool IsPrime(int number)
+   {
+       if (number <= 1) return false;
+       for (int i = 2; i <= Math.Sqrt(number); i++)
+       {
+           if (number % i == 0) return false;
+       }
+       return true;
+   }
+
+   // b. Method to check if a number is a neon number
+   public static bool IsNeon(int number)
+   {
+       int square = number * number;
+       int sumOfDigits = 0;
+
+       while (square > 0)
+       {
+           sumOfDigits += square % 10;
+           square /= 10;
+       }
+
+       return sumOfDigits == number;
+   }
+
+   // c. Method to check if a number is a spy number
+   public static bool IsSpy(int number)
+   {
+       int sumOfDigits = 0, productOfDigits = 1;
+
+       while (number > 0)
+       {
+           int digit = number % 10;
+           sumOfDigits += digit;
+           productOfDigits *= digit;
+           number /= 10;
+       }
+
+       return sumOfDigits == productOfDigits;
+   }
+
+   // d. Method to check if a number is an automorphic number
+   public static bool IsAutomorphic(int number)
+   {
+       int square = number * number;
+       return square.ToString().EndsWith(number.ToString());
+   }
+
+   // e. Method to check if a number is a buzz number
+   public static bool IsBuzz(int number)
+   {
+       return number % 7 == 0 || number % 10 == 7;
+   }
+}
+	
+
+
+
+6.               Extend or Create a NumberChecker utility class and perform the following task. Call from the main() method the different methods and display results. Make sure all are static methods
+Hint => 
+a.               Method to find factors of a number and return them as an array. Note there are 2 for loops one for the count and another for finding the factor and storing in the array
+b.               Method to find the greatest factor of a Number using the factors array
+c.                Method to find the sum of the factors using factors array and return the sum
+d.               Method to find the product of the factors using factors array and return the product
+e.               Method to find product of cube of the factors using the factors array. Use Math.Pow() 
+f.                 Method to Check if a number is a perfect number. Perfect numbers are positive integers that are equal to the sum of their proper divisors
+g.               Method to find the number is an abundant number. A number is called an abundant number if the sum of its proper divisors is greater than the number itself
+h.               Method to find the number is a deficient number. A number is called a deficient number if the sum of its proper divisors is less than the number itself
+i.                 Method to Check if a number is a strong number. A number is called a strong number if the sum of the factorial of its digits is equal to the number itself
+using System;
+
+class NumberChecker
+{
+   static void Main(string[] args)
+   {
+       Console.Write("Enter a number: ");
+       int number = int.Parse(Console.ReadLine());
+
+       // a. Find factors of a number
+       int[] factors = GetFactors(number);
+       Console.WriteLine("Factors: " + string.Join(", ", factors));
+
+       // b. Find the greatest factor
+       Console.WriteLine($"Greatest Factor: {FindGreatestFactor(factors)}");
+
+       // c. Find the sum of the factors
+       Console.WriteLine($"Sum of Factors: {SumOfFactors(factors)}");
+
+       // d. Find the product of the factors
+       Console.WriteLine($"Product of Factors: {ProductOfFactors(factors)}");
+
+       // e. Find the product of the cube of the factors
+       Console.WriteLine($"Product of Cube of Factors: {ProductOfCubeOfFactors(factors)}");
+
+       // f. Check if the number is a perfect number
+       Console.WriteLine($"Is Perfect Number: {IsPerfectNumber(number)}");
+
+       // g. Check if the number is an abundant number
+       Console.WriteLine($"Is Abundant Number: {IsAbundantNumber(number)}");
+
+       // h. Check if the number is a deficient number
+       Console.WriteLine($"Is Deficient Number: {IsDeficientNumber(number)}");
+
+       // i. Check if the number is a strong number
+       Console.WriteLine($"Is Strong Number: {IsStrongNumber(number)}");
+   }
+
+   // a. Method to find factors of a number
+   public static int[] GetFactors(int number)
+   {
+       int count = 0;
+       for (int i = 1; i <= number; i++)
+       {
+           if (number % i == 0)
+               count++;
+       }
+
+       int[] factors = new int[count];
+       int index = 0;
+       for (int i = 1; i <= number; i++)
+       {
+           if (number % i == 0)
+               factors[index++] = i;
+       }
+
+       return factors;
+   }
+
+   // b. Method to find the greatest factor of a number
+   public static int FindGreatestFactor(int[] factors)
+   {
+       int greatest = factors[0];
+       foreach (int factor in factors)
+       {
+           if (factor > greatest)
+               greatest = factor;
+       }
+       return greatest;
+   }
+
+   // c. Method to find the sum of factors
+   public static int SumOfFactors(int[] factors)
+   {
+       int sum = 0;
+       foreach (int factor in factors)
+       {
+           sum += factor;
+       }
+       return sum;
+   }
+
+   // d. Method to find the product of factors
+   public static long ProductOfFactors(int[] factors)
+   {
+       long product = 1;
+       foreach (int factor in factors)
+       {
+           product *= factor;
+       }
+       return product;
+   }
+
+   // e. Method to find the product of the cube of factors
+   public static long ProductOfCubeOfFactors(int[] factors)
+   {
+       long product = 1;
+       foreach (int factor in factors)
+       {
+           product *= (long)Math.Pow(factor, 3);
+       }
+       return product;
+   }
+
+   // f. Method to check if a number is a perfect number
+   public static bool IsPerfectNumber(int number)
+   {
+       int sum = 0;
+       for (int i = 1; i < number; i++)
+       {
+           if (number % i == 0)
+               sum += i;
+       }
+       return sum == number;
+   }
+
+   // g. Method to check if a number is an abundant number
+   public static bool IsAbundantNumber(int number)
+   {
+       int sum = 0;
+       for (int i = 1; i < number; i++)
+       {
+           if (number % i == 0)
+               sum += i;
+       }
+       return sum > number;
+   }
+
+   // h. Method to check if a number is a deficient number
+   public static bool IsDeficientNumber(int number)
+   {
+       int sum = 0;
+       for (int i = 1; i < number; i++)
+       {
+           if (number % i == 0)
+               sum += i;
+       }
+       return sum < number;
+   }
+
+   // i. Method to check if a number is a strong number
+   public static bool IsStrongNumber(int number)
+   {
+       int originalNumber = number;
+       int sum = 0;
+
+       while (number > 0)
+       {
+           int digit = number % 10;
+           sum += Factorial(digit);
+           number /= 10;
+       }
+
+       return sum == originalNumber;
+   }
+
+   // Helper method to calculate factorial of a number
+   public static int Factorial(int n)
+   {
+       if (n == 0 || n == 1)
+           return 1;
+       int factorial = 1;
+       for (int i = 2; i <= n; i++)
+       {
+           factorial *= i;
+       }
+       return factorial;
+   }
+}
+	
+
+
+
+ 
+7.               Write a program to generate a six-digit OTP number using Math.Random() method. Validate the numbers are unique by generating the OTP number 10 times and ensuring all the 10 OTPs are not the same
+Hint => 
+a.               Write a method to Generate a 6-digit OTP number using Math.Random() 
+b.               Create an array to save the OTP numbers generated 10 times
+c.                Write a method to ensure that the OTP numbers generated are unique. If unique return true else return false
+using System;
+
+class OTPGenerator
+{
+   static void Main(string[] args)
+   {
+       int[] otpNumbers = new int[10];
+
+       // Generate 10 OTP numbers and store them in the array
+       for (int i = 0; i < otpNumbers.Length; i++)
+       {
+           otpNumbers[i] = GenerateOTP();
+       }
+
+       // Check if all OTP numbers are unique
+       if (AreOTPsUnique(otpNumbers))
+       {
+           Console.WriteLine("All OTP numbers are unique.");
+       }
+       else
+       {
+           Console.WriteLine("Some OTP numbers are not unique.");
+       }
+   }
+
+   // a. Method to generate a 6-digit OTP number using Math.random()
+   public static int GenerateOTP()
+   {
+       Random rand = new Random();
+       // Generate a random number between 100000 and 999999
+       return rand.Next(100000, 1000000);
+   }
+
+   // c. Method to ensure that the OTP numbers generated are unique
+   public static bool AreOTPsUnique(int[] otpNumbers)
+   {
+       for (int i = 0; i < otpNumbers.Length; i++)
+       {
+           for (int j = i + 1; j < otpNumbers.Length; j++)
+           {
+               if (otpNumbers[i] == otpNumbers[j])
+               {
+                   return false; // Found a duplicate OTP number
+               }
+           }
+       }
+       return true; // All OTP numbers are unique
+   }
+}
+	
+
+
+
+ 
+8.               Create a program to display a calendar for a given month and year. The program should take the month and year as input from the user and display the calendar for that month. E.g. for 07 2005 user input, the program should display the calendar as shown below
+  
+
+Hint => 
+a.               Write a Method to get the name of the month. For this define a month Array to store the names of the months
+b.               Write a Method to get the number of days in the month. For this define a days Array to store the number of days in each month. For Feb month, check for Leap Year to get the number of days. Also, define a Leap Year Method. 
+c.                Write a method to get the first day of the month using the Gregorian calendar algorithm
+y0 = y − (14 − m) / 12
+x = y0 + y0/4 − y0/100 + y0/400
+m0 = m + 12 × ((14 − m) / 12) − 2
+d0 = (d + x + 31m0 / 12) mod 7
+d.  Displaying the Calendar requires 2 for loops. 
+e.  The first for loop up to the first day to get the proper indentation. As in the example above 3 spaces from Sun to Thu as to be set as July 1st starts on Fri
+f.  The Second for loop Displays the days of the month starting from 1 to the number of days. Add proper indentation for single-digit days using %3d to display the integer right-justified in a field of width 3. Please note to move to the next line after Sat
+
+using System;
+
+class CalendarProgram
+{
+   static void Main(string[] args)
+   {
+       // Taking input for month and year
+       Console.Write("Enter the month (1-12): ");
+       int month = int.Parse(Console.ReadLine());
+       Console.Write("Enter the year: ");
+       int year = int.Parse(Console.ReadLine());
+
+       // Displaying the calendar for the given month and year
+       DisplayCalendar(month, year);
+   }
+
+   // a. Method to get the name of the month
+   public static string GetMonthName(int month)
+   {
+       string[] months = {
+           "January", "February", "March", "April", "May", "June",
+           "July", "August", "September", "October", "November", "December"
+       };
+       return months[month - 1]; // Month is 1-based, so subtract 1
+   }
+
+   // b. Method to get the number of days in the month
+   public static int GetNumberOfDays(int month, int year)
+   {
+       int[] daysInMonth = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+       // If it's February, check for leap year
+       if (month == 2 && IsLeapYear(year))
+       {
+           return 29;
+       }
+
+       return daysInMonth[month - 1];
+   }
+
+   // Method to check if the year is a leap year
+   public static bool IsLeapYear(int year)
+   {
+       return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+   }
+
+   // c. Method to calculate the first day of the month using Gregorian Calendar
+   public static int GetFirstDayOfMonth(int month, int year)
+   {
+       // Apply Gregorian calendar algorithm
+       int y0 = year - (14 - month) / 12;
+       int x = y0 + y0 / 4 - y0 / 100 + y0 / 400;
+       int m0 = month + 12 * ((14 - month) / 12) - 2;
+       int d0 = (1 + x + 31 * m0 / 12) % 7;
+
+       return d0;
+   }
+
+   // d. Method to display the calendar
+   public static void DisplayCalendar(int month, int year)
+   {
+       string monthName = GetMonthName(month);
+       int daysInMonth = GetNumberOfDays(month, year);
+       int firstDayOfMonth = GetFirstDayOfMonth(month, year);
+
+       Console.WriteLine($"     {monthName} {year}");
+       Console.WriteLine("Su Mo Tu We Th Fr Sa");
+
+       // e. Loop to create indentation for the first day
+       for (int i = 0; i < firstDayOfMonth; i++)
+       {
+           Console.Write("   "); // Empty spaces for the initial days of the week
+       }
+
+       // f. Loop to print the days of the month
+       for (int day = 1; day <= daysInMonth; day++)
+       {
+           Console.Write($"{day,3}"); // Print the day with proper indentation
+           if ((firstDayOfMonth + day) % 7 == 0)
+           {
+               Console.WriteLine(); // Move to the next line after Saturday
+           }
+       }
+
+       Console.WriteLine(); // To ensure the output ends with a new line
+   }
+}
+	
+
+
+
+
+9.                Write a program Euclidean distance between two points as well as the equation of the line using those two points. Use Math functions Math.Pow() and Math.Sqrt()
+Hint => 
+a.                Take inputs for 2 points x1, y1, and x2, y2 
+b.                Method to find the Euclidean distance between two points and return the distance
+distance = (x2-x1)2 +(y2-y1)2
+d.  Write a Method to find the equation of a line given two points and return the equation which includes the slope and the y-intercept
+The equation of a line is given by the equation y = m*x + b Where m is the slope and b is the y-intercept. So firstly compute the slope using the formulae 
+m = (y2 - y1)/(x2 - x1)
+Post that compute the y-intercept b using the formulae 
+b = y1 - m*x1  
+Finally, return an array having slope m and y-intercept b 
+ 
+ using System;
+
+class EuclideanDistanceAndLineEquation
+{
+   static void Main(string[] args)
+   {
+       // Taking input for the two points (x1, y1) and (x2, y2)
+       Console.Write("Enter x1: ");
+       double x1 = double.Parse(Console.ReadLine());
+       Console.Write("Enter y1: ");
+       double y1 = double.Parse(Console.ReadLine());
+       Console.Write("Enter x2: ");
+       double x2 = double.Parse(Console.ReadLine());
+       Console.Write("Enter y2: ");
+       double y2 = double.Parse(Console.ReadLine());
+
+       // Calculate and display the Euclidean distance
+       double distance = CalculateEuclideanDistance(x1, y1, x2, y2);
+       Console.WriteLine($"Euclidean distance between points: {distance}");
+
+       // Calculate and display the equation of the line
+       double[] lineEquation = GetLineEquation(x1, y1, x2, y2);
+       Console.WriteLine($"Equation of the line: y = {lineEquation[0]}x + {lineEquation[1]}");
+   }
+
+   // Method to calculate the Euclidean distance between two points
+   public static double CalculateEuclideanDistance(double x1, double y1, double x2, double y2)
+   {
+       // Using Math.Pow() and Math.Sqrt() to calculate the distance
+       double distance = Math.Sqrt(Math.Pow(x2 - x1, 2) + Math.Pow(y2 - y1, 2));
+       return distance;
+   }
+
+   // Method to calculate the equation of the line given two points
+   public static double[] GetLineEquation(double x1, double y1, double x2, double y2)
+   {
+       // Calculate the slope (m)
+       double m = (y2 - y1) / (x2 - x1);
+
+       // Calculate the y-intercept (b)
+       double b = y1 - m * x1;
+
+       // Return an array containing slope (m) and y-intercept (b)
+       return new double[] { m, b };
+   }
+}
+
+	
+
+10.             Write a program to find the 3 points that are collinear using the slope formulae and area of triangle formulae. check  A (2, 4), B (4, 6) and C (6, 8) are Collinear for sampling. 
+Hint => 
+a.                Take inputs for 3 points x1, y1, x2, y2, and x3, y3
+b.                Write a Method to find the 3 points that are collinear using the slope formula. The 3 points A(x1,y1), b(x2,y2), and c(x3,y3) are collinear if the slopes formed by 3 points ab, bc, and cd are equal. 
+slope AB = (y2 - y1)/(x2 - x1), slope BC = (y3 - y2)/(x3 - x3)
+slope AC = (y3 - y1)/(x3 - x1) Points are collinear if
+slope AB = slope BC = slope Ac
+c.  The method to find the three points is collinear using the area of the triangle formula. The Three points are collinear if the area of the triangle formed by three points is 0. The area of a triangle is 
+  
+  
+       
+  
+
+area = 0.5 * (x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2))
+ 
+using System;
+
+class CollinearPoints
+{
+   static void Main(string[] args)
+   {
+       // Taking input for three points (x1, y1), (x2, y2), and (x3, y3)
+       Console.Write("Enter x1: ");
+       double x1 = double.Parse(Console.ReadLine());
+       Console.Write("Enter y1: ");
+       double y1 = double.Parse(Console.ReadLine());
+       Console.Write("Enter x2: ");
+       double x2 = double.Parse(Console.ReadLine());
+       Console.Write("Enter y2: ");
+       double y2 = double.Parse(Console.ReadLine());
+       Console.Write("Enter x3: ");
+       double x3 = double.Parse(Console.ReadLine());
+       Console.Write("Enter y3: ");
+       double y3 = double.Parse(Console.ReadLine());
+
+       // Check if the points are collinear using the slope formula
+       bool collinearUsingSlope = AreCollinearUsingSlope(x1, y1, x2, y2, x3, y3);
+       Console.WriteLine($"Collinear using slope formula: {collinearUsingSlope}");
+
+       // Check if the points are collinear using the area formula
+       bool collinearUsingArea = AreCollinearUsingArea(x1, y1, x2, y2, x3, y3);
+       Console.WriteLine($"Collinear using area formula: {collinearUsingArea}");
+   }
+
+   // Method to check if three points are collinear using the slope formula
+   public static bool AreCollinearUsingSlope(double x1, double y1, double x2, double y2, double x3, double y3)
+   {
+       // Calculate slopes AB, BC, and AC
+       double slopeAB = (y2 - y1) / (x2 - x1);
+       double slopeBC = (y3 - y2) / (x3 - x2);
+       double slopeAC = (y3 - y1) / (x3 - x1);
+
+       // Points are collinear if all slopes are equal
+       return slopeAB == slopeBC && slopeAB == slopeAC;
+   }
+
+   // Method to check if three points are collinear using the area formula
+   public static bool AreCollinearUsingArea(double x1, double y1, double x2, double y2, double x3, double y3)
+   {
+       // Calculate the area of the triangle formed by the three points
+       double area = 0.5 * (x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2));
+
+       // Points are collinear if the area of the triangle is 0
+       return area == 0;
+   }
+}
+
+	
+
+11.             Create a program to find the bonus of 10 employees based on their years of service as well as the total bonus amount the 10-year-old company Zara has to pay as a bonus, along with the old and new salary.
+Hint => 
+a.                Zara decides to give a bonus of 5% to employees whose year of service is more than 5 years or 2% if less than 5 years
+b.                Create a Method to determine the Salary and years of service and return the same. Use the Math.Random() method to determine the 5-digit salary for each employee and also use the random method to determine the years of service. Define 2D Array to save the salary and years of service.
+c.                Write a Method to calculate the new salary and bonus based on the logic defined above and return the new 2D Array of the latest salary and bonus amount 
+d.                Write a Method to Calculate the sum of the Old Salary, the Sum of the New Salary, and the Total Bonus Amount and display it in a Tabular Format
+using System;
+
+class ZaraBonus
+{
+   static void Main(string[] args)
+   {
+       // Define the number of employees
+       int numEmployees = 10;
+
+       // 2D array to store salary and years of service for each employee
+       double[,] employeeData = new double[numEmployees, 2]; // [i, 0] = salary, [i, 1] = years of service
+
+       // Generate random data for employees' salary and years of service
+       GenerateEmployeeData(employeeData);
+
+       // Calculate new salaries and bonus
+       double[,] newEmployeeData = CalculateNewSalaryAndBonus(employeeData);
+
+       // Calculate and display sum of old salary, new salary, and total bonus
+       CalculateAndDisplayTotals(employeeData, newEmployeeData);
+   }
+
+   // Method to generate random salary and years of service for employees
+   public static void GenerateEmployeeData(double[,] employeeData)
+   {
+       Random rand = new Random();
+       for (int i = 0; i < employeeData.GetLength(0); i++)
+       {
+           // Generate a random salary (5-digit number)
+           employeeData[i, 0] = rand.Next(10000, 100000);
+
+           // Generate random years of service (between 1 and 20 years)
+           employeeData[i, 1] = rand.Next(1, 21);
+       }
+   }
+
+   // Method to calculate new salary and bonus based on years of service
+   public static double[,] CalculateNewSalaryAndBonus(double[,] employeeData)
+   {
+       double[,] newEmployeeData = new double[employeeData.GetLength(0), 3]; // [i, 0] = old salary, [i, 1] = bonus, [i, 2] = new salary
+       for (int i = 0; i < employeeData.GetLength(0); i++)
+       {
+           double salary = employeeData[i, 0];
+           double yearsOfService = employeeData[i, 1];
+
+           // Calculate bonus based on years of service
+           double bonus = (yearsOfService > 5) ? salary * 0.05 : salary * 0.02;
+
+           // Calculate new salary
+           double newSalary = salary + bonus;
+
+           // Store old salary, bonus, and new salary
+           newEmployeeData[i, 0] = salary;
+           newEmployeeData[i, 1] = bonus;
+           newEmployeeData[i, 2] = newSalary;
+       }
+       return newEmployeeData;
+   }
+
+   // Method to calculate and display the total old salary, new salary, and total bonus
+   public static void CalculateAndDisplayTotals(double[,] oldEmployeeData, double[,] newEmployeeData)
+   {
+       double totalOldSalary = 0;
+       double totalNewSalary = 0;
+       double totalBonus = 0;
+
+       // Display headers for the tabular format
+       Console.WriteLine("Employee No. | Old Salary | Bonus   | New Salary");
+
+       for (int i = 0; i < oldEmployeeData.GetLength(0); i++)
+       {
+           double oldSalary = oldEmployeeData[i, 0];
+           double bonus = newEmployeeData[i, 1];
+           double newSalary = newEmployeeData[i, 2];
+
+           // Accumulate totals
+           totalOldSalary += oldSalary;
+           totalNewSalary += newSalary;
+           totalBonus += bonus;
+
+           // Display employee data in tabular format
+           Console.WriteLine($"{i + 1,12} | {oldSalary,10:C} | {bonus,7:C} | {newSalary,10:C}");
+       }
+
+       // Display total values
+       Console.WriteLine("\nTotal Old Salary: " + totalOldSalary.ToString("C"));
+       Console.WriteLine("Total Bonus: " + totalBonus.ToString("C"));
+       Console.WriteLine("Total New Salary: " + totalNewSalary.ToString("C"));
+   }
+}
+	
+
+
+
+
+
+12.             Create a program to take input marks of students in 3 subjects physics, chemistry, and maths. Compute the total, average, and the percentage score 
+  
+
+Hint => 
+a.                Take input for the number of students
+b.                Write a method to generate random 2-digit scores for Physics, Chemistry, and Math (PCM) for the students and return the scores. This method returns a 2D array with PCM scores for all students
+c.                Write a Method to calculate the total, average, and percentages for each student and return a 2D array with the corresponding values. Please ensure to round off the values to 2 Digits using the Math.Round() method. 
+d.                Finally, write a Method to display the scorecard of all students with their scores, total, average, and percentage in a tabular format using "\t". 
+
+
+
+using System;
+
+class StudentScores
+{
+   static void Main(string[] args)
+   {
+       // Input for the number of students
+       Console.Write("Enter the number of students: ");
+       int numStudents = int.Parse(Console.ReadLine());
+
+       // Generate random scores for the students
+       int[,] studentScores = GenerateRandomScores(numStudents);
+
+       // Calculate the total, average, and percentage for each student
+       double[,] studentResults = CalculateResults(studentScores);
+
+       // Display the scorecard of all students
+       DisplayScorecard(studentScores, studentResults);
+   }
+
+   // Method to generate random 2-digit scores for Physics, Chemistry, and Maths for the students
+   public static int[,] GenerateRandomScores(int numStudents)
+   {
+       Random rand = new Random();
+       int[,] scores = new int[numStudents, 3]; // [student, subject] => PCM
+
+       for (int i = 0; i < numStudents; i++)
+       {
+           // Generate random marks between 30 and 99 for each subject (Physics, Chemistry, Maths)
+           scores[i, 0] = rand.Next(30, 100); // Physics
+           scores[i, 1] = rand.Next(30, 100); // Chemistry
+           scores[i, 2] = rand.Next(30, 100); // Maths
+       }
+       return scores;
+   }
+
+   // Method to calculate total, average, and percentage for each student
+   public static double[,] CalculateResults(int[,] scores)
+   {
+       int numStudents = scores.GetLength(0);
+       double[,] results = new double[numStudents, 4]; // [student, total, average, percentage]
+
+       for (int i = 0; i < numStudents; i++)
+       {
+           int total = scores[i, 0] + scores[i, 1] + scores[i, 2];
+           double average = total / 3.0;
+           double percentage = (total / 300.0) * 100;
+
+           // Round off to 2 decimal places
+           results[i, 0] = total;
+           results[i, 1] = Math.Round(average, 2);
+           results[i, 2] = Math.Round(percentage, 2);
+       }
+
+       return results;
+   }
+
+   // Method to display the scorecard of all students with their scores, total, average, and percentage
+   public static void DisplayScorecard(int[,] scores, double[,] results)
+   {
+       int numStudents = scores.GetLength(0);
+
+       // Display header
+       Console.WriteLine("\nScorecard:\n");
+       Console.WriteLine("Student\tPhysics\tChemistry\tMaths\tTotal\tAverage\tPercentage");
+
+       for (int i = 0; i < numStudents; i++)
+       {
+           // Display each student's score and results
+           Console.WriteLine($"{i + 1}\t{scores[i, 0]}\t\t{scores[i, 1]}\t\t{scores[i, 2]}\t{results[i, 0]}\t{results[i, 1]}\t\t{results[i, 2]}%");
+       }
+   }
+}
+	
+
+
+
+
+13.             Write a program to perform matrix manipulation operations like addition, subtraction, multiplication, and transpose. Also finding the determinant and inverse of a matrix. The program should take random matrices as input and display the result of the operations.
+Hint => 
+a.                Write a Method to create a random matrix taking rows and columns as parameters
+b.                Write a Method to add two matrices
+c.                Write a Method to subtract two matrices
+d.                Write a Method to multiply two matrices
+  
+
+5. Write a Method to find the transpose of a matrix
+  
+             
+e. Write a Method to find the determinant of a 2x2 matrix
+f.  Write a Method to find the determinant of a 3x3 matrix
+  
+   
+g.   Write a Method to find the inverse of a 2x2 matrix
+h.   Write a Method to find the inverse of a 3x3 matrix
+i.    Write a Method to display a matrix
+ 
+using System;
+
+class MatrixOperations
+{
+   static void Main(string[] args)
+   {
+       // Create random matrices
+       int[,] matrix1 = CreateRandomMatrix(3, 3);
+       int[,] matrix2 = CreateRandomMatrix(3, 3);
+
+       Console.WriteLine("Matrix 1:");
+       DisplayMatrix(matrix1);
+       Console.WriteLine("Matrix 2:");
+       DisplayMatrix(matrix2);
+
+       // Matrix addition
+       Console.WriteLine("\nMatrix Addition:");
+       int[,] sum = AddMatrices(matrix1, matrix2);
+       DisplayMatrix(sum);
+
+       // Matrix subtraction
+       Console.WriteLine("\nMatrix Subtraction:");
+       int[,] difference = SubtractMatrices(matrix1, matrix2);
+       DisplayMatrix(difference);
+
+       // Matrix multiplication
+       Console.WriteLine("\nMatrix Multiplication:");
+       int[,] product = MultiplyMatrices(matrix1, matrix2);
+       DisplayMatrix(product);
+
+       // Matrix transpose
+       Console.WriteLine("\nMatrix Transpose (Matrix 1):");
+       int[,] transposeMatrix1 = TransposeMatrix(matrix1);
+       DisplayMatrix(transposeMatrix1);
+
+       // Determinant of a 2x2 matrix
+       Console.WriteLine("\nDeterminant of 2x2 Matrix:");
+       int[,] matrix2x2 = { { 2, 3 }, { 1, 4 } };
+       Console.WriteLine("Determinant: " + CalculateDeterminant(matrix2x2));
+
+       // Determinant of a 3x3 matrix
+       Console.WriteLine("\nDeterminant of 3x3 Matrix:");
+       Console.WriteLine("Determinant: " + CalculateDeterminant(matrix1));
+
+       // Inverse of a 3x3 matrix (if it exists)
+       Console.WriteLine("\nInverse of 3x3 Matrix:");
+       double[,] inverseMatrix1 = InverseMatrix(matrix1);
+       if (inverseMatrix1 != null)
+       {
+           DisplayMatrix(inverseMatrix1);
+       }
+       else
+       {
+           Console.WriteLine("Inverse does not exist (determinant is 0).");
+       }
+   }
+
+   // Method to create a random matrix
+   public static int[,] CreateRandomMatrix(int rows, int cols)
+   {
+       Random rand = new Random();
+       int[,] matrix = new int[rows, cols];
+       for (int i = 0; i < rows; i++)
+       {
+           for (int j = 0; j < cols; j++)
+           {
+               matrix[i, j] = rand.Next(1, 10); // Random numbers between 1 and 9
+           }
+       }
+       return matrix;
+   }
+
+   // Method to display a matrix
+   public static void DisplayMatrix(int[,] matrix)
+   {
+       int rows = matrix.GetLength(0);
+       int cols = matrix.GetLength(1);
+       for (int i = 0; i < rows; i++)
+       {
+           for (int j = 0; j < cols; j++)
+           {
+               Console.Write(matrix[i, j] + "\t");
+           }
+           Console.WriteLine();
+       }
+   }
+
+   // Method to add two matrices
+   public static int[,] AddMatrices(int[,] matrix1, int[,] matrix2)
+   {
+       int rows = matrix1.GetLength(0);
+       int cols = matrix1.GetLength(1);
+       int[,] result = new int[rows, cols];
+       for (int i = 0; i < rows; i++)
+       {
+           for (int j = 0; j < cols; j++)
+           {
+               result[i, j] = matrix1[i, j] + matrix2[i, j];
+           }
+       }
+       return result;
+   }
+
+   // Method to subtract two matrices
+   public static int[,] SubtractMatrices(int[,] matrix1, int[,] matrix2)
+   {
+       int rows = matrix1.GetLength(0);
+       int cols = matrix1.GetLength(1);
+       int[,] result = new int[rows, cols];
+       for (int i = 0; i < rows; i++)
+       {
+           for (int j = 0; j < cols; j++)
+           {
+               result[i, j] = matrix1[i, j] - matrix2[i, j];
+           }
+       }
+       return result;
+   }
+
+   // Method to multiply two matrices
+   public static int[,] MultiplyMatrices(int[,] matrix1, int[,] matrix2)
+   {
+       int rows = matrix1.GetLength(0);
+       int cols = matrix2.GetLength(1);
+       int common = matrix1.GetLength(1);
+       int[,] result = new int[rows, cols];
+
+       for (int i = 0; i < rows; i++)
+       {
+           for (int j = 0; j < cols; j++)
+           {
+               result[i, j] = 0;
+               for (int k = 0; k < common; k++)
+               {
+                   result[i, j] += matrix1[i, k] * matrix2[k, j];
+               }
+           }
+       }
+       return result;
+   }
+
+   // Method to find the transpose of a matrix
+   public static int[,] TransposeMatrix(int[,] matrix)
+   {
+       int rows = matrix.GetLength(0);
+       int cols = matrix.GetLength(1);
+       int[,] transposed = new int[cols, rows];
+
+       for (int i = 0; i < rows; i++)
+       {
+           for (int j = 0; j < cols; j++)
+           {
+               transposed[j, i] = matrix[i, j];
+           }
+       }
+       return transposed;
+   }
+
+   // Method to calculate the determinant of a 2x2 matrix
+   public static int CalculateDeterminant(int[,] matrix)
+   {
+       if (matrix.GetLength(0) == 2 && matrix.GetLength(1) == 2)
+       {
+           return matrix[0, 0] * matrix[1, 1] - matrix[0, 1] * matrix[1, 0];
+       }
+       else
+       {
+           throw new Exception("Matrix must be 2x2 to calculate determinant.");
+       }
+   }
+
+   // Method to calculate the determinant of a 3x3 matrix
+   public static int CalculateDeterminant3x3(int[,] matrix)
+   {
+       if (matrix.GetLength(0) == 3 && matrix.GetLength(1) == 3)
+       {
+           return matrix[0, 0] * (matrix[1, 1] * matrix[2, 2] - matrix[1, 2] * matrix[2, 1]) -
+                  matrix[0, 1] * (matrix[1, 0] * matrix[2, 2] - matrix[1, 2] * matrix[2, 0]) +
+                  matrix[0, 2] * (matrix[1, 0] * matrix[2, 1] - matrix[1, 1] * matrix[2, 0]);
+       }
+       else
+       {
+           throw new Exception("Matrix must be 3x3 to calculate determinant.");
+       }
+   }
+
+   // Method to find the inverse of a 3x3 matrix (if determinant is non-zero)
+   public static double[,] InverseMatrix(int[,] matrix)
+   {
+       int determinant = CalculateDeterminant3x3(matrix);
+
+       if (determinant == 0)
+       {
+           return null; // No inverse exists if determinant is 0
+       }
+
+       double[,] adjoint = new double[3, 3];
+       adjoint[0, 0] = matrix[1, 1] * matrix[2, 2] - matrix[1, 2] * matrix[2, 1];
+       adjoint[0, 1] = matrix[0, 2] * matrix[2, 1] - matrix[0, 1] * matrix[2, 2];
+       adjoint[0, 2] = matrix[0, 1] * matrix[1, 2] - matrix[0, 2] * matrix[1, 1];
+       adjoint[1, 0] = matrix[1, 2] * matrix[2, 0] - matrix[1, 0] * matrix[2, 2];
+       adjoint[1, 1] = matrix[0, 0] * matrix[2, 2] - matrix[0, 2] * matrix[2, 0];
+       adjoint[1, 2] = matrix[0, 2] * matrix[1, 0] - matrix[0, 0] * matrix[1, 2];
+       adjoint[2, 0] = matrix[1, 0] * matrix[2, 1] - matrix[1, 1] * matrix[2, 0];
+       adjoint[2, 1] = matrix[0, 1] * matrix[2, 0] - matrix[0, 0] * matrix[2, 1];
+       adjoint[2, 2] = matrix[0, 0] * matrix[1, 1] - matrix[0, 1] * matrix[1, 0];
+
+       // Calculate the inverse by dividing adjoint by the determinant
+       double[,] inverse = new double[3, 3];
+       for (int i = 0; i < 3; i++)
+       {
+           for (int j = 0; j < 3; j++)
+           {
+               inverse[i, j] = adjoint[i, j] / determinant;
+           }
+       }
+
+       return inverse;
+   }
+}

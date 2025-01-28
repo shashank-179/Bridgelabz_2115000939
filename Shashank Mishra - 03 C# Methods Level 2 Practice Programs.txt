@@ -1,0 +1,1008 @@
+﻿Best Programming Practices in C#
+1. Use meaningful variable and method names.
+2. Follow PascalCase for class names and method names.
+3. Follow camelCase for variable names.
+4. Properly structure code with clear comments and modular methods. 
+Sample Program 1: Create a program to find the sum of all the digits of a number given by a user using an array and display the sum.
+1. Use Math.random() and get a 4-digit random integer number
+2. Write a method to count digits in the number 
+3. Write a method to return an array of digits from a given number. 
+4. Write a method to Find the sum of the digits of the number in the array
+5. Finally, display the sum of the digits of the number
+
+
+using System;
+ 
+class SumOfDigits
+{
+        // Generate a 4-digit random number
+        public int Get4DigitRandomNumber()
+        {
+            Random random = new Random();
+            return random.Next(1000, 10000); // Generates a random number between 1000 and 9999
+        }
+ 
+        // Count the number of digits in a given number
+        public int CountDigits(int number)
+        {
+            int count = 0;
+            while (number > 0)
+            {
+                count++;
+                number /= 10;
+            }
+            return count;
+        }
+ 
+        // Extract digits from the number and store them in an array
+        public int[] GetDigits(int number, int count)
+        {
+            int[] digits = new int[count];
+            for (int i = count - 1; i >= 0; i--)
+            {
+                digits[i] = number % 10;
+                number /= 10;
+            }
+            return digits;
+        }
+ 
+        // Calculate the sum of the digits in the array
+        public int SumArray(int[] array)
+        {
+            int sum = 0;
+            foreach (int digit in array)
+            {
+                sum += digit;
+            }
+            return sum;
+        }
+ 
+        static void Main(string[] args)
+        {
+            // Instantiate the SumOfDigits class
+            SumOfDigits sumOfDigits = new SumOfDigits();
+ 
+            // Generate a 4-digit random number
+            int number = sumOfDigits.Get4DigitRandomNumber();
+            Console.WriteLine("The Random Number is: " + number);
+ 
+            // Count the number of digits
+            int count = sumOfDigits.CountDigits(number);
+            Console.WriteLine("The Count of Digits is: " + count);
+ 
+            // Extract digits into an array
+            int[] digits = sumOfDigits.GetDigits(number, count);
+ 
+            // Calculate the sum of the digits
+            int sum = sumOfDigits.SumArray(digits);
+ 
+            // Display the sum of the digits
+            Console.WriteLine("Sum of Digits: " + sum);
+        }
+}
+
+ 
+ 
+
+
+Level 2 Practice Programs
+1.Create a program to find the factors of a number taken as user input, store the factors in an array and display the factors. Also find the sum, sum of square of factors and product of the factors and display the results
+Hint => 
+1. Take the input for a number
+2. Write a static Method to find the factors of the number and save them in an array and return the array. 
+3. To find factors and save to array will have two loops. The first loop to find the count and initialize the array with the count. And the second loop save the factors into the array
+4. Write a method to find the sum of the factors using factors array
+5. Write a method to find the product of the factors using factors array
+6. Write a method to find the sum of square of the factors using Math.Pow() method
+using System;
+
+class FactorsProgram
+{
+   // Method to find the factors of a number and return them as an array
+   public static int[] FindFactors(int number)
+   {
+       // First loop: Find the count of factors
+       int count = 0;
+       for (int i = 1; i <= number; i++)
+       {
+           if (number % i == 0)
+               count++;
+       }
+
+       // Initialize the array with the count of factors
+       int[] factors = new int[count];
+       int index = 0;
+
+       // Second loop: Save the factors into the array
+       for (int i = 1; i <= number; i++)
+       {
+           if (number % i == 0)
+           {
+               factors[index] = i;
+               index++;
+           }
+       }
+       return factors;
+   }
+
+   // Method to find the sum of the factors
+   public static int FindSumOfFactors(int[] factors)
+   {
+       int sum = 0;
+       foreach (int factor in factors)
+       {
+           sum += factor;
+       }
+       return sum;
+   }
+
+   // Method to find the product of the factors
+   public static int FindProductOfFactors(int[] factors)
+   {
+       int product = 1;
+       foreach (int factor in factors)
+       {
+           product *= factor;
+       }
+       return product;
+   }
+
+   // Method to find the sum of the squares of the factors
+   public static double FindSumOfSquaresOfFactors(int[] factors)
+   {
+       double sumOfSquares = 0;
+       foreach (int factor in factors)
+       {
+           sumOfSquares += Math.Pow(factor, 2);
+       }
+       return sumOfSquares;
+   }
+
+   // Main method
+   static void Main(string[] args)
+   {
+       Console.Write("Enter a number: ");
+       int number = Convert.ToInt32(Console.ReadLine());
+
+       // Get factors of the number
+       int[] factors = FindFactors(number);
+
+       // Display the factors
+       Console.WriteLine("Factors of the number:");
+       foreach (int factor in factors)
+       {
+           Console.Write(factor + " ");
+       }
+       Console.WriteLine();
+
+       // Find and display the sum of the factors
+       int sumOfFactors = FindSumOfFactors(factors);
+       Console.WriteLine($"Sum of factors: {sumOfFactors}");
+
+       // Find and display the product of the factors
+       int productOfFactors = FindProductOfFactors(factors);
+       Console.WriteLine($"Product of factors: {productOfFactors}");
+
+       // Find and display the sum of squares of the factors
+       double sumOfSquaresOfFactors = FindSumOfSquaresOfFactors(factors);
+       Console.WriteLine($"Sum of squares of factors: {sumOfSquaresOfFactors}");
+   }
+}
+	
+
+
+
+2.               Write a program to find the sum of n natural numbers using recursive method and compare the result with the formulae n*(n+1)/2 and show the result from both computations is correct. 
+Hint => 
+a.               Take the user input number and check whether it's a Natural number, if not exit
+b.               Write a Method to find the sum of n natural numbers using recursion
+c.                Write a Method to find the sum of n natural numbers using the formulae  
+             n*(n+1)/2 
+d.               Compare the two results and print the result
+
+
+using System;
+
+class SumOfNaturalNumbers
+{
+   // Method to calculate the sum of n natural numbers using recursion
+   public static int SumUsingRecursion(int n)
+   {
+       if (n == 1) 
+           return 1; // Base case: sum of the first natural number is 1
+       return n + SumUsingRecursion(n - 1); // Recursive case
+   }
+
+   // Method to calculate the sum of n natural numbers using the formula
+   public static int SumUsingFormula(int n)
+   {
+       return n * (n + 1) / 2;
+   }
+
+   // Main method
+   static void Main(string[] args)
+   {
+       Console.Write("Enter a natural number: ");
+       if (int.TryParse(Console.ReadLine(), out int n) && n > 0)
+       {
+           // Compute sum using recursion
+           int sumRecursion = SumUsingRecursion(n);
+
+           // Compute sum using formula
+           int sumFormula = SumUsingFormula(n);
+
+           // Print both results
+           Console.WriteLine($"Sum of the first {n} natural numbers using recursion: {sumRecursion}");
+           Console.WriteLine($"Sum of the first {n} natural numbers using formula: {sumFormula}");
+
+           // Compare the results
+           if (sumRecursion == sumFormula)
+           {
+               Console.WriteLine("Both computations are correct and give the same result.");
+           }
+           else
+           {
+               Console.WriteLine("There is a discrepancy between the two computations.");
+           }
+       }
+       else
+       {
+           Console.WriteLine("Please enter a valid natural number (greater than 0).");
+       }
+   }
+}
+
+	
+
+
+
+3.               Write a program that takes a year as input and outputs the Year is a Leap Year or not 
+Hint => 
+a.               The LeapYear program only works for year >= 1582, corresponding to a year in the 
+                  Gregorian calendar. 
+b.               Also Leap year is divisible by 4 and not divisible by 100 or divisible by 400
+c.                Write a method to check for Leap Year using the conditions a and b
+
+
+using System;
+
+class LeapYearProgram
+{
+   // Method to check if a year is a leap year
+   public static bool IsLeapYear(int year)
+   {
+       // Ensure the year is in the Gregorian calendar
+       if (year < 1582)
+           return false;
+
+       // Check leap year conditions
+       if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0)
+           return true;
+
+       return false;
+   }
+
+   // Main method
+   static void Main(string[] args)
+   {
+       Console.Write("Enter a year (>= 1582): ");
+       if (int.TryParse(Console.ReadLine(), out int year) && year >= 1582)
+       {
+           // Check if the year is a leap year
+           if (IsLeapYear(year))
+           {
+               Console.WriteLine($"{year} is a Leap Year.");
+           }
+           else
+           {
+               Console.WriteLine($"{year} is NOT a Leap Year.");
+           }
+       }
+       else
+       {
+           Console.WriteLine("Please enter a valid year (>= 1582).");
+       }
+   }
+}
+	
+
+
+
+4.               Extend or Create a UnitConvertor utility class similar to the one shown in the notes to do the following.  Please define static methods for all the UnitConvertor class methods. E.g. 
+public static double ConvertKmToMiles(double km) => 
+a.               Method To convert kilometers to miles and return the value. Use the following code  double km2miles = 0.621371;
+b.               Method to convert miles to kilometers and return the value. Use the following code  double miles2km = 1.60934;
+c.                Method to convert meters to feet and return the value. Use the following code to convert  double meters2feet = 3.28084;
+d.               Method to convert feet to meters and return the value. Use the following code to convert  double feet2meters = 0.3048;
+ using System;
+
+class UnitConverter
+{
+   // Method to convert kilometers to miles
+   public static double ConvertKmToMiles(double km)
+   {
+       double km2miles = 0.621371;
+       return km * km2miles;
+   }
+
+   // Method to convert miles to kilometers
+   public static double ConvertMilesToKm(double miles)
+   {
+       double miles2km = 1.60934;
+       return miles * miles2km;
+   }
+
+   // Method to convert meters to feet
+   public static double ConvertMetersToFeet(double meters)
+   {
+       double meters2feet = 3.28084;
+       return meters * meters2feet;
+   }
+
+   // Method to convert feet to meters
+   public static double ConvertFeetToMeters(double feet)
+   {
+       double feet2meters = 0.3048;
+       return feet * feet2meters;
+   }
+
+   // Main method for testing
+   static void Main(string[] args)
+   {
+       // Test conversions
+       Console.WriteLine("Unit Conversion Utility:");
+
+       // Kilometers to Miles
+       Console.Write("Enter kilometers to convert to miles: ");
+       double km = Convert.ToDouble(Console.ReadLine());
+       Console.WriteLine($"{km} kilometers is {ConvertKmToMiles(km):F2} miles");
+
+       // Miles to Kilometers
+       Console.Write("Enter miles to convert to kilometers: ");
+       double miles = Convert.ToDouble(Console.ReadLine());
+       Console.WriteLine($"{miles} miles is {ConvertMilesToKm(miles):F2} kilometers");
+
+       // Meters to Feet
+       Console.Write("Enter meters to convert to feet: ");
+       double meters = Convert.ToDouble(Console.ReadLine());
+       Console.WriteLine($"{meters} meters is {ConvertMetersToFeet(meters):F2} feet");
+
+       // Feet to Meters
+       Console.Write("Enter feet to convert to meters: ");
+       double feet = Convert.ToDouble(Console.ReadLine());
+       Console.WriteLine($"{feet} feet is {ConvertFeetToMeters(feet):F2} meters");
+   }
+}
+	
+
+
+
+5.               Extend or Create a UnitConvertor utility class similar to the one shown in the notes to do the following.  Please define static methods for all the UnitConvertor class methods. E.g. 
+public static double ConvertYardsToFeet(double yards) => 
+a.               Method to convert yards to feet and return the value. Use following code to convert  double yards2feet = 3;
+b.               Method to convert feet to yards and return the value. Use following code to convert  double feet2yards = 0.333333;
+c.                Method to convert meters to inches and return the value. Use following code to convert  double meters2inches = 39.3701;
+d.               Method to convert inches to meters and return the value. Use following code to convert  double inches2meters = 0.0254;
+e.               Method to convert inches to centimeters and return the value. Use the following code  double inches2cm = 2.54;
+using System;
+
+class UnitConverter
+{
+   // Method to convert yards to feet
+   public static double ConvertYardsToFeet(double yards)
+   {
+       double yards2feet = 3;
+       return yards * yards2feet;
+   }
+
+   // Method to convert feet to yards
+   public static double ConvertFeetToYards(double feet)
+   {
+       double feet2yards = 0.333333;
+       return feet * feet2yards;
+   }
+
+   // Method to convert meters to inches
+   public static double ConvertMetersToInches(double meters)
+   {
+       double meters2inches = 39.3701;
+       return meters * meters2inches;
+   }
+
+   // Method to convert inches to meters
+   public static double ConvertInchesToMeters(double inches)
+   {
+       double inches2meters = 0.0254;
+       return inches * inches2meters;
+   }
+
+   // Method to convert inches to centimeters
+   public static double ConvertInchesToCentimeters(double inches)
+   {
+       double inches2cm = 2.54;
+       return inches * inches2cm;
+   }
+
+   // Main method for testing
+   static void Main(string[] args)
+   {
+       Console.WriteLine("Unit Conversion Utility:");
+
+       // Yards to Feet
+       Console.Write("Enter yards to convert to feet: ");
+       double yards = Convert.ToDouble(Console.ReadLine());
+       Console.WriteLine($"{yards} yards is {ConvertYardsToFeet(yards):F2} feet");
+
+       // Feet to Yards
+       Console.Write("Enter feet to convert to yards: ");
+       double feet = Convert.ToDouble(Console.ReadLine());
+       Console.WriteLine($"{feet} feet is {ConvertFeetToYards(feet):F2} yards");
+
+       // Meters to Inches
+       Console.Write("Enter meters to convert to inches: ");
+       double meters = Convert.ToDouble(Console.ReadLine());
+       Console.WriteLine($"{meters} meters is {ConvertMetersToInches(meters):F2} inches");
+
+       // Inches to Meters
+       Console.Write("Enter inches to convert to meters: ");
+       double inches = Convert.ToDouble(Console.ReadLine());
+       Console.WriteLine($"{inches} inches is {ConvertInchesToMeters(inches):F2} meters");
+
+       // Inches to Centimeters
+       Console.Write("Enter inches to convert to centimeters: ");
+       double inchesToCm = Convert.ToDouble(Console.ReadLine());
+       Console.WriteLine($"{inchesToCm} inches is {ConvertInchesToCentimeters(inchesToCm):F2} centimeters");
+   }
+}
+
+	
+
+ 
+6.               Extend or Create a UnitConvertor utility class similar to the one shown in the notes to do the following.  Please define static methods for all the UnitConvertor class methods. E.g. 
+public static double convertFarhenheitToCelsius(double farhenheit) => 
+a.               Method to convert Fahrenheit to Celsius and return the value. Use the following code  double farhenheit2celsius = (farhenheit - 32) * 5 / 9;
+b.               Method to convert Celsius to Fahrenheit and return the value. Use the following code  double celsius2farhenheit = (celsius * 9 / 5) + 32;
+c.                Method to convert pounds to kilograms and return the value. Use the following code  double pounds2kilograms = 0.453592;
+d.               Method to convert kilograms to pounds and return the value. Use the following code  double kilograms2pounds = 2.20462; 
+e.               Method to convert gallons to liters and return the value. Use following code to convert   double gallons2liters = 3.78541; 
+f.                 Method to convert liters to gallons and return the value. Use following code to convert  double liters2gallons = 0.264172; 
+
+
+using System;
+
+class UnitConverter
+{
+   // Method to convert Fahrenheit to Celsius
+   public static double ConvertFahrenheitToCelsius(double fahrenheit)
+   {
+       return (fahrenheit - 32) * 5 / 9;
+   }
+
+   // Method to convert Celsius to Fahrenheit
+   public static double ConvertCelsiusToFahrenheit(double celsius)
+   {
+       return (celsius * 9 / 5) + 32;
+   }
+
+   // Method to convert pounds to kilograms
+   public static double ConvertPoundsToKilograms(double pounds)
+   {
+       double pounds2kilograms = 0.453592;
+       return pounds * pounds2kilograms;
+   }
+
+   // Method to convert kilograms to pounds
+   public static double ConvertKilogramsToPounds(double kilograms)
+   {
+       double kilograms2pounds = 2.20462;
+       return kilograms * kilograms2pounds;
+   }
+
+   // Method to convert gallons to liters
+   public static double ConvertGallonsToLiters(double gallons)
+   {
+       double gallons2liters = 3.78541;
+       return gallons * gallons2liters;
+   }
+
+   // Method to convert liters to gallons
+   public static double ConvertLitersToGallons(double liters)
+   {
+       double liters2gallons = 0.264172;
+       return liters * liters2gallons;
+   }
+
+   // Main method for testing
+   static void Main(string[] args)
+   {
+       Console.WriteLine("Unit Conversion Utility:");
+
+       // Fahrenheit to Celsius
+       Console.Write("Enter Fahrenheit to convert to Celsius: ");
+       double fahrenheit = Convert.ToDouble(Console.ReadLine());
+       Console.WriteLine($"{fahrenheit}°F is {ConvertFahrenheitToCelsius(fahrenheit):F2}°C");
+
+       // Celsius to Fahrenheit
+       Console.Write("Enter Celsius to convert to Fahrenheit: ");
+       double celsius = Convert.ToDouble(Console.ReadLine());
+       Console.WriteLine($"{celsius}°C is {ConvertCelsiusToFahrenheit(celsius):F2}°F");
+
+       // Pounds to Kilograms
+       Console.Write("Enter pounds to convert to kilograms: ");
+       double pounds = Convert.ToDouble(Console.ReadLine());
+       Console.WriteLine($"{pounds} pounds is {ConvertPoundsToKilograms(pounds):F2} kilograms");
+
+       // Kilograms to Pounds
+       Console.Write("Enter kilograms to convert to pounds: ");
+       double kilograms = Convert.ToDouble(Console.ReadLine());
+       Console.WriteLine($"{kilograms} kilograms is {ConvertKilogramsToPounds(kilograms):F2} pounds");
+
+       // Gallons to Liters
+       Console.Write("Enter gallons to convert to liters: ");
+       double gallons = Convert.ToDouble(Console.ReadLine());
+       Console.WriteLine($"{gallons} gallons is {ConvertGallonsToLiters(gallons):F2} liters");
+
+       // Liters to Gallons
+       Console.Write("Enter liters to convert to gallons: ");
+       double liters = Convert.ToDouble(Console.ReadLine());
+       Console.WriteLine($"{liters} liters is {ConvertLitersToGallons(liters):F2} gallons");
+   }
+}
+	
+
+
+
+ 
+7.            Write a program to take user input for the age of all 10 students in a class and check whether the student can vote depending on his/her age is greater or equal to 18.
+Hint => 
+a.               Create a class public class StudentVoteChecker and define a method public boolean CanStudentVote(int age) which takes in age as a parameter and returns true or false
+b.               Inside the method firstly validate the age for a negative number, if a negative return is false cannot vote. For valid age check for age is 18 or above return true; else return false;
+c.                In the main function define an array of 10 integer elements, loop through the array by take user input for the student's age, call CanStudentVote() and display the result
+using System;
+
+public class StudentVoteChecker
+{
+   // Method to check if a student can vote
+   public static bool CanStudentVote(int age)
+   {
+       // Validate age for negative numbers
+       if (age < 0)
+       {
+           Console.WriteLine("Invalid age! Cannot vote");
+           return false;
+       }
+
+       // Check if age is 18 or above
+       if (age >= 18)
+       {
+           return true;
+       }
+       else
+       {
+           return false;
+       }
+   }
+
+   // Main method
+   public static void Main(string[] args)
+   {
+       // Define an array to store the ages of 10 students
+       int[] studentAges = new int[10];
+
+       // Loop to take user input for each student's age
+       for (int i = 0; i < 10; i++)
+       {
+           Console.Write($"Enter the age of student {i + 1}: ");
+           studentAges[i] = Convert.ToInt32(Console.ReadLine());
+       }
+
+       Console.WriteLine("\nVote Eligibility Results:");
+       // Loop through the array to check vote eligibility
+       for (int i = 0; i < 10; i++)
+       {
+           bool canVote = CanStudentVote(studentAges[i]);
+           if (canVote)
+           {
+               Console.WriteLine($"Student {i + 1} (Age: {studentAges[i]}) can vote.");
+           }
+           else
+           {
+               Console.WriteLine($"Student {i + 1} (Age: {studentAges[i]}) cannot vote.");
+           }
+       }
+   }
+}
+
+	
+
+
+
+8.               Create a program to find the youngest friends among 3 Amar, Akbar and Anthony based on their ages and tallest among the friends based on their heights and display it
+Hint => 
+a.               Take user input for age and height for the 3 friends and store it in two arrays each to store the values for age and height of the 3 friends
+b.               Write a Method to find the youngest of the 3 friends
+c.                Write a Method to find the tallest of the 3 friends
+using System;
+
+class FriendsComparison
+{
+   static void Main(string[] args)
+   {
+       string[] names = { "Amar", "Akbar", "Anthony" };
+       int[] ages = new int[3];
+       double[] heights = new double[3];
+
+       // Taking user input for ages and heights
+       for (int i = 0; i < 3; i++)
+       {
+           Console.Write($"Enter age of {names[i]}: ");
+           ages[i] = int.Parse(Console.ReadLine());
+
+           Console.Write($"Enter height (in cm) of {names[i]}: ");
+           heights[i] = double.Parse(Console.ReadLine());
+       }
+
+       // Finding and displaying the youngest friend
+       string youngest = FindYoungest(names, ages);
+       Console.WriteLine($"The youngest friend is: {youngest}");
+
+       // Finding and displaying the tallest friend
+       string tallest = FindTallest(names, heights);
+       Console.WriteLine($"The tallest friend is: {tallest}");
+   }
+
+   // Method to find the youngest friend
+   static string FindYoungest(string[] names, int[] ages)
+   {
+       int minAge = ages[0];
+       string youngest = names[0];
+
+       for (int i = 1; i < ages.Length; i++)
+       {
+           if (ages[i] < minAge)
+           {
+               minAge = ages[i];
+               youngest = names[i];
+           }
+       }
+       return youngest;
+   }
+
+   // Method to find the tallest friend
+   static string FindTallest(string[] names, double[] heights)
+   {
+       double maxHeight = heights[0];
+       string tallest = names[0];
+
+       for (int i = 1; i < heights.Length; i++)
+       {
+           if (heights[i] > maxHeight)
+           {
+               maxHeight = heights[i];
+               tallest = names[i];
+           }
+       }
+       return tallest;
+   }
+}
+	
+
+
+
+ 
+9.               Write a program to take user input for 5 numbers and check whether a number is positive or negative. Further for positive numbers check if the number is even or odd. Finally compare the first and last elements of the array and display if they are equal, greater, or less
+Hint => 
+a.               Write a Method to Check whether the number is positive or negative
+b.               Write a Method to check whether the number is even or odd
+c.                Write a Method to compare two numbers and return 1 if number1 > number2 or 0 if both are equal or -1 if number1 < number2 
+d.               In the main program, Loop through the array using the length call the method isPositive() and if positive call method isEven() and print accordingly 
+e.               If the number is negative, print negative. 
+f.                 Finally compare the first and last element of the array by calling the method compare() and display if they are equal, greater, or less
+using System;
+
+class NumberAnalysis
+{
+   static void Main(string[] args)
+   {
+       int[] numbers = new int[5];
+
+       // Taking user input for 5 numbers
+       for (int i = 0; i < 5; i++)
+       {
+           Console.Write($"Enter number {i + 1}: ");
+           numbers[i] = int.Parse(Console.ReadLine());
+       }
+
+       // Loop through the array and analyze each number
+       for (int i = 0; i < numbers.Length; i++)
+       {
+           if (IsPositive(numbers[i]))
+           {
+               Console.WriteLine($"{numbers[i]} is positive.");
+               if (IsEven(numbers[i]))
+               {
+                   Console.WriteLine($"{numbers[i]} is even.");
+               }
+               else
+               {
+                   Console.WriteLine($"{numbers[i]} is odd.");
+               }
+           }
+           else
+           {
+               Console.WriteLine($"{numbers[i]} is negative.");
+           }
+       }
+
+       // Compare the first and last elements of the array
+       int comparisonResult = Compare(numbers[0], numbers[numbers.Length - 1]);
+       if (comparisonResult > 0)
+       {
+           Console.WriteLine("The first number is greater than the last number.");
+       }
+       else if (comparisonResult == 0)
+       {
+           Console.WriteLine("The first number is equal to the last number.");
+       }
+       else
+       {
+           Console.WriteLine("The first number is less than the last number.");
+       }
+   }
+
+   // Method to check if a number is positive
+   static bool IsPositive(int number)
+   {
+       return number >= 0;
+   }
+
+   // Method to check if a number is even
+   static bool IsEven(int number)
+   {
+       return number % 2 == 0;
+   }
+
+   // Method to compare two numbers
+   static int Compare(int number1, int number2)
+   {
+       if (number1 > number2)
+       {
+           return 1;
+       }
+       else if (number1 == number2)
+       {
+           return 0;
+       }
+       else
+       {
+           return -1;
+       }
+   }
+}
+	
+
+
+
+ 
+10.            An organization took up the exercise to find the Body Mass Index (BMI) of all the persons in the team of 10 members. For this create a program to find the BMI and display the height, weight, BMI and status of each individual
+Hint => 
+a.               Take user input in double for the weight (in kg) of the person and height (in cm) for the person and store it in the corresponding 2D array of 10 rows and 3 columns. The First Column storing the weight, the second column storing the height in cm and the third column is the BMI
+b.               Create a Method to find the BMI of every person and populate the array. Use the formula BMI = weight / (height * height). Note unit is kg/m^2. For this convert cm to meter
+c.                Create a Method to determine the BMI status using the logic shown in the figure below. and return the array of all the persons BMI Status. 
+             
+using System;
+
+class BMIProgram
+{
+   static void Main(string[] args)
+   {
+       double[,] data = new double[10, 3]; // Array to store weight, height, and BMI
+       string[] statuses = new string[10];
+
+       // Taking user input for weight and height
+       for (int i = 0; i < 10; i++)
+       {
+           Console.Write($"Enter weight (in kg) of person {i + 1}: ");
+           data[i, 0] = double.Parse(Console.ReadLine());
+
+           Console.Write($"Enter height (in cm) of person {i + 1}: ");
+           data[i, 1] = double.Parse(Console.ReadLine());
+       }
+
+       // Calculate BMI and populate the array
+       for (int i = 0; i < 10; i++)
+       {
+           data[i, 2] = CalculateBMI(data[i, 0], data[i, 1]);
+       }
+
+       // Determine BMI statuses
+       for (int i = 0; i < 10; i++)
+       {
+           statuses[i] = GetBMIStatus(data[i, 2]);
+       }
+
+       // Display the results
+       Console.WriteLine("\nResults:");
+       Console.WriteLine("Weight (kg)\tHeight (cm)\tBMI\tStatus");
+       for (int i = 0; i < 10; i++)
+       {
+           Console.WriteLine($"{data[i, 0]}\t\t{data[i, 1]}\t\t{data[i, 2]:F2}\t{statuses[i]}");
+       }
+   }
+
+   // Method to calculate BMI
+   static double CalculateBMI(double weight, double heightInCm)
+   {
+       double heightInMeters = heightInCm / 100;
+       return weight / (heightInMeters * heightInMeters);
+   }
+
+   // Method to determine BMI status
+   static string GetBMIStatus(double bmi)
+   {
+       if (bmi < 18.5)
+       {
+           return "Underweight";
+       }
+       else if (bmi >= 18.5 && bmi < 24.9)
+       {
+           return "Normal weight";
+       }
+       else if (bmi >= 25 && bmi < 29.9)
+       {
+           return "Overweight";
+       }
+       else
+       {
+           return "Obesity";
+       }
+   }
+}
+	
+
+
+
+11.            Write a program Quadratic to find the roots of the equation ax2+ bx + c. Use Math functions Math.pow() and Math.sqrt()
+Hint => 
+a.               Take a, b, and c as input values to find the roots of x.
+b.               The roots are computed using the following formulae
+delta = b2+ 4*a*c
+If delta is positive the find the two roots using formulae 
+root1 of x = (-b + delta)/(2*a) 
+root1 of x = (-b - delta)/(2*a)
+If delta is zero then there is only one root of x  
+root of x = -b/(2*a)
+If delta is negative return empty array or nothing 
+c.  Write a Method to find find the roots of a quadratic equation and return the roots
+
+
+using System;
+
+class Quadratic
+{
+   static void Main(string[] args)
+   {
+       Console.Write("Enter the coefficient a: ");
+       double a = double.Parse(Console.ReadLine());
+
+       Console.Write("Enter the coefficient b: ");
+       double b = double.Parse(Console.ReadLine());
+
+       Console.Write("Enter the coefficient c: ");
+       double c = double.Parse(Console.ReadLine());
+
+       double[] roots = FindRoots(a, b, c);
+
+       if (roots.Length == 0)
+       {
+           Console.WriteLine("The equation has no real roots.");
+       }
+       else if (roots.Length == 1)
+       {
+           Console.WriteLine($"The equation has one root: {roots[0]:F2}");
+       }
+       else
+       {
+           Console.WriteLine($"The equation has two roots: {roots[0]:F2} and {roots[1]:F2}");
+       }
+   }
+
+   // Method to find the roots of a quadratic equation
+   static double[] FindRoots(double a, double b, double c)
+   {
+       double delta = Math.Pow(b, 2) - 4 * a * c;
+
+       if (delta < 0)
+       {
+           return new double[0]; // No real roots
+       }
+       else if (delta == 0)
+       {
+           double root = -b / (2 * a);
+           return new double[] { root }; // One real root
+       }
+       else
+       {
+           double sqrtDelta = Math.Sqrt(delta);
+           double root1 = (-b + sqrtDelta) / (2 * a);
+           double root2 = (-b - sqrtDelta) / (2 * a);
+           return new double[] { root1, root2 }; // Two real roots
+       }
+   }
+}
+	
+
+
+
+ 
+12.            Write a program that generates five 4 digit random values and then finds their average value, and their minimum and maximum value. Use Math.Random(), Math.Min(), and Math.Max().
+Hint => 
+a.               Write a method that generates array of 4 digit random numbers given the size as a parameter as shown in the method signature 
+public int[] Generate4DigitRandomArray(int size)
+b.      Write a method to find average, min and max value of an array 
+public double[] FindAverageMinMax(int[] numbers) 
+
+
+using System;
+
+class RandomNumberAnalysis
+{
+   static void Main(string[] args)
+   {
+       int size = 5;
+       int[] randomNumbers = Generate4DigitRandomArray(size);
+
+       Console.WriteLine("Generated Random Numbers:");
+       foreach (int num in randomNumbers)
+       {
+           Console.WriteLine(num);
+       }
+
+       double[] results = FindAverageMinMax(randomNumbers);
+
+       Console.WriteLine($"\nAverage: {results[0]:F2}");
+       Console.WriteLine($"Minimum: {results[1]}");
+       Console.WriteLine($"Maximum: {results[2]}");
+   }
+
+   // Method to generate an array of 4-digit random numbers
+   public static int[] Generate4DigitRandomArray(int size)
+   {
+       Random random = new Random();
+       int[] numbers = new int[size];
+
+       for (int i = 0; i < size; i++)
+       {
+           numbers[i] = random.Next(1000, 10000); // Generate 4-digit random numbers
+       }
+
+       return numbers;
+   }
+
+   // Method to find average, minimum, and maximum values in an array
+   public static double[] FindAverageMinMax(int[] numbers)
+   {
+       int min = numbers[0];
+       int max = numbers[0];
+       int sum = 0;
+
+       foreach (int num in numbers)
+       {
+           if (num < min)
+           {
+               min = num;
+           }
+
+           if (num > max)
+           {
+               max = num;
+           }
+
+           sum += num;
+       }
+
+       double average = (double)sum / numbers.Length;
+
+       return new double[] { average, min, max };
+   }
+}
