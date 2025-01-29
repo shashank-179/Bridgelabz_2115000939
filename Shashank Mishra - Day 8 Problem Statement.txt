@@ -1,0 +1,518 @@
+﻿Strings - Handling strings and common string functions 
+Functions - parameter passing, return 
+1. Count Vowels and Consonants 
+Problem: 
+Write a C# program to count the number of vowels and consonants in a given string. 
+using System;
+
+class VowelConsonantCounter
+{
+   static void Main()
+   {
+       Console.Write("Enter a string: ");
+       string input = Console.ReadLine().ToLower(); // Convert to lowercase for easy comparison
+
+       int vowelCount = 0, consonantCount = 0;
+
+       foreach (char ch in input)
+       {
+           if (char.IsLetter(ch)) // Check if the character is a letter
+           {
+               if ("aeiou".Contains(ch))
+                   vowelCount++;
+               else
+                   consonantCount++;
+           }
+       }
+
+       Console.WriteLine($"Vowels: {vowelCount}");
+       Console.WriteLine($"Consonants: {consonantCount}");
+   }
+}
+	
+
+
+
+2. Reverse a String 
+Problem: 
+Write a C# program to reverse a given string without using any built-in reverse functions. 
+using System;
+
+class StringReverser
+{
+   static void Main()
+   {
+       Console.Write("Enter a string: ");
+       string input = Console.ReadLine();
+
+       string reversed = ReverseString(input);
+       Console.WriteLine($"Reversed string: {reversed}");
+   }
+
+   static string ReverseString(string str)
+   {
+       char[] charArray = new char[str.Length];
+
+       for (int i = 0, j = str.Length - 1; i < str.Length; i++, j--)
+       {
+           charArray[i] = str[j];
+       }
+
+       return new string(charArray);
+   }
+}
+	
+
+
+
+3. Palindrome String Check 
+Problem: 
+Write a C# program to check if a given string is a palindrome (a string that reads the same forward and backward). 
+
+
+using System;
+
+class PalindromeChecker
+{
+   static void Main()
+   {
+       Console.Write("Enter a string: ");
+       string input = Console.ReadLine();
+
+       bool isPalindrome = IsPalindrome(input);
+       Console.WriteLine(isPalindrome ? "The string is a palindrome." : "The string is not a palindrome.");
+   }
+
+   static bool IsPalindrome(string str)
+   {
+       int left = 0, right = str.Length - 1;
+
+       while (left < right)
+       {
+           if (str[left] != str[right])
+               return false;
+
+           left++;
+           right--;
+       }
+
+       return true;
+   }
+}
+	
+
+
+
+4. Remove Duplicates from a String 
+Problem: 
+Write a C# program to remove all duplicate characters from a given string and return the modified string. 
+using System;
+
+class RemoveDuplicates
+{
+   static void Main()
+   {
+       // Prompt the user to enter a string
+       Console.Write("Enter a string: ");
+       string input = Console.ReadLine(); // Read user input
+
+       // Call the method to remove duplicate characters and store the result
+       string result = RemoveDuplicateCharacters(input);
+
+       // Display the modified string without duplicates
+       Console.WriteLine($"String after removing duplicates: {result}");
+   }
+
+   public static string RemoveDuplicateCharacters(string str)
+   {
+       // Variable to store the unique characters
+       string uniqueChar = "";
+
+       // Iterate through each character in the input string
+       foreach (char ch in str)
+       {
+           // Check if the character is not already present in the result string
+           if (!uniqueChar.Contains(ch))
+           {
+               // Append the unique character to the result string
+               uniqueChar += ch;
+           }
+       }
+
+       // Return the modified string without duplicates
+       return uniqueChar;
+   }
+}
+	
+
+
+
+5. Find the Longest Word in a Sentence 
+Problem: 
+Write a C# program that takes a sentence as input and returns the longest word in the sentence. 
+
+
+using System;
+
+class LongestWordFinder
+{
+   static void Main()
+   {
+       Console.Write("Enter a sentence: ");
+       string input = Console.ReadLine();
+
+       string longestWord = FindLongestWord(input);
+       Console.WriteLine($"The longest word in the sentence is: {longestWord}");
+   }
+
+   static string FindLongestWord(string sentence)
+   {
+       // Splitting the sentence into words using spaces
+       string[] words = sentence.Split(new char[] { ' ', '.', ',', '!', '?' });
+       
+       string longest = "";
+       
+       foreach (string word in words)
+       {
+           // Check if the current word is longer than the longest stored word
+           if (word.Length > longest.Length)
+           {
+               longest = word;
+           }
+       }
+       
+       return longest;
+   }
+}
+	
+
+
+
+6. Find Substring Occurrences 
+Problem: 
+Write a C# program to count how many times a given substring occurs in a string.
+using System;
+
+class SubstringOccurrences
+{
+   static void Main()
+   {
+       // Taking input for main string
+       Console.Write("Enter the main string: ");
+       string mainString = Console.ReadLine();
+
+       // Taking input for substring to search
+       Console.Write("Enter the substring to find: ");
+       string subString = Console.ReadLine();
+
+       // Calling the method to count occurrences
+       int count = CountSubstringOccurrences(mainString, subString);
+       
+       // Displaying the result
+       Console.WriteLine($"The substring '{subString}' occurs {count} times in the given string.");
+   }
+
+   // Method to count occurrences of a substring
+   public static int CountSubstringOccurrences(string str, string subStr)
+   {
+       int count = 0;
+       int index = 0;
+
+       // Loop through the main string and find occurrences of the substring
+       while ((index = str.IndexOf(subStr, index)) != -1)
+       {
+           count++; // Increase the count when substring is found
+           index += subStr.Length; // Move index forward to avoid overlapping occurrences
+       }
+
+       return count;
+   }
+}
+	
+
+
+
+ 7. Toggle Case of Characters 
+Problem: 
+Write a C# program to toggle the case of each character in a given string. Convert uppercase letters to lowercase and vice versa.
+
+
+using System;
+
+class ToggleCaseString
+{
+   static void Main()
+   {
+       Console.Write("Enter a string: ");
+       string input = Console.ReadLine();
+
+       string toggledString = ToggleCase(input);
+       Console.WriteLine($"String after toggling case: {toggledString}");
+   }
+
+   // Method to toggle case of each character in the string
+   public static string ToggleCase(string str)
+   {
+       char[] charArray = str.ToCharArray(); // Convert string to character array
+
+       for (int i = 0; i < charArray.Length; i++)
+       {
+           if (char.IsUpper(charArray[i])) 
+           {
+               charArray[i] = char.ToLower(charArray[i]); // Convert to lowercase
+           }
+           else if (char.IsLower(charArray[i])) 
+           {
+               charArray[i] = char.ToUpper(charArray[i]); // Convert to uppercase
+           }
+       }
+       return new string(charArray); // Convert character array back to string
+   }
+}
+	
+
+
+
+8. Compare Two Strings 
+Problem: 
+Write a C# program to compare two strings lexicographically (dictionary order) without using built-in compare methods. 
+Example Input: 
+String 1: "apple" 
+String 2: "banana" 
+Expected Output: 
+"apple" comes before "banana" in lexicographical order 
+using System;
+
+class LexicographicalComparison
+{
+   static void Main()
+   {
+       Console.Write("Enter first string: ");
+       string str1 = Console.ReadLine();
+       
+       Console.Write("Enter second string: ");
+       string str2 = Console.ReadLine();
+       
+       int result = CompareStringsLexicographically(str1, str2);
+       
+       if (result < 0)
+       {
+           Console.WriteLine($"\"{str1}\" comes before \"{str2}\" in lexicographical order.");
+       }
+       else if (result > 0)
+       {
+           Console.WriteLine($"\"{str2}\" comes before \"{str1}\" in lexicographical order.");
+       }
+       else
+       {
+           Console.WriteLine($"\"{str1}\" and \"{str2}\" are identical.");
+       }
+   }
+
+   // Method to compare two strings lexicographically
+   public static int CompareStringsLexicographically(string str1, string str2)
+   {
+       int minLength = Math.Min(str1.Length, str2.Length);
+       
+       for (int i = 0; i < minLength; i++)
+       {
+           if (str1[i] < str2[i]) 
+               return -1; // str1 comes before str2
+           else if (str1[i] > str2[i]) 
+               return 1;  // str2 comes before str1
+       }
+       
+       // If one string is a prefix of the other, the shorter one comes first
+       if (str1.Length < str2.Length)
+           return -1;
+       else if (str1.Length > str2.Length)
+           return 1;
+
+       return 0; // Strings are equal
+   }
+}
+	
+
+
+
+9. Find the Most Frequent Character 
+Problem: 
+Write a C# program to find the most frequent character in a string. Example Input: 
+String: "success" 
+Expected Output: 
+Most Frequent Character: 's' 
+using System;
+
+class MostFrequentCharacter
+{
+   static void Main()
+   {
+       Console.Write("Enter a string: ");
+       string input = Console.ReadLine();
+
+       char mostFrequentChar = FindMostFrequentCharacter(input);
+       Console.WriteLine($"Most Frequent Character: '{mostFrequentChar}'");
+   }
+
+   public static char FindMostFrequentCharacter(string str)
+   {
+       // Create an array to store the frequency of each character
+       int[] freq = new int[256]; // Assuming ASCII characters
+
+       // Loop through the string and count the frequency of each character
+       foreach (char ch in str)
+       {
+           freq[ch]++;
+       }
+
+       // Find the character with the highest frequency
+       int maxFreq = 0;
+       char mostFrequentChar = ' ';
+
+       for (int i = 0; i < 256; i++)
+       {
+           if (freq[i] > maxFreq)
+           {
+               maxFreq = freq[i];
+               mostFrequentChar = (char)i;
+           }
+       }
+
+       return mostFrequentChar;
+   }
+}
+	
+
+
+
+10. Remove a Specific Character from a String 
+Problem: 
+Write a C# program to remove all occurrences of a specific character from a string. 
+Example Input: 
+String: "Hello World" 
+Character to Remove: 'l' 
+Expected Output: 
+Modified String: "Heo Word"
+
+
+using System;
+
+class RemoveCharacter
+{
+   static void Main()
+   {
+       Console.Write("Enter a string: ");
+       string input = Console.ReadLine();
+
+       Console.Write("Enter the character to remove: ");
+       char charToRemove = Console.ReadKey().KeyChar; // Read the character to remove
+       Console.WriteLine(); // To move to the next line
+
+       string result = RemoveCharacterFromString(input, charToRemove);
+       Console.WriteLine($"String after removing '{charToRemove}': {result}");
+   }
+
+   public static string RemoveCharacterFromString(string str, char charToRemove)
+   {
+       // Create a new string where all occurrences of charToRemove are removed
+       string result = "";
+
+       foreach (char ch in str)
+       {
+           if (ch != charToRemove)
+           {
+               result += ch; // Append the character if it's not the one to be removed
+           }
+       }
+
+       return result;
+   }
+}
+	
+
+
+
+11. Write a C# program that accepts two strings from the user and checks if the two strings are anagrams of each other (i.e., whether they contain the same characters in any order). 
+
+
+using System;
+
+class AnagramChecker
+{
+   static void Main()
+   {
+       Console.Write("Enter the first string: ");
+       string str1 = Console.ReadLine().ToLower(); // Convert to lowercase to handle case-insensitive comparison
+
+       Console.Write("Enter the second string: ");
+       string str2 = Console.ReadLine().ToLower(); // Convert to lowercase to handle case-insensitive comparison
+
+       bool result = AreAnagrams(str1, str2);
+       
+       if(result)
+           Console.WriteLine("The strings are anagrams of each other.");
+       else
+           Console.WriteLine("The strings are not anagrams of each other.");
+   }
+
+   // Method to check if two strings are anagrams
+   public static bool AreAnagrams(string str1, string str2)
+   {
+       // If the lengths are different, they cannot be anagrams
+       if (str1.Length != str2.Length)
+           return false;
+
+       // Convert both strings to character arrays and sort them
+       char[] arr1 = str1.ToCharArray();
+       char[] arr2 = str2.ToCharArray();
+
+       Array.Sort(arr1);
+       Array.Sort(arr2);
+
+       // Compare the sorted arrays
+       for (int i = 0; i < arr1.Length; i++)
+       {
+           if (arr1[i] != arr2[i]) // If any character is different, return false
+               return false;
+       }
+
+       return true; // Strings are anagrams if all characters match after sorting
+   }
+}
+	
+
+
+
+12. Write a replace method in C# that replaces a given word with another word in a sentence:
+
+
+using System;
+
+class WordReplacer
+{
+   static void Main()
+   {
+       // Accept user input for the sentence and words to replace
+       Console.Write("Enter the sentence: ");
+       string sentence = Console.ReadLine();
+
+       Console.Write("Enter the word to replace: ");
+       string oldWord = Console.ReadLine();
+
+       Console.Write("Enter the new word: ");
+       string newWord = Console.ReadLine();
+
+       // Call the ReplaceWord method and get the modified sentence
+       string modifiedSentence = ReplaceWord(sentence, oldWord, newWord);
+
+       // Output the result
+       Console.WriteLine($"Modified sentence: {modifiedSentence}");
+   }
+
+   // Method to replace oldWord with newWord in the sentence
+   public static string ReplaceWord(string sentence, string oldWord, string newWord)
+   {
+       // Use the built-in Replace method to replace occurrences of oldWord with newWord
+       return sentence.Replace(oldWord, newWord);
+   }
+}
