@@ -1,0 +1,522 @@
+﻿Problem Statements for Practice in C# 
+1. Number Guessing Game: 
+Write a program where the user thinks of a number between 1 and 100, and the computer tries to guess the number by generating random guesses. 
+● The user provides feedback by indicating whether the guess is high, low, or correct. 
+● The program should be modular, with different functions for generating guesses, receiving user feedback, and determining the next guess. 
+
+
+using System;
+
+class NumberGuessingGame
+{
+   static void Main()
+   {
+       Console.WriteLine("Think of a number between 1 and 100.");
+       Console.WriteLine("I will try to guess it!");
+       Console.WriteLine("Type 'H' if my guess is too high, 'L' if it's too low, and 'C' if I guessed correctly.");
+
+       int lowerBound = 1, upperBound = 100;
+       bool guessedCorrectly = false;
+       Random random = new Random();
+
+       while (!guessedCorrectly)
+       {
+           int guess = GenerateGuess(lowerBound, upperBound, random);
+           Console.WriteLine($"Is your number {guess}? (H/L/C)");
+
+           char response = GetUserFeedback();
+
+           if (response == 'C')
+           {
+               Console.WriteLine($"Yay! I guessed your number {guess} correctly!");
+               guessedCorrectly = true;
+           }
+           else if (response == 'H')
+           {
+               upperBound = guess - 1; // Adjust the upper bound
+           }
+           else if (response == 'L')
+           {
+               lowerBound = guess + 1; // Adjust the lower bound
+           }
+
+           if (lowerBound > upperBound)
+           {
+               Console.WriteLine("Hmm... Something went wrong! Did you change your number?");
+               break;
+           }
+       }
+   }
+
+   // Generate a random guess within the given range
+   static int GenerateGuess(int lower, int upper, Random random)
+   {
+       return random.Next(lower, upper + 1);
+   }
+
+   // Get user feedback and validate input
+   static char GetUserFeedback()
+   {
+       char input;
+       while (true)
+       {
+           input = char.ToUpper(Console.ReadKey().KeyChar);
+           Console.WriteLine(); // Move to the next line
+           if (input == 'H' || input == 'L' || input == 'C')
+               break;
+           Console.WriteLine("Invalid input. Please enter 'H' (too high), 'L' (too low), or 'C' (correct).");
+       }
+       return input;
+   }
+}
+
+	
+
+2. Maximum of Three Numbers: 
+Write a program that takes three integer inputs from the user and finds the maximum of the three numbers. 
+● Ensure your program follows best practices for organizing code into modular functions, such as separate functions for taking input and calculating the maximum value. 
+
+
+using System;
+
+class MaxOfThreeNumbers
+{
+   static void Main()
+   {
+       Console.WriteLine("Enter three integers:");
+
+       int num1 = GetNumberFromUser("Enter first number: ");
+       int num2 = GetNumberFromUser("Enter second number: ");
+       int num3 = GetNumberFromUser("Enter third number: ");
+
+       int maxNumber = FindMax(num1, num2, num3);
+
+       Console.WriteLine($"The maximum number is: {maxNumber}");
+   }
+
+   // Function to get a valid integer input from the user
+   static int GetNumberFromUser(string message)
+   {
+       int number;
+       Console.Write(message);
+       while (!int.TryParse(Console.ReadLine(), out number))
+       {
+           Console.Write("Invalid input. Please enter a valid integer: ");
+       }
+       return number;
+   }
+
+   // Function to find the maximum of three numbers
+   static int FindMax(int a, int b, int c)
+   {
+       int max = a;
+
+       if (b > max)
+           max = b;
+       if (c > max)
+           max = c;
+
+       return max;
+   }
+}
+	
+
+
+
+3. Prime Number Checker: 
+Create a program that checks whether a given number is a prime number. 
+● The program should use a separate function to perform the prime check and return the result. 
+
+
+using System;
+
+class PrimeNumberChecker
+{
+   static void Main()
+   {
+       Console.Write("Enter a number: ");
+       int number = GetNumberFromUser();
+       
+       bool isPrime = IsPrime(number);
+
+       if (isPrime)
+           Console.WriteLine($"{number} is a prime number.");
+       else
+           Console.WriteLine($"{number} is not a prime number.");
+   }
+
+   // Function to get a valid integer input from the user
+   static int GetNumberFromUser()
+   {
+       int num;
+       while (!int.TryParse(Console.ReadLine(), out num) || num < 1)
+       {
+           Console.Write("Invalid input. Please enter a positive integer: ");
+       }
+       return num;
+   }
+
+   // Function to check if a number is prime
+   static bool IsPrime(int n)
+   {
+       if (n < 2)
+           return false;
+       
+       for (int i = 2; i * i <= n; i++)
+       {
+           if (n % i == 0)
+               return false;
+       }
+       return true;
+   }
+}
+	
+
+
+
+Additional Problem Statements: 
+4. Fibonacci Sequence Generator: 
+Write a program that generates the Fibonacci sequence up to a specified number of terms entered by the user. 
+● Organize the code by creating a function that calculates and prints the Fibonacci sequence. 
+
+
+using System;
+
+class FibonacciSequence
+{
+   static void Main()
+   {
+       Console.Write("Enter the number of terms for the Fibonacci sequence: ");
+       int numTerms = GetPositiveInteger();
+
+       Console.WriteLine($"Fibonacci sequence with {numTerms} terms:");
+       PrintFibonacci(numTerms);
+   }
+
+   // Function to get a valid positive integer from the user
+   static int GetPositiveInteger()
+   {
+       int num;
+       while (!int.TryParse(Console.ReadLine(), out num) || num < 1)
+       {
+           Console.Write("Invalid input. Please enter a positive integer: ");
+       }
+       return num;
+   }
+
+   // Function to generate and print Fibonacci sequence
+   static void PrintFibonacci(int terms)
+   {
+       int first = 0, second = 1, next;
+
+       for (int i = 0; i < terms; i++)
+       {
+           Console.Write(first + " ");
+           next = first + second;
+           first = second;
+           second = next;
+       }
+       Console.WriteLine();
+   }
+}
+	
+
+
+
+5. Palindrome Checker: 
+Write a program that checks if a given string is a palindrome (a word, phrase, or sequence that reads the same backward as forward). 
+● Break the program into functions for input, checking the palindrome condition, and displaying the result.
+
+
+using System;
+
+class PalindromeChecker
+{
+   static void Main()
+   {
+       string inputString = GetUserInput();
+       bool isPalindrome = CheckPalindrome(inputString);
+       DisplayResult(isPalindrome);
+   }
+
+   // Function to get user input
+   static string GetUserInput()
+   {
+       Console.Write("Enter a string to check if it's a palindrome: ");
+       return Console.ReadLine();
+   }
+
+   // Function to check if the string is a palindrome
+   static bool CheckPalindrome(string str)
+   {
+       // Remove any non-alphanumeric characters and convert to lowercase for comparison
+       string cleanedString = string.Concat(str.Where(char.IsLetterOrDigit)).ToLower();
+
+       // Check if the cleaned string is equal to its reverse
+       char[] reversedStringArray = cleanedString.ToCharArray();
+       Array.Reverse(reversedStringArray);
+       string reversedString = new string(reversedStringArray);
+
+       return cleanedString == reversedString;
+   }
+
+   // Function to display the result
+   static void DisplayResult(bool isPalindrome)
+   {
+       if (isPalindrome)
+       {
+           Console.WriteLine("The input string is a palindrome.");
+       }
+       else
+       {
+           Console.WriteLine("The input string is not a palindrome.");
+       }
+   }
+}
+	
+
+
+
+6. Factorial Using Recursion: 
+Write a program that calculates the factorial of a number using a recursive function. ● Include modular code to separate input, calculation, and output processes. 
+
+
+using System;
+
+class FactorialCalculator
+{
+   static void Main()
+   {
+       int number = GetUserInput();
+       long factorial = CalculateFactorial(number);
+       DisplayResult(factorial);
+   }
+
+   // Function to get user input
+   static int GetUserInput()
+   {
+       Console.Write("Enter a number to calculate its factorial: ");
+       int number;
+
+       // Validate user input
+       while (!int.TryParse(Console.ReadLine(), out number) || number < 0)
+       {
+           Console.Write("Invalid input. Please enter a non-negative integer: ");
+       }
+
+       return number;
+   }
+
+   // Recursive function to calculate factorial
+   static long CalculateFactorial(int n)
+   {
+       // Base case: factorial of 0 or 1 is 1
+       if (n == 0 || n == 1)
+       {
+           return 1;
+       }
+       // Recursive case: n * factorial of (n-1)
+       return n * CalculateFactorial(n - 1);
+   }
+
+   // Function to display the result
+   static void DisplayResult(long factorial)
+   {
+       Console.WriteLine($"The factorial is: {factorial}");
+   }
+}
+
+	
+
+7. GCD and LCM Calculator: 
+Create a program that calculates the Greatest Common Divisor (GCD) and Least Common Multiple (LCM) of two numbers using functions. 
+● Use separate functions for GCD and LCM calculations, showcasing how modular code works. 
+
+
+using System;
+
+class GCD_LCM_Calculator
+{
+   static void Main()
+   {
+       // Get user input for two numbers
+       Console.Write("Enter the first number: ");
+       int num1 = int.Parse(Console.ReadLine());
+
+       Console.Write("Enter the second number: ");
+       int num2 = int.Parse(Console.ReadLine());
+
+       // Calculate GCD
+       int gcd = CalculateGCD(num1, num2);
+
+       // Calculate LCM
+       int lcm = CalculateLCM(num1, num2, gcd);
+
+       // Display the results
+       Console.WriteLine($"The Greatest Common Divisor (GCD) of {num1} and {num2} is: {gcd}");
+       Console.WriteLine($"The Least Common Multiple (LCM) of {num1} and {num2} is: {lcm}");
+   }
+
+   // Function to calculate GCD using Euclidean algorithm
+   static int CalculateGCD(int a, int b)
+   {
+       while (b != 0)
+       {
+           int temp = b;
+           b = a % b;
+           a = temp;
+       }
+       return a;
+   }
+
+   // Function to calculate LCM
+   static int CalculateLCM(int a, int b, int gcd)
+   {
+       // LCM formula: (a * b) / GCD(a, b)
+       return (a * b) / gcd;
+   }
+}
+	
+
+
+
+8. Temperature Converter: 
+Write a program that converts temperatures between Fahrenheit and Celsius. 
+● The program should have separate functions for converting from Fahrenheit to Celsius and from Celsius to Fahrenheit. 
+
+
+using System;
+
+class TemperatureConverter
+{
+   static void Main()
+   {
+       // Display menu to the user
+       Console.WriteLine("Temperature Converter");
+       Console.WriteLine("1. Convert Fahrenheit to Celsius");
+       Console.WriteLine("2. Convert Celsius to Fahrenheit");
+       Console.Write("Choose an option (1/2): ");
+       int choice = int.Parse(Console.ReadLine());
+
+       // Ask for input temperature
+       double temperature;
+       Console.Write("Enter the temperature: ");
+       temperature = double.Parse(Console.ReadLine());
+
+       // Perform the conversion based on user's choice
+       if (choice == 1)
+       {
+           double celsius = FahrenheitToCelsius(temperature);
+           Console.WriteLine($"{temperature}°F = {celsius:F2}°C");
+       }
+       else if (choice == 2)
+       {
+           double fahrenheit = CelsiusToFahrenheit(temperature);
+           Console.WriteLine($"{temperature}°C = {fahrenheit:F2}°F");
+       }
+       else
+       {
+           Console.WriteLine("Invalid choice.");
+       }
+   }
+
+   // Function to convert Fahrenheit to Celsius
+   static double FahrenheitToCelsius(double fahrenheit)
+   {
+       return (fahrenheit - 32) * 5 / 9;
+   }
+
+   // Function to convert Celsius to Fahrenheit
+   static double CelsiusToFahrenheit(double celsius)
+   {
+       return (celsius * 9 / 5) + 32;
+   }
+}
+	
+
+
+
+9. Basic Calculator: 
+Write a program that performs basic mathematical operations (addition, subtraction, multiplication, division) based on user input. 
+● Each operation should be performed in its own function, and the program should prompt the user to choose which operation to perform.
+
+
+using System;
+
+class BasicCalculator
+{
+   static void Main()
+   {
+       // Display menu for operations
+       Console.WriteLine("Basic Calculator");
+       Console.WriteLine("Select an operation:");
+       Console.WriteLine("1. Addition");
+       Console.WriteLine("2. Subtraction");
+       Console.WriteLine("3. Multiplication");
+       Console.WriteLine("4. Division");
+       Console.Write("Enter your choice (1/2/3/4): ");
+       int choice = int.Parse(Console.ReadLine());
+
+       // Input two numbers
+       Console.Write("Enter the first number: ");
+       double num1 = double.Parse(Console.ReadLine());
+       Console.Write("Enter the second number: ");
+       double num2 = double.Parse(Console.ReadLine());
+
+       // Perform the selected operation
+       double result = 0;
+       switch (choice)
+       {
+           case 1:
+               result = Add(num1, num2);
+               Console.WriteLine($"Result of {num1} + {num2} = {result}");
+               break;
+           case 2:
+               result = Subtract(num1, num2);
+               Console.WriteLine($"Result of {num1} - {num2} = {result}");
+               break;
+           case 3:
+               result = Multiply(num1, num2);
+               Console.WriteLine($"Result of {num1} * {num2} = {result}");
+               break;
+           case 4:
+               if (num2 != 0)
+               {
+                   result = Divide(num1, num2);
+                   Console.WriteLine($"Result of {num1} / {num2} = {result}");
+               }
+               else
+               {
+                   Console.WriteLine("Error: Division by zero is not allowed.");
+               }
+               break;
+           default:
+               Console.WriteLine("Invalid choice. Please select a valid operation.");
+               break;
+       }
+   }
+
+   // Function for addition
+   static double Add(double a, double b)
+   {
+       return a + b;
+   }
+
+   // Function for subtraction
+   static double Subtract(double a, double b)
+   {
+       return a - b;
+   }
+
+   // Function for multiplication
+   static double Multiply(double a, double b)
+   {
+       return a * b;
+   }
+
+   // Function for division
+   static double Divide(double a, double b)
+   {
+       return a / b;
+   }
+}
