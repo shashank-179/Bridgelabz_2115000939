@@ -1,0 +1,245 @@
+﻿Best Programming Practices
+* Use meaningful class names (e.g., Student, Employee) and method names (e.g., DisplayDetails).
+* Encapsulate data using private fields and provide getter and setter methods.
+* Follow proper naming conventions (camelCase for attributes and methods).
+* Always provide constructors to initialize class attributes.
+* Use comments for clarity and better readability.
+________________
+
+
+Sample Program 1: Food Delivery App
+Real-World Analogy
+Imagine a food delivery app like Swiggy or Uber Eats. The app deals with restaurants, and each restaurant has specific details like its name, location, and the food items it serves.
+Step 1: Define the Class
+The Restaurant class represents the blueprint for creating restaurant objects.
+
+
+// Class Definition
+using System;
+public class Restaurant
+{
+    // Fields (Attributes)
+    private string name;
+    private string location;
+    private string[] foodItems;
+
+
+    // Constructor
+    public Restaurant(string name, string location, string[] foodItems)
+    {
+        this.name = name;
+        this.location = location;
+        this.foodItems = foodItems;
+    }
+
+
+    // Method to display restaurant details
+    public void DisplayDetails()
+    {
+        Console.WriteLine("Restaurant Name: " + name);
+        Console.WriteLine("Location: " + location);
+        Console.WriteLine("Food Items:");
+        foreach (string item in foodItems)
+        {
+            Console.WriteLine("- " + item);
+        }
+    }
+
+
+    // Method to check if a food item is available
+    public bool IsFoodAvailable(string food)
+    {
+        foreach (string item in foodItems)
+        {
+            if (item.Equals(food, StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+
+
+
+Step 2: Create Objects from the Class
+
+
+Use the class to create specific restaurant objects.
+// Main Class to Test
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        // Define food items for restaurants
+        string[] foodItems1 = { "Pizza", "Pasta", "Burger" };
+        string[] foodItems2 = { "Sushi", "Ramen", "Tempura" };
+
+
+        // Create Restaurant objects
+        Restaurant restaurant1 = new Restaurant("Italian Delight", "Downtown", foodItems1);
+        Restaurant restaurant2 = new Restaurant("Tokyo Treats", "Uptown", foodItems2);
+
+
+        // Display details of each restaurant
+        Console.WriteLine("=== Restaurant 1 ===");
+        restaurant1.DisplayDetails();
+        Console.WriteLine("\n=== Restaurant 2 ===");
+        restaurant2.DisplayDetails();
+
+
+        // Check food availability
+        Console.WriteLine("\nChecking Food Availability:");
+        Console.WriteLine("Is Pasta available in Italian Delight? " + restaurant1.IsFoodAvailable("Pasta"));
+        Console.WriteLine("Is Sushi available in Italian Delight? " + restaurant1.IsFoodAvailable("Sushi"));
+    }
+}
+
+Step 3: Output
+=== Restaurant 1 ===
+Restaurant Name: Italian Delight
+Location: Downtown
+Food Items:
+- Pizza
+- Pasta
+- Burger
+
+
+=== Restaurant 2 ===
+Restaurant Name: Tokyo Treats
+Location: Uptown
+Food Items:
+- Sushi
+- Ramen
+- Tempura
+
+
+Checking Food Availability:
+Is Pasta available in Italian Delight? True
+Is Sushi available in Italian Delight? False
+________________
+
+
+In-depth Explanation of Key Aspects
+1. Fields (Attributes)
+   * Fields store the data for the class.
+   * Example: name, location, and foodItems represent the state of a restaurant.
+2. Constructor
+   * A constructor initializes the fields when an object is created.
+   * Example: The Restaurant constructor sets name, location, and foodItems.
+3. Methods
+   * Methods define the behavior of the objects.
+   * Example: 
+      * DisplayDetails(): Displays the details of a restaurant.
+      * IsFoodAvailable(string food): Checks if a specific food item is available.
+4. Encapsulation
+   * The fields are marked as private and accessed using methods to ensure controlled data access and modification.
+5. Object Creation
+   * Objects are created using the new keyword.
+   * Example: 
+   * Restaurant restaurant1 = new Restaurant("Italian Delight", "Downtown", foodItems1);
+6. Memory Allocation
+   * Each object has its own memory space for attributes but shares methods.
+
+
+Level 1 Practice Programs
+1. Program to Display Employee Details
+Problem Statement: Write a program to create an Employee class with attributes name, id, and salary. Add a method to display the details.
+
+
+using System; 
+
+class Employee
+{
+   private string name;
+   private string id;
+   private int salary;
+
+   // Constructor
+   public Employee(string name, string id, int salary)
+   {
+       this.name = name;
+       this.id = id;
+       this.salary = salary;
+   }
+
+   // Method to display employee details
+   public void Display()
+   {
+       Console.WriteLine($"Employee Name: {name}");  // ✅ Console now works
+       Console.WriteLine($"Employee ID: {id}");
+       Console.WriteLine($"Employee Salary: {salary}");
+   }
+
+   public static void Main()
+   {
+       Employee emp1 = new Employee("Shashank", "E001", 50000
+        emp1.Display();
+   }
+}
+	
+
+
+
+2. Program to Compute Area of a Circle
+Problem Statement: Write a program to create a Circle class with an attribute radius. Add methods to calculate and display the area and circumference of the circle.
+
+
+using System;
+
+class Circle
+{
+   int radius;
+
+   public Circle(int radius)
+   {
+       this.radius = radius;  
+   }
+
+   public void DisplayAreaPerimeter()
+   {
+       double area = 3.14 * radius * radius;   
+       double perimeter = 2 * 3.14 * radius;
+       
+       Console.WriteLine($"Area of the circle: {area:F2}");
+       Console.WriteLine($"Perimeter of the circle: {perimeter:F2}");
+   }
+
+   public static void Main()
+   {
+       Circle ob = new Circle(5);
+       ob.DisplayAreaPerimeter();  
+   }
+}
+	
+
+
+
+3. Program to Handle Book Details
+Problem Statement: Write a program to create a Book class with attributes title, author, and price. Add a method to display the book details.
+using System;
+
+class Book
+{
+   string title;
+   string author;
+   double price;
+    public Book(string title, string author, double price)
+   {
+       this.title = title;
+       this.author = author;
+       this.price = price;
+   }
+   public void Display()
+   {
+       Console.WriteLine($"Title of the book: {title}");
+       Console.WriteLine($"Author of the book: {author}");
+       Console.WriteLine($"Price of the book: {price:F2}");
+   }
+
+   public static void Main()
+   {
+       Book book1 = new Book("Harry Potter", "JK Rowling", 1200
+       book1.Display();
+   }
+}
