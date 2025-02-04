@@ -1,0 +1,415 @@
+﻿Best Programming Practices in C#
+General Guidelines
+1. Use static for shared values and utility methods to reduce memory usage and avoid redundancy.
+2. Leverage this to avoid ambiguity when initializing attributes.
+3. Declare readonly variables for identifiers or constants that should remain unchanged.
+4. Use is operator for safe type-checking and to prevent runtime errors during typecasting.
+________________
+
+
+Sample Program 1: Bank Account System
+Create a BankAccount class with the following features:
+* static: 
+   * A static variable bankName shared across all accounts.
+   * A static method GetTotalAccounts() to display the total number of accounts.
+* this: 
+   * Use this to resolve ambiguity in the constructor when initializing AccountHolderName and AccountNumber.
+* readonly: 
+   * Use a readonly variable AccountNumber to ensure it cannot be changed once assigned.
+* is operator: 
+   * Check if an account object is an instance of the BankAccount class before displaying its details.
+
+
+using System;
+class BankAccount
+{
+    // Attributes
+   static string BankName="SBI";
+   static int NumberOfAccounts=0;
+   string AccountHolderName;
+   readonly int AccountNumber;
+   public BankAccount(string AccountHolderName, int AccountNumber)
+   {
+        // Initialization
+       this.AccountHolderName=AccountHolderName;
+           this.AccountNumber=AccountNumber;
+                NumberOfAccounts++;
+   }
+   static void GetTotalAccounts()
+   {   
+       Console.WriteLine($"Total number of accounts:{NumberOfAccounts}");
+   }
+        public void Display()
+        {
+         // Checking if the object is an instance of class BankAccount
+            if(this is BankAccount){
+                    Console.WriteLine($"AccountNumber:{AccountNumber}\nAccount Holder:{AccountHolderName}");
+            }
+        }
+        public static void Main()
+        {
+                BankAccount ob=new BankAccount("Shashank",61616816);
+                BankAccount.GetTotalAccounts();
+                ob.Display();
+        }
+}
+	
+
+
+
+________________
+
+
+Sample Program 2: Library Management System
+Create a Book class to manage library books with the following features:
+* static: 
+   * A static variable LibraryName shared across all books.
+   * A static method DisplayLibraryName() to print the library name.
+* this: 
+   * Use this to initialize Title, Author, and ISBN in the constructor.
+* readonly: 
+   * Use a readonly variable ISBN to ensure the unique identifier of a book cannot be changed.
+* is operator: 
+   * Verify if an object is an instance of the Book class before displaying its details.
+
+
+using System;
+
+class Book
+{
+    // Attributes
+   static string LibraryName= "GLA Library";
+   string title;
+   string author;
+   readonly int ISBN;
+     
+   public Book(string title, string author, int ISBN)
+   {
+        // Initialization
+       this.title=title;
+                this.author=author;
+                this.ISBN=ISBN;
+   }
+   static void DisplayLibraryName()
+   {
+       Console.WriteLine($"Library name:{LibraryName}");
+   }
+        public void Display()
+        {        // Checking if object is instance of class 
+                if(this is Book)
+                {
+                        Console.WriteLine($"Book's name:{title}\nAuthor's name:{author}\nISBN number:{ISBN}");
+                }
+        }
+        public static void Main()
+        {
+                Book ob=new Book("Harry Potter", "JK Rowling", 84943);
+                Book.DisplayLibraryName();
+                ob.Display();
+}
+}
+	
+
+________________
+
+
+Sample Program 3: Employee Management System
+Design an Employee class with the following features:
+* static: 
+   * A static variable CompanyName shared by all employees.
+   * A static method DisplayTotalEmployees() to show the total number of employees.
+* this: 
+   * Use this to initialize Name, Id, and Designation in the constructor.
+* readonly: 
+   * Use a readonly variable Id for the employee ID, which cannot be modified after assignment.
+* is operator: 
+   * Check if a given object is an instance of the Employee class before printing the employee details.
+
+
+using System;
+
+class Employee
+{
+    // Attributes
+   static string CompanyName= "Capgemini";
+   string name;
+   readonly int id;
+   string designation;
+   static int TotalEmployees=0;
+        
+   public Employee(string name, int id, string designation)
+   {
+        // Initialization
+       this.name=name;
+                this.id=id;
+                this.designation=designation;
+                TotalEmployees++;
+   }
+   static void DisplayTotalEmployees()
+   {
+       Console.WriteLine($"Number of employees:{TotalEmployees}");
+   }
+        public void Display()
+        {        
+           // Checking if object is instance of the class Employee
+                if(this is Employee)
+                {
+                        Console.WriteLine($"Employee's name:{name}\nEmployee's id:{id}\nDesignation:{designation}");
+                }
+        }
+        public static void Main()
+        {
+                Employee ob=new Employee("Shashank", 43978, "Software Analyst");
+                Employee.DisplayTotalEmployees();
+                ob.Display();
+     }
+}
+	
+
+________________
+
+
+Sample Program 4: Shopping Cart System
+Create a Product class to manage shopping cart items with the following features:
+* static: 
+   * A static variable Discount shared by all products.
+   * A static method UpdateDiscount() to modify the discount percentage.
+* this: 
+   * Use this to initialize ProductName, Price, and Quantity in the constructor.
+* readonly: 
+   * Use a readonly variable ProductID to ensure each product has a unique identifier that cannot be changed.
+* is operator: 
+   * Validate whether an object is an instance of the Product class before processing its details.
+
+
+
+
+using System;
+
+class Product
+{
+   //Attributes
+   string ProductName;
+   readonly int ProductID;
+   double price;
+   int quantity;
+   static double Discount;
+        
+   public Product(string ProductName, int ProductID, double price, int quantity)
+   {      
+           //Initialization
+          this.ProductName=ProductName;
+                this.ProductID=ProductID;
+                this.price=price;
+                this.quantity=quantity;
+   }
+   static void UpdateDiscount(double newDiscount)
+   {
+        // Method to update discount 
+       Discount=newDiscount;
+       Console.WriteLine($"Discount updated to {Discount}%");
+   }
+        public void Display()
+        {        
+                if(this is Product)
+                {
+                // Calculating price after discount
+                        price=price-((Discount/100)*price);
+                        Console.WriteLine($"Product name:{ProductName}\nProductID:{ProductID}\nProduct price:{price}\nProduct quantity:{quantity}");
+                }
+        }
+        public static void Main()
+        {
+                Product ob=new Product("Soap", 48, 20, 100);
+                ob.Display();
+                Product.UpdateDiscount(10);
+                ob.Display();
+        }
+}
+	
+
+________________
+
+
+Sample Program 5: University Student Management
+Create a Student class to manage student data with the following features:
+* static: 
+   * A static variable UniversityName shared across all students.
+   * A static method DisplayTotalStudents() to show the number of students enrolled.
+* this: 
+   * Use this in the constructor to initialize Name, RollNumber, and Grade.
+* readonly: 
+   * Use a readonly variable RollNumber for each student that cannot be changed.
+* is operator: 
+   * Check if a given object is an instance of the Student class before performing operations like displaying or updating grades.
+
+
+
+
+using System;
+
+class Student
+{
+   //Attributes
+   string name;
+   readonly int rollNumber;
+   string grade;
+   static string UniversityName="GLA University";
+   static int totalStudents=0;
+        
+   public Student(string name, int rollNumber, string grade)
+   {
+           //Initialization
+          this.name=name;
+                this.rollNumber=rollNumber;
+                this.grade=grade;
+                totalStudents++;
+   }
+   static void DisplayTotalStudents()
+   {
+       Console.WriteLine($"Total students:{totalStudents}");
+   }
+        public void Display()
+        {        //Checking if object is instance of class Student
+                if(this is Student)
+                {
+                        Console.WriteLine($"Student name:{name}\nRoll Number:{rollNumber}\nGrade:{grade}");
+                }
+        }
+        public static void Main()
+        {
+                Student ob=new Student("Shashank", 2115000939, "A+");
+                ob.Display();
+                Student.DisplayTotalStudents();
+        }
+}
+	
+
+________________
+
+
+Sample Program 6: Vehicle Registration System
+Create a Vehicle class with the following features:
+* static: 
+   * A static variable RegistrationFee common for all vehicles.
+   * A static method UpdateRegistrationFee() to modify the fee.
+* this: 
+   * Use this to initialize OwnerName, VehicleType, and RegistrationNumber in the constructor.
+* readonly: 
+   * Use a readonly variable RegistrationNumber to uniquely identify each vehicle.
+* is operator: 
+   * Check if an object belongs to the Vehicle class before displaying its registration details.
+
+
+using System;
+
+class Vehicle
+{
+   //Attributes
+   string ownerName;
+   string vehicleType;
+   readonly string registrationNumber;
+   static double registrationFee=2000;
+        
+        
+   public Vehicle(string ownerName, string vehicleType, string registrationNumber)
+   {
+       this.ownerName=ownerName;
+                this.vehicleType=vehicleType;
+                this.registrationNumber=registrationNumber;
+                
+   }
+   static void UpdateRegistrationFee(double newRegistrationFee)
+   {
+           registrationFee=newRegistrationFee;
+       Console.WriteLine($"Registration fee:{registrationFee}");
+   }
+        public void Display()
+        {        
+                if(this is Vehicle)
+                {
+                        Console.WriteLine($"Owner name:{ownerName}\nVehicle Type:{vehicleType}\nRegistration Number:{registrationNumber}\nRegistration fee:{registrationFee}");
+                }
+        }
+        public static void Main()
+        {
+                Vehicle ob=new Vehicle("Shashank", "Sedan", "UP32CR4117");
+                ob.Display();
+                Vehicle.UpdateRegistrationFee(5000);
+                ob.Display();
+        }
+}
+	
+
+________________
+
+
+Sample Program 7: Hospital Management System
+Create a Patient class with the following features:
+* static: 
+   * A static variable HospitalName shared among all patients.
+   * A static method GetTotalPatients() to count the total patients admitted.
+* this: 
+   * Use this to initialize Name, Age, and Ailment in the constructor.
+* readonly: 
+   * Use a readonly variable PatientID to uniquely identify each patient.
+* is operator: 
+   * Check if an object is an instance of the Patient class before displaying its details.
+
+
+using System;
+
+class Patient
+{
+   // Static variable shared among all patients
+   static string HospitalName = "City Hospital";
+   static int totalPatients = 0;  
+   public readonly int PatientID;
+   public string Name;
+   public int Age;
+   public string Ailment;
+
+   // Constructor using 'this' keyword to initialize values
+   public Patient(int patientID, string name, int age, string ailment)
+   {
+       this.PatientID = patientID;  
+       this.Name = name;
+       this.Age = age;
+       this.Ailment = ailment;
+       totalPatients++;  // Increment total patients count
+   }
+
+   // Static method to get total patients
+   public static void GetTotalPatients()
+   {
+       Console.WriteLine($"Total Patients Admitted: {totalPatients}");
+   }
+
+   // Method to display patient details
+   public void DisplayPatient()
+   {
+       // Using 'is' operator to check instance type
+       if (this is Patient)
+       {
+           Console.WriteLine($"Hospital: {HospitalName}");
+           Console.WriteLine($"Patient ID: {PatientID}");
+           Console.WriteLine($"Name: {Name}");
+           Console.WriteLine($"Age: {Age}");
+           Console.WriteLine($"Ailment: {Ailment}");
+       }
+   }
+
+   public static void Main()
+   {
+       
+       Patient p1 = new Patient(101, "Alice", 30, "Fever");
+       // Displaying patient details
+       p1.DisplayPatient();
+       // Display total patients using static method
+       Patient.GetTotalPatients();
+   }
+}
+
+	
+
+________________
