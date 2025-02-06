@@ -1,0 +1,518 @@
+﻿Object Modeling: Object Relationships and Communication
+Assisted Problems
+Problem 1: Library and Books (Aggregation)
+Description: Create a Library class that contains multiple Book objects. Model the relationship such that a library can have many books, but a book can exist independently (outside of a specific library).
+Tasks:
+* Define a Library class with a List<Book> collection.
+* Define a Book class with attributes such as Title and Author.
+* Demonstrate the aggregation relationship by creating books and adding them to different libraries.
+using System; 
+using System.Collections.Generic;  // Importing for using List<>
+
+// Book class representing individual books
+class Book
+{
+   string title;  
+   string author; 
+
+   // Constructor
+   public Book(string title, string author)
+   {
+       this.title = title;  
+       this.author = author;
+   }
+
+   // Method to display book details
+   public void Display()
+   {
+       Console.WriteLine($"Title: {title}, Author: {author}");
+   }
+}
+
+// Library class representing a collection of books
+class Library
+{
+   public string Name; 
+   private List<Book> books; 
+
+   // Constructor to initialize library name and create an empty book list
+   public Library(string name)
+   {
+       Name = name;
+       books = new List<Book>(); 
+   }
+
+   // Method to add a book to the library
+   public void AddBook(Book book)
+   {
+       books.Add(book);  // Adding a book to the books list
+   }
+
+   // Method to display all books in the library
+   public void display()
+   {
+       Console.WriteLine($"Library: {Name}"); 
+       if (books.Count == 0)
+       {
+           Console.WriteLine("No books to display");
+       }
+       else
+       {
+           Console.WriteLine("Books in the library:");
+           foreach (Book book in books)  
+           {
+               book.Display();  
+           }
+       }
+       Console.WriteLine("--------------------------");
+   }
+   public static void Main()
+   {
+       // Book objects
+       Book book1 = new Book("Physics", "Isaac Newton");
+       Book book2 = new Book("Chemistry", "Viraf Dalal");
+       Book book3 = new Book("Mathematics", "HC Verma");
+
+       // Library objects
+       Library lib1 = new Library("School Library");
+       Library lib2 = new Library("University Library");
+
+       // Adding books to different libraries
+       lib1.AddBook(book1);
+       lib2.AddBook(book2);
+       lib2.AddBook(book3);
+
+       // Displaying books
+       lib1.display();
+       lib2.display();
+   }
+}
+
+	
+
+Goal: Understand aggregation by modeling a real-world relationship where the Library aggregates Book objects.
+________________
+
+
+Problem 2: Bank and Account Holders (Association)
+Description: Model a relationship where a Bank has Customer objects associated with it. A Customer can have multiple bank accounts, and each account is linked to a Bank.
+Tasks:
+* Define a Bank class and a Customer class.
+* Use an association relationship to show that each Customer has an account in a Bank.
+* Implement methods that enable communication, such as OpenAccount() in the Bank class and ViewBalance() in the Customer class.
+Goal: Illustrate association by setting up a relationship between customers and the bank.
+________________
+
+
+Problem 3: Company and Departments (Composition)
+Description: A Company has several Department objects, and each department contains Employee objects. Model this using composition, where deleting a Company should also delete all departments and employees.
+Tasks:
+* Define a Company class that contains multiple Department objects.
+* Define an Employee class within each Department.
+* Show the composition relationship by ensuring that when a Company object is deleted, all associated Department and Employee objects are also removed.
+Goal: Understand composition by implementing a relationship where Department and Employee objects cannot exist without a Company.
+
+
+using System;
+using System.Collections.Generic;
+
+class Employee
+{
+   public int empId { get; set; }
+   public string name;
+   public string position;
+
+   public Employee(int empId, string name, string position)
+   {
+       this.empId = empId;
+       this.name = name;
+       this.position = position;
+   }
+
+   public void display() // Display employee details
+   {
+       Console.WriteLine($"  Employee ID: {empId}, Name: {name}, Position: {position}");
+   }
+}
+
+class Department
+{
+   public string name { get; set; }
+   private List<Employee> employees;
+
+   public Department(string name)
+   {
+       this.name = name;
+       employees = new List<Employee>();
+   }
+
+   public void addEmployee(Employee employee) // Add employee to department
+   {
+       employees.Add(employee);
+   }
+
+   public void display() // Display department details
+   {
+       Console.WriteLine($"Department: {name}");
+       if (employees.Count > 0)
+       {
+           Console.WriteLine("  Employees:");
+           foreach (Employee emp in employees)
+           {
+               emp.display();
+           }
+       }
+       else
+       {
+           Console.WriteLine("  No employees in this department.");
+       }
+   }
+}
+
+class Company
+{
+   public string CompanyName { get; private set; }
+   private List<Department> departments;
+
+   public Company(string companyName)
+   {
+       CompanyName = companyName;
+       departments = new List<Department>();
+   }
+
+   public void AddDepartment(Department department) // Add department to company
+   {
+       departments.Add(department);
+   }
+
+   public void display() // Display company details
+   {
+       Console.WriteLine($"Company: {CompanyName}");
+       if (departments.Count > 0)
+       {
+           Console.WriteLine("Departments:");
+           foreach (Department department in departments)
+           {
+               department.display();
+           }
+       }
+       else
+       {
+           Console.WriteLine("No departments in this company.");
+       }
+   }
+
+   public static void Main() // Main method
+   {
+       Employee emp1 = new Employee(1, "Ram", "Technical Manager");
+       Employee emp2 = new Employee(2, "Shyam", "Manager");
+       Employee emp3 = new Employee(3, "Ghanshyam", "Team Lead");
+       Employee emp4 = new Employee(4, "Naina", "Techie");
+       Employee emp5 = new Employee(5, "Sunaina", "Finance Lead");
+
+       Department d1 = new Department("IT Department");
+       Department d2 = new Department("HR Department");
+       Department d3 = new Department("Finance Department");
+
+       Company c1 = new Company("Capg");
+
+       d1.addEmployee(emp1);
+       d1.addEmployee(emp3);
+       d1.addEmployee(emp4);
+       d2.addEmployee(emp2);
+       d3.addEmployee(emp5);
+
+       c1.AddDepartment(d1);
+       c1.AddDepartment(d2);
+       c1.AddDepartment(d3);
+
+       c1.display();
+   }
+}
+
+	
+
+
+
+________________
+
+
+Self Problems
+Problem 1: School and Students with Courses (Association and Aggregation)
+Description: Model a School with multiple Student objects, where each student can enroll in multiple courses, and each course can have multiple students.
+Tasks:
+* Define School, Student, and Course classes.
+* Model an association between Student and Course to show that students can enroll in multiple courses.
+* Model an aggregation relationship between School and Student.
+* Demonstrate how a student can view the courses they are enrolled in and how a course can show its enrolled students.
+Goal: Practice association by modeling many-to-many relationships between students and courses.
+
+
+using System;
+using System.Collections.Generic;
+
+class Student
+{
+   public string name;
+   public int rollno { get; set; }
+
+   public Student(string name, int rollno)
+   {
+       this.name = name;
+       this.rollno = rollno;
+   }
+
+   public void display() // Show student details
+   {
+       Console.WriteLine($"  Name: {name}, Roll Number: {rollno}");
+   }
+}
+
+class Course
+{
+   public string name;
+   private List<Student> students;
+
+   public Course(string name)
+   {
+       this.name = name;
+       students = new List<Student>();
+   }
+
+   public void enroll(Student student) // Add student
+   {
+       students.Add(student);
+   }
+
+   public void display() // Show course details
+   {
+       Console.WriteLine($"Course: {name}");
+       if (students.Count > 0)
+       {
+           Console.WriteLine("  Students enrolled:");
+           foreach (Student student in students)
+           {
+               student.display();
+           }
+       }
+       else
+       {
+           Console.WriteLine("  No students enrolled");
+       }
+   }
+}
+
+class School
+{
+   public string name;
+   private List<Course> courses;
+
+   public School(string name)
+   {
+       this.name = name;
+       courses = new List<Course>();
+   }
+
+   public void addCourse(Course course) // Add course
+   {
+       courses.Add(course);
+   }
+
+   public void display() // Show school details
+   {
+       Console.WriteLine($"School: {name}");
+       if (courses.Count > 0)
+       {
+           Console.WriteLine("Courses offered:");
+           foreach (Course course in courses)
+           {
+               course.display();
+           }
+       }
+       else
+       {
+           Console.WriteLine("No courses available.");
+       }
+   }
+
+   public static void Main()
+   {
+       Student s1 = new Student("Ram", 1);
+       Student s2 = new Student("Shyam", 2);
+       Student s3 = new Student("Arun", 3);
+       Student s4 = new Student("Varun", 4);
+       Student s5 = new Student("Vikram", 5);
+
+       Course phy = new Course("Physics");
+       Course math = new Course("Mathematics");
+
+       School s = new School("City Montessori School");
+
+       phy.enroll(s1);
+       phy.enroll(s2);
+       phy.enroll(s3);
+       math.enroll(s4);
+       math.enroll(s5);
+       math.enroll(s2);
+       s.addCourse(phy);
+       s.addCourse(math);
+
+       s.display();
+       s1.display();
+   }
+}
+	
+
+
+
+________________
+
+
+Problem 2: University with Faculties and Departments (Composition and Aggregation)
+Description: Create a University with multiple Faculty members and Department objects. Model it so that the University and its Departments are in a composition relationship (deleting a university deletes all departments), and the Faculty members are in an aggregation relationship (faculty can exist outside of any specific department).
+Tasks:
+* Define a University class with Department and Faculty classes.
+* Demonstrate how deleting a University also deletes its Departments.
+* Show that Faculty members can exist independently of a Department.
+Goal: Understand the differences between composition and aggregation in modeling complex hierarchical relationships.
+
+
+using System;
+using System.Collections.Generic;
+
+class Faculty
+{
+   public string name;
+   public string specialization;
+
+   public Faculty(string name, string specialization)
+   {
+       this.name = name;
+       this.specialization = specialization;
+   }
+
+   public void display() // Show faculty details
+   {
+       Console.WriteLine($"  Faculty: {name}, Specialization: {specialization}");
+   }
+    public void DeleteUniversity() 
+    { 
+        Console.WriteLine($"\nDeleting University: {Name}...");
+        Departments.Clear(); // Deleting all departments (Composition) 
+        Console.WriteLine("All departments have been deleted."); }
+}
+
+class Department
+{
+   public string name;
+   List<Faculty> faculties; // Aggregation: Faculties exist independently
+
+   public Department(string name)
+   {
+       this.name = name;
+       faculties = new List<Faculty>();
+   }
+
+   public void addFaculty(Faculty faculty) // Add faculty to department
+   {
+       faculties.Add(faculty);
+   }
+
+   public void display() // Show department details
+   {
+       Console.WriteLine($"Department: {name}");
+       if (faculties.Count > 0)
+       {
+           Console.WriteLine("  Faculties:");
+           foreach (Faculty faculty in faculties)
+           {
+               faculty.display();
+           }
+       }
+       else
+       {
+           Console.WriteLine("  No faculties assigned.");
+       }
+   }
+}
+
+class University
+{
+   public string name;
+   private List<Department> departments; // Composition: Departments belong to University
+
+   public University(string name)
+   {
+       this.name = name;
+       departments = new List<Department>();
+   }
+
+   public void addDepartment(Department department) // Add department to university
+   {
+       departments.Add(department);
+   }
+
+   public void display() // Show university details
+   {
+       Console.WriteLine($"University: {name}");
+       if (departments.Count > 0)
+       {
+           Console.WriteLine("Departments:");
+           foreach (Department department in departments)
+           {
+               department.display();
+           }
+       }
+       else
+       {
+           Console.WriteLine("No departments available.");
+       }
+   }
+
+   public static void Main()
+   {
+       University university = new University("GLA University");
+
+       Department cs = new Department("Computer Science");
+       Department physics = new Department("Physics");
+
+       Faculty f1 = new Faculty("Dr. Agarwal", "Artificial Intelligence");
+       Faculty f2 = new Faculty("Dr. Ramlal", "Quantum Mechanics");
+       Faculty f3 = new Faculty("Dr. Williams", "Data Science");
+
+       cs.addFaculty(f1);
+       cs.addFaculty(f3);
+       physics.addFaculty(f2);
+
+       university.addDepartment(cs);
+       university.addDepartment(physics);
+
+       university.display();
+   }
+}
+	
+
+
+
+________________
+
+
+Problem 3: Hospital, Doctors, and Patients (Association and Communication)
+Description: Model a Hospital where Doctor and Patient objects interact through consultations. A doctor can see multiple patients, and each patient can consult multiple doctors.
+Tasks:
+* Define a Hospital class containing Doctor and Patient classes.
+* Create a method Consult() in the Doctor class to show communication, which would display the consultation between a doctor and a patient.
+* Model an association between doctors and patients to show that doctors and patients can have multiple relationships.
+Goal: Practice creating an association with communication between objects by modeling doctor-patient consultations.
+________________
+
+
+Problem 4: E-commerce Platform with Orders, Customers, and Products
+Description: Design an e-commerce platform with Order, Customer, and Product classes. Model relationships where a Customer places an Order, and each Order contains multiple Product objects.
+Goal: Show communication and object relationships by designing a system where customers communicate through orders, and orders aggregate products.
+________________
+
+
+Problem 5: University Management System
+Description: Model a university system with Student, Professor, and Course classes. Students enroll in courses, and professors teach courses. Ensure students and professors can communicate through methods like EnrollCourse() and AssignProfessor().
+Goal: Use association and aggregation to create a university system that emphasizes relationships and interactions among students, professors, and courses.
