@@ -74,3 +74,7 @@ Practiced problems focusing on the this and sealed keywords.
 Learned about C# OOP concepts, including Aggregation, Association, and Composition.
 Explored their combined implementations, such as Aggregation with Association.
 Worked on problem statements based on these principles.
+
+**Task 16: Date: 06-02-2025**
+Studied Class, Object, and Sequence Diagrams in detail.
+Practiced various problems related to UML diagrams and object-oriented modeling.
