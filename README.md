@@ -82,4 +82,9 @@ Practiced various problems related to UML diagrams and object-oriented modeling.
 **Task 16: Date: 07-02-2025**
 Studied about inheritance and explored its types through examples.
 
+**Task 17: Date: 08-02-2025**
+Successfully completed the assignment on inheritance.
+Explored and studied about all types of inheritance in C# through practical implemmentation.
+Gained practical knowledge on implementation of interface to acheive multiple inheritance in C#.
+
 
