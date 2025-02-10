@@ -87,4 +87,6 @@ Successfully completed the assignment on inheritance.
 Explored and studied about all types of inheritance in C# through practical implemmentation.
 Gained practical knowledge on implementation of interface to acheive multiple inheritance in C#.
 
-
+**Task 18: Date: 10-02-2025**
+Explored and studied the practical implementation of Encapsulation, Polymorphism, Interface and Abstract Class.
+Successfully completed the assignment due today.
