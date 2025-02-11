@@ -90,3 +90,6 @@ Gained practical knowledge on implementation of interface to acheive multiple in
 **Task 18: Date: 10-02-2025**
 Explored and studied the practical implementation of Encapsulation, Polymorphism, Interface and Abstract Class.
 Successfully completed the assignment due today.
+
+**Task 19: Date: 11-02-2025**
+Studied about linked list and practiced basic implementations on linked lists and successfully completed the assignment due today.
