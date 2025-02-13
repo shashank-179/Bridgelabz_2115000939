@@ -93,3 +93,10 @@ Successfully completed the assignment due today.
 
 **Task 19: Date: 11-02-2025**
 Studied about linked list and practiced basic implementations on linked lists and successfully completed the assignment due today.
+
+**Task 20: Date: 12-02-2025**
+Read the material posted on classroom about stack, queue, hashmap and hashing functions.
+Practiced and understood the implementation of these data structures.
+
+**Task 21: Date: 13-02-2025**
+Sucessfullly completed and submitted the assignment on stack, queue and hashmaps.
