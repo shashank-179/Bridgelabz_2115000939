@@ -99,4 +99,8 @@ Read the material posted on classroom about stack, queue, hashmap and hashing fu
 Practiced and understood the implementation of these data structures.
 
 **Task 21: Date: 13-02-2025**
-Sucessfullly completed and submitted the assignment on stack, queue and hashmaps.
+Successfullly completed and submitted the assignment on stack, queue and hashmaps.
+
+**Task 22: Date: 14-02-2025**
+Read and explored about sorting algorithms and practiced practical implementations on them.
+Successfully completed and submitted assignment on sorting algorithms.
