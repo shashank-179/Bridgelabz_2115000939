@@ -104,3 +104,14 @@ Successfullly completed and submitted the assignment on stack, queue and hashmap
 **Task 22: Date: 14-02-2025**
 Read and explored about sorting algorithms and practiced practical implementations on them.
 Successfully completed and submitted assignment on sorting algorithms.
+
+**Task 23: Date: 15-02-2025**
+Read and understood the material on linear and binary search.
+Practiced both searches practically.
+
+**Task 24: Date: 16-02-2025**
+Successfully completed and submitted assignment on linear and binary search.
+
+**Task 25: Date: 17-02-2025**
+Read and understood the material on asymptotic notations.
+Successfully completed and submitted the assignment on asymptotic notations.
