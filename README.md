@@ -115,3 +115,19 @@ Successfully completed and submitted assignment on linear and binary search.
 **Task 25: Date: 17-02-2025**
 Read and understood the material on asymptotic notations.
 Successfully completed and submitted the assignment on asymptotic notations.
+
+**Task 26: Date: 18-02-2025**
+Studied and explored about the uses and implementation of generics in C#.
+Successfully completed and submitted assignment on generics.
+
+**Task 27: Date: 19-02-2025**
+Studied and explored collections in C#.
+Successfully completed and submitted assignment on collections.
+
+**Task 28: Date: 20-02-2025**
+Read and studied the applications of streams.
+Successfully completed and submitted assignment on streams.
+
+**Task 29: Date: 21-02-2025**
+Read and studied about exceptions.
+Successfully completed and submitted assignment on exceptions. 
