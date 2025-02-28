@@ -1,0 +1,174 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "F:\\Capg- TRAINING\\C# Programmes\\feature-27Feb2025\\UserRegistrationProject\\UserRegistration\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D8AB8A8A-359E-4300-A143-ADCDE0FA0060}|..\\RepositoryLayer\\RepositoryLayer.csproj|f:\\capg- training\\c# programmes\\feature-27feb2025\\userregistrationproject\\repositorylayer\\service\\userregistrationrl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E0FBC8E-7A8D-4357-BC94-EC700517EC18}|..\\BusinessLayer\\BusinessLayer.csproj|f:\\capg- training\\c# programmes\\feature-27feb2025\\userregistrationproject\\businesslayer\\service\\userregistrationbl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E7C8BA1-BAD6-4F31-9C0C-3A279E96EC38}|UserRegistration.csproj|f:\\capg- training\\c# programmes\\feature-27feb2025\\userregistrationproject\\userregistration\\controllers\\userregistrationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6E7C8BA1-BAD6-4F31-9C0C-3A279E96EC38}|UserRegistration.csproj|solutionrelative:controllers\\userregistrationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5AA9512B-184B-45FC-9D49-40A94AF64A7C}|..\\ModelLayer\\ModelLayer.csproj|f:\\capg- training\\c# programmes\\feature-27feb2025\\userregistrationproject\\modellayer\\dto\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5AA9512B-184B-45FC-9D49-40A94AF64A7C}|..\\ModelLayer\\ModelLayer.csproj|f:\\capg- training\\c# programmes\\feature-27feb2025\\userregistrationproject\\modellayer\\dto\\responsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5AA9512B-184B-45FC-9D49-40A94AF64A7C}|..\\ModelLayer\\ModelLayer.csproj|f:\\capg- training\\c# programmes\\feature-27feb2025\\userregistrationproject\\modellayer\\dto\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D8AB8A8A-359E-4300-A143-ADCDE0FA0060}|..\\RepositoryLayer\\RepositoryLayer.csproj|f:\\capg- training\\c# programmes\\feature-27feb2025\\userregistrationproject\\repositorylayer\\repositorylayer.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E7C8BA1-BAD6-4F31-9C0C-3A279E96EC38}|UserRegistration.csproj|f:\\capg- training\\c# programmes\\feature-27feb2025\\userregistrationproject\\userregistration\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6E7C8BA1-BAD6-4F31-9C0C-3A279E96EC38}|UserRegistration.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E7C8BA1-BAD6-4F31-9C0C-3A279E96EC38}|UserRegistration.csproj|f:\\capg- training\\c# programmes\\feature-27feb2025\\userregistrationproject\\userregistration\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{6E7C8BA1-BAD6-4F31-9C0C-3A279E96EC38}|UserRegistration.csproj|solutionrelative:properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RegisterDTO.cs",
+              "DocumentMoniker": "F:\\Capg- TRAINING\\C# Programmes\\feature-27Feb2025\\UserRegistrationProject\\ModelLayer\\DTO\\RegisterDTO.cs",
+              "RelativeDocumentMoniker": "..\\ModelLayer\\DTO\\RegisterDTO.cs",
+              "ToolTip": "F:\\Capg- TRAINING\\C# Programmes\\feature-27Feb2025\\UserRegistrationProject\\ModelLayer\\DTO\\RegisterDTO.cs",
+              "RelativeToolTip": "..\\ModelLayer\\DTO\\RegisterDTO.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-28T15:16:26.595Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ResponseModel.cs",
+              "DocumentMoniker": "F:\\Capg- TRAINING\\C# Programmes\\feature-27Feb2025\\UserRegistrationProject\\ModelLayer\\DTO\\ResponseModel.cs",
+              "RelativeDocumentMoniker": "..\\ModelLayer\\DTO\\ResponseModel.cs",
+              "ToolTip": "F:\\Capg- TRAINING\\C# Programmes\\feature-27Feb2025\\UserRegistrationProject\\ModelLayer\\DTO\\ResponseModel.cs",
+              "RelativeToolTip": "..\\ModelLayer\\DTO\\ResponseModel.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAsAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-28T14:58:06.496Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "LoginDTO.cs",
+              "DocumentMoniker": "F:\\Capg- TRAINING\\C# Programmes\\feature-27Feb2025\\UserRegistrationProject\\ModelLayer\\DTO\\LoginDTO.cs",
+              "RelativeDocumentMoniker": "..\\ModelLayer\\DTO\\LoginDTO.cs",
+              "ToolTip": "F:\\Capg- TRAINING\\C# Programmes\\feature-27Feb2025\\UserRegistrationProject\\ModelLayer\\DTO\\LoginDTO.cs",
+              "RelativeToolTip": "..\\ModelLayer\\DTO\\LoginDTO.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABIAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-28T14:56:43.587Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserRegistrationRL.cs",
+              "DocumentMoniker": "F:\\Capg- TRAINING\\C# Programmes\\feature-27Feb2025\\UserRegistrationProject\\RepositoryLayer\\Service\\UserRegistrationRL.cs",
+              "RelativeDocumentMoniker": "..\\RepositoryLayer\\Service\\UserRegistrationRL.cs",
+              "ToolTip": "F:\\Capg- TRAINING\\C# Programmes\\feature-27Feb2025\\UserRegistrationProject\\RepositoryLayer\\Service\\UserRegistrationRL.cs",
+              "RelativeToolTip": "..\\RepositoryLayer\\Service\\UserRegistrationRL.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABEAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-27T14:45:34.78Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserRegistrationBL.cs",
+              "DocumentMoniker": "F:\\Capg- TRAINING\\C# Programmes\\feature-27Feb2025\\UserRegistrationProject\\BusinessLayer\\Service\\UserRegistrationBL.cs",
+              "RelativeDocumentMoniker": "..\\BusinessLayer\\Service\\UserRegistrationBL.cs",
+              "ToolTip": "F:\\Capg- TRAINING\\C# Programmes\\feature-27Feb2025\\UserRegistrationProject\\BusinessLayer\\Service\\UserRegistrationBL.cs",
+              "RelativeToolTip": "..\\BusinessLayer\\Service\\UserRegistrationBL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC8AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-27T14:43:57.25Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserRegistrationController.cs",
+              "DocumentMoniker": "F:\\Capg- TRAINING\\C# Programmes\\feature-27Feb2025\\UserRegistrationProject\\UserRegistration\\Controllers\\UserRegistrationController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UserRegistrationController.cs",
+              "ToolTip": "F:\\Capg- TRAINING\\C# Programmes\\feature-27Feb2025\\UserRegistrationProject\\UserRegistration\\Controllers\\UserRegistrationController.cs",
+              "RelativeToolTip": "Controllers\\UserRegistrationController.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAAACYAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-27T14:35:51.33Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "RepositoryLayer.csproj",
+              "DocumentMoniker": "F:\\Capg- TRAINING\\C# Programmes\\feature-27Feb2025\\UserRegistrationProject\\RepositoryLayer\\RepositoryLayer.csproj",
+              "RelativeDocumentMoniker": "..\\RepositoryLayer\\RepositoryLayer.csproj",
+              "ToolTip": "F:\\Capg- TRAINING\\C# Programmes\\feature-27Feb2025\\UserRegistrationProject\\RepositoryLayer\\RepositoryLayer.csproj",
+              "RelativeToolTip": "..\\RepositoryLayer\\RepositoryLayer.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-02-28T14:55:21.168Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "F:\\Capg- TRAINING\\C# Programmes\\feature-27Feb2025\\UserRegistrationProject\\UserRegistration\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "F:\\Capg- TRAINING\\C# Programmes\\feature-27Feb2025\\UserRegistrationProject\\UserRegistration\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-27T15:18:53.364Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "F:\\Capg- TRAINING\\C# Programmes\\feature-27Feb2025\\UserRegistrationProject\\UserRegistration\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "Properties\\launchSettings.json",
+              "ToolTip": "F:\\Capg- TRAINING\\C# Programmes\\feature-27Feb2025\\UserRegistrationProject\\UserRegistration\\Properties\\launchSettings.json",
+              "RelativeToolTip": "Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-02-27T15:23:54.264Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

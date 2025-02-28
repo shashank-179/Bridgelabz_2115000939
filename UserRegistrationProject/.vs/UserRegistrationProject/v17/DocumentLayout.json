@@ -1,0 +1,154 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Bridgelabz\\UserRegistrationProject\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Bridgelabz\\UserRegistrationProject\\UserRegistration\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:UserRegistration\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Bridgelabz\\UserRegistrationProject\\RepositoryLayer\\Service\\UserRegistrationRL.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:RepositoryLayer\\Service\\UserRegistrationRL.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Bridgelabz\\UserRegistrationProject\\ModelLayer\\DTO\\ResponseModel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ModelLayer\\DTO\\ResponseModel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Bridgelabz\\UserRegistrationProject\\ModelLayer\\DTO\\RegisterDTO.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ModelLayer\\DTO\\RegisterDTO.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Bridgelabz\\UserRegistrationProject\\ModelLayer\\DTO\\LoginDTO.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ModelLayer\\DTO\\LoginDTO.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Bridgelabz\\UserRegistrationProject\\BusinessLayer\\Service\\UserRegistrationBL.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BusinessLayer\\Service\\UserRegistrationBL.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Bridgelabz\\UserRegistrationProject\\UserRegistration\\Properties\\launchSettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:UserRegistration\\Properties\\launchSettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Bridgelabz\\UserRegistrationProject\\UserRegistration\\Controllers\\UserRegistrationController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:UserRegistration\\Controllers\\UserRegistrationController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserRegistrationRL.cs",
+              "DocumentMoniker": "C:\\Bridgelabz\\UserRegistrationProject\\RepositoryLayer\\Service\\UserRegistrationRL.cs",
+              "RelativeDocumentMoniker": "RepositoryLayer\\Service\\UserRegistrationRL.cs",
+              "ToolTip": "C:\\Bridgelabz\\UserRegistrationProject\\RepositoryLayer\\Service\\UserRegistrationRL.cs",
+              "RelativeToolTip": "RepositoryLayer\\Service\\UserRegistrationRL.cs",
+              "ViewState": "AgIAAAAAAABgZmZmZmYawC4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-28T17:49:04.307Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ResponseModel.cs",
+              "DocumentMoniker": "C:\\Bridgelabz\\UserRegistrationProject\\ModelLayer\\DTO\\ResponseModel.cs",
+              "RelativeDocumentMoniker": "ModelLayer\\DTO\\ResponseModel.cs",
+              "ToolTip": "C:\\Bridgelabz\\UserRegistrationProject\\ModelLayer\\DTO\\ResponseModel.cs",
+              "RelativeToolTip": "ModelLayer\\DTO\\ResponseModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-28T17:48:48.683Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RegisterDTO.cs",
+              "DocumentMoniker": "C:\\Bridgelabz\\UserRegistrationProject\\ModelLayer\\DTO\\RegisterDTO.cs",
+              "RelativeDocumentMoniker": "ModelLayer\\DTO\\RegisterDTO.cs",
+              "ToolTip": "C:\\Bridgelabz\\UserRegistrationProject\\ModelLayer\\DTO\\RegisterDTO.cs",
+              "RelativeToolTip": "ModelLayer\\DTO\\RegisterDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-28T17:48:44.876Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "LoginDTO.cs",
+              "DocumentMoniker": "C:\\Bridgelabz\\UserRegistrationProject\\ModelLayer\\DTO\\LoginDTO.cs",
+              "RelativeDocumentMoniker": "ModelLayer\\DTO\\LoginDTO.cs",
+              "ToolTip": "C:\\Bridgelabz\\UserRegistrationProject\\ModelLayer\\DTO\\LoginDTO.cs",
+              "RelativeToolTip": "ModelLayer\\DTO\\LoginDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-28T17:48:42.884Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UserRegistrationBL.cs",
+              "DocumentMoniker": "C:\\Bridgelabz\\UserRegistrationProject\\BusinessLayer\\Service\\UserRegistrationBL.cs",
+              "RelativeDocumentMoniker": "BusinessLayer\\Service\\UserRegistrationBL.cs",
+              "ToolTip": "C:\\Bridgelabz\\UserRegistrationProject\\BusinessLayer\\Service\\UserRegistrationBL.cs",
+              "RelativeToolTip": "BusinessLayer\\Service\\UserRegistrationBL.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAmwEcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-28T17:48:14.662Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Bridgelabz\\UserRegistrationProject\\UserRegistration\\Program.cs",
+              "RelativeDocumentMoniker": "UserRegistration\\Program.cs",
+              "ToolTip": "C:\\Bridgelabz\\UserRegistrationProject\\UserRegistration\\Program.cs",
+              "RelativeToolTip": "UserRegistration\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-28T17:47:56.36Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Bridgelabz\\UserRegistrationProject\\UserRegistration\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "UserRegistration\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Bridgelabz\\UserRegistrationProject\\UserRegistration\\Properties\\launchSettings.json",
+              "RelativeToolTip": "UserRegistration\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-02-28T17:47:50.185Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UserRegistrationController.cs",
+              "DocumentMoniker": "C:\\Bridgelabz\\UserRegistrationProject\\UserRegistration\\Controllers\\UserRegistrationController.cs",
+              "RelativeDocumentMoniker": "UserRegistration\\Controllers\\UserRegistrationController.cs",
+              "ToolTip": "C:\\Bridgelabz\\UserRegistrationProject\\UserRegistration\\Controllers\\UserRegistrationController.cs",
+              "RelativeToolTip": "UserRegistration\\Controllers\\UserRegistrationController.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAAAAADYAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-28T17:47:00.712Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

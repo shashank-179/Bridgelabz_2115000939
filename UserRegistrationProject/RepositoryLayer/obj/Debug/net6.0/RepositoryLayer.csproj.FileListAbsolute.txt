@@ -1,0 +1,15 @@
+F:\Capg- TRAINING\C# Programmes\feature-27Feb2025\UserRegistrationProject\RepositoryLayer\bin\Debug\net6.0\RepositoryLayer.deps.json
+F:\Capg- TRAINING\C# Programmes\feature-27Feb2025\UserRegistrationProject\RepositoryLayer\bin\Debug\net6.0\RepositoryLayer.dll
+F:\Capg- TRAINING\C# Programmes\feature-27Feb2025\UserRegistrationProject\RepositoryLayer\bin\Debug\net6.0\RepositoryLayer.pdb
+F:\Capg- TRAINING\C# Programmes\feature-27Feb2025\UserRegistrationProject\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.GeneratedMSBuildEditorConfig.editorconfig
+F:\Capg- TRAINING\C# Programmes\feature-27Feb2025\UserRegistrationProject\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.AssemblyInfoInputs.cache
+F:\Capg- TRAINING\C# Programmes\feature-27Feb2025\UserRegistrationProject\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.AssemblyInfo.cs
+F:\Capg- TRAINING\C# Programmes\feature-27Feb2025\UserRegistrationProject\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.csproj.CoreCompileInputs.cache
+F:\Capg- TRAINING\C# Programmes\feature-27Feb2025\UserRegistrationProject\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.dll
+F:\Capg- TRAINING\C# Programmes\feature-27Feb2025\UserRegistrationProject\RepositoryLayer\obj\Debug\net6.0\refint\RepositoryLayer.dll
+F:\Capg- TRAINING\C# Programmes\feature-27Feb2025\UserRegistrationProject\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.pdb
+F:\Capg- TRAINING\C# Programmes\feature-27Feb2025\UserRegistrationProject\RepositoryLayer\obj\Debug\net6.0\ref\RepositoryLayer.dll
+F:\Capg- TRAINING\C# Programmes\feature-27Feb2025\UserRegistrationProject\RepositoryLayer\bin\Debug\net6.0\ModelLayer.dll
+F:\Capg- TRAINING\C# Programmes\feature-27Feb2025\UserRegistrationProject\RepositoryLayer\bin\Debug\net6.0\ModelLayer.pdb
+F:\Capg- TRAINING\C# Programmes\feature-27Feb2025\UserRegistrationProject\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.csproj.AssemblyReference.cache
+F:\Capg- TRAINING\C# Programmes\feature-27Feb2025\UserRegistrationProject\RepositoryLayer\obj\Debug\net6.0\Reposito.A0A61804.Up2Date

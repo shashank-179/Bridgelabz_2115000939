@@ -1,0 +1,11 @@
+F:\Capg- TRAINING\C# Programmes\feature-27Feb2025\UserRegistrationProject\ModelLayer\bin\Debug\net6.0\ModelLayer.deps.json
+F:\Capg- TRAINING\C# Programmes\feature-27Feb2025\UserRegistrationProject\ModelLayer\bin\Debug\net6.0\ModelLayer.dll
+F:\Capg- TRAINING\C# Programmes\feature-27Feb2025\UserRegistrationProject\ModelLayer\bin\Debug\net6.0\ModelLayer.pdb
+F:\Capg- TRAINING\C# Programmes\feature-27Feb2025\UserRegistrationProject\ModelLayer\obj\Debug\net6.0\ModelLayer.GeneratedMSBuildEditorConfig.editorconfig
+F:\Capg- TRAINING\C# Programmes\feature-27Feb2025\UserRegistrationProject\ModelLayer\obj\Debug\net6.0\ModelLayer.AssemblyInfoInputs.cache
+F:\Capg- TRAINING\C# Programmes\feature-27Feb2025\UserRegistrationProject\ModelLayer\obj\Debug\net6.0\ModelLayer.AssemblyInfo.cs
+F:\Capg- TRAINING\C# Programmes\feature-27Feb2025\UserRegistrationProject\ModelLayer\obj\Debug\net6.0\ModelLayer.csproj.CoreCompileInputs.cache
+F:\Capg- TRAINING\C# Programmes\feature-27Feb2025\UserRegistrationProject\ModelLayer\obj\Debug\net6.0\ModelLayer.dll
+F:\Capg- TRAINING\C# Programmes\feature-27Feb2025\UserRegistrationProject\ModelLayer\obj\Debug\net6.0\refint\ModelLayer.dll
+F:\Capg- TRAINING\C# Programmes\feature-27Feb2025\UserRegistrationProject\ModelLayer\obj\Debug\net6.0\ModelLayer.pdb
+F:\Capg- TRAINING\C# Programmes\feature-27Feb2025\UserRegistrationProject\ModelLayer\obj\Debug\net6.0\ref\ModelLayer.dll

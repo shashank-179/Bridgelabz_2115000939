@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\BusinessLayer",
+    "\\BusinessLayer\\obj",
+    "\\BusinessLayer\\obj\\Release",
+    "\\BusinessLayer\\Service",
+    "\\ModelLayer",
+    "\\ModelLayer\\DTO",
+    "\\RepositoryLayer",
+    "\\RepositoryLayer\\Service",
+    "\\UserRegistration"
+  ],
+  "SelectedNode": "\\UserRegistration\\Program.cs",
+  "PreviewInSolutionExplorer": false
+}
