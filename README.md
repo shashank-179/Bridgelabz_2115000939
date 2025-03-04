@@ -131,3 +131,29 @@ Successfully completed and submitted assignment on streams.
 **Task 29: Date: 21-02-2025**
 Read and studied about exceptions.
 Successfully completed and submitted assignment on exceptions. 
+
+**Task 30: Date: 22-02-2025**
+Read and studied about regex and Nunit.
+Successfully completed and submitted assignment on both of them. 
+
+**Task 31: Date: 23-02-2025**
+Read and studied about annotations and reflection.
+Performed implementation on both of them and practiced it. 
+
+**Task 32: Date: 24-02-2025**
+Successfully completed and submitted assignment on annotations and reflection.
+
+**Task 33: Date: 25-02-2025**
+Read and studied about CSV file handling.
+Successfully completed and submitted assignment on CSV file handling.
+
+**Task 34: Date: 26-02-2025**
+Read and studied about JSON data.
+Successfully completed and submitted assignment on JSON data. 
+
+**Task 35: Date: 27-02-2025**
+Read and studied about WebAPI.
+Learned and explored ASP.net and learned how to make webAPIs.
+
+**Task 37: Date: 28-02-2025**
+Successfully completed and submitted assignment on WebAPI. 
